@@ -1,0 +1,30 @@
+{
+  "name": "Synthetic developer-authored relevance suite v2",
+  "disclaimer": "Small synthetic regression fixture authored with the implementation. No independent expert labels, held-out sample, hiring outcome data, or psychometric validation.",
+  "candidates": [
+    {"id":"b-j","specialization":"Backend","grade":"Junior","score":76,"skills":["Python","SQL","HTTP","Algorithms"],"experience":1,"fsp":false},
+    {"id":"b-m","specialization":"Backend","grade":"Middle","score":85,"skills":["Python","SQL","HTTP","Algorithms"],"experience":3,"fsp":false},
+    {"id":"b-s","specialization":"Backend","grade":"Senior","score":90,"skills":["Python","SQL","HTTP","Algorithms","Docker"],"experience":6,"fsp":true},
+    {"id":"b-m-high","specialization":"Backend","grade":"Middle","score":94,"skills":["Python","SQL","HTTP","Algorithms"],"experience":4,"fsp":true},
+    {"id":"b-j-sql","specialization":"Backend","grade":"Junior","score":82,"skills":["SQL","HTTP"],"experience":1,"fsp":true},
+    {"id":"f-j","specialization":"Frontend","grade":"Junior","score":80,"skills":["TypeScript","React","CSS","Accessibility"],"experience":1,"fsp":false},
+    {"id":"f-m","specialization":"Frontend","grade":"Middle","score":92,"skills":["TypeScript","React","CSS","Accessibility"],"experience":3,"fsp":true},
+    {"id":"f-s","specialization":"Frontend","grade":"Senior","score":86,"skills":["TypeScript","React","CSS","Accessibility"],"experience":7,"fsp":false},
+    {"id":"f-s-css","specialization":"Frontend","grade":"Senior","score":90,"skills":["CSS","Accessibility"],"experience":5,"fsp":true},
+    {"id":"f-m-react","specialization":"Frontend","grade":"Middle","score":88,"skills":["TypeScript","React"],"experience":3,"fsp":false}
+  ],
+  "queries": [
+    {"id":"junior-backend","need":"Нужен Junior Backend-разработчик","relevance":{"b-j":3,"b-j-sql":3,"b-m":1,"b-m-high":1,"b-s":1}},
+    {"id":"senior-frontend","need":"Нужен Senior Frontend-разработчик","relevance":{"f-s":3,"f-s-css":3,"f-m":1,"f-m-react":1,"f-j":1}},
+    {"id":"middle-backend","need":"Ищем middle бэкенд","relevance":{"b-m":3,"b-m-high":3,"b-j":1,"b-j-sql":1,"b-s":1}},
+    {"id":"junior-frontend","need":"Нужен джун фронтенд","relevance":{"f-j":3,"f-m":1,"f-m-react":1,"f-s":1,"f-s-css":1}},
+    {"id":"python-sql","need":"Python SQL backend","relevance":{"b-j":3,"b-m":3,"b-m-high":3,"b-s":3,"b-j-sql":1}},
+    {"id":"react-typescript","need":"Frontend React TypeScript","relevance":{"f-j":3,"f-m":3,"f-s":3,"f-m-react":3,"f-s-css":1}},
+    {"id":"senior-css","need":"Senior Frontend CSS Accessibility","relevance":{"f-s":3,"f-s-css":3,"f-m":2,"f-j":2,"f-m-react":1}},
+    {"id":"backend-senior-python","need":"Senior Backend Python SQL","relevance":{"b-s":3,"b-m-high":2,"b-m":2,"b-j":2,"b-j-sql":1}},
+    {"id":"experience","need":"Frontend от 5 лет","relevance":{"f-s":3,"f-s-css":3,"f-m":2,"f-m-react":2,"f-j":1}},
+    {"id":"junior-python","need":"Junior Backend Python","relevance":{"b-j":3,"b-j-sql":1,"b-m":2,"b-m-high":2,"b-s":2}},
+    {"id":"strict-filter","need":"Backend Python SQL","specialization":"Backend","grade":"Middle","relevance":{"b-m":3,"b-m-high":3}},
+    {"id":"no-fsp-priority","need":"Senior Frontend React","relevance":{"f-s":3,"f-m":2,"f-m-react":2,"f-j":2,"f-s-css":1}}
+  ]
+}

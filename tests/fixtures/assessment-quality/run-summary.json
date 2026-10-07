@@ -1,0 +1,485 @@
+{
+  "referenceCases": 144,
+  "acceptedReferences": 144,
+  "keyDisagreements": 0,
+  "checkedVariantAnswers": 21600,
+  "thresholdPatterns": 24576,
+  "thresholdMismatches": 0,
+  "rows": [
+    {
+      "specialization": "Backend",
+      "grade": "Junior",
+      "uniqueTexts": 1282,
+      "overlap": {
+        "min": 8,
+        "max": 12,
+        "mean": 9.010033444816054,
+        "comparisons": 299
+      },
+      "memorization": [
+        {
+          "train": 1,
+          "passes": 0,
+          "total": 300,
+          "mean": 2.4
+        },
+        {
+          "train": 5,
+          "passes": 0,
+          "total": 300,
+          "mean": 15.826666666666666
+        },
+        {
+          "train": 20,
+          "passes": 0,
+          "total": 300,
+          "mean": 26.98
+        },
+        {
+          "train": 100,
+          "passes": 32,
+          "total": 300,
+          "mean": 59.223333333333336
+        },
+        {
+          "train": 500,
+          "passes": 278,
+          "total": 300,
+          "mean": 94.24
+        }
+      ],
+      "partialOneKnowledge": {
+        "attempts": 300,
+        "passes": 203,
+        "minScore": 67,
+        "maxScore": 100,
+        "totalScore": 22432,
+        "passRate": 0.6766666666666666,
+        "meanScore": 74.77333333333333
+      }
+    },
+    {
+      "specialization": "Backend",
+      "grade": "Middle",
+      "uniqueTexts": 983,
+      "overlap": {
+        "min": 8,
+        "max": 12,
+        "mean": 9.010033444816054,
+        "comparisons": 299
+      },
+      "memorization": [
+        {
+          "train": 1,
+          "passes": 0,
+          "total": 300,
+          "mean": 3.3133333333333335
+        },
+        {
+          "train": 5,
+          "passes": 0,
+          "total": 300,
+          "mean": 23.836666666666666
+        },
+        {
+          "train": 20,
+          "passes": 2,
+          "total": 300,
+          "mean": 40.56333333333333
+        },
+        {
+          "train": 100,
+          "passes": 75,
+          "total": 300,
+          "mean": 69.23333333333333
+        },
+        {
+          "train": 500,
+          "passes": 283,
+          "total": 300,
+          "mean": 95.10333333333334
+        }
+      ],
+      "partialOneKnowledge": {
+        "attempts": 300,
+        "passes": 203,
+        "minScore": 67,
+        "maxScore": 100,
+        "totalScore": 22432,
+        "passRate": 0.6766666666666666,
+        "meanScore": 74.77333333333333
+      }
+    },
+    {
+      "specialization": "Backend",
+      "grade": "Senior",
+      "uniqueTexts": 886,
+      "overlap": {
+        "min": 8,
+        "max": 12,
+        "mean": 9.010033444816054,
+        "comparisons": 299
+      },
+      "memorization": [
+        {
+          "train": 1,
+          "passes": 0,
+          "total": 300,
+          "mean": 6.736666666666666
+        },
+        {
+          "train": 5,
+          "passes": 0,
+          "total": 300,
+          "mean": 27.41
+        },
+        {
+          "train": 20,
+          "passes": 0,
+          "total": 300,
+          "mean": 43.38
+        },
+        {
+          "train": 100,
+          "passes": 46,
+          "total": 300,
+          "mean": 72.47666666666667
+        },
+        {
+          "train": 500,
+          "passes": 283,
+          "total": 300,
+          "mean": 98.13
+        }
+      ],
+      "partialOneKnowledge": {
+        "attempts": 300,
+        "passes": 203,
+        "minScore": 67,
+        "maxScore": 100,
+        "totalScore": 22432,
+        "passRate": 0.6766666666666666,
+        "meanScore": 74.77333333333333
+      }
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "uniqueTexts": 1139,
+      "overlap": {
+        "min": 8,
+        "max": 12,
+        "mean": 9.010033444816054,
+        "comparisons": 299
+      },
+      "memorization": [
+        {
+          "train": 1,
+          "passes": 0,
+          "total": 300,
+          "mean": 6.336666666666667
+        },
+        {
+          "train": 5,
+          "passes": 0,
+          "total": 300,
+          "mean": 22.043333333333333
+        },
+        {
+          "train": 20,
+          "passes": 0,
+          "total": 300,
+          "mean": 34.53
+        },
+        {
+          "train": 100,
+          "passes": 32,
+          "total": 300,
+          "mean": 63.733333333333334
+        },
+        {
+          "train": 500,
+          "passes": 278,
+          "total": 300,
+          "mean": 96.1
+        }
+      ],
+      "partialOneKnowledge": {
+        "attempts": 300,
+        "passes": 203,
+        "minScore": 67,
+        "maxScore": 100,
+        "totalScore": 22432,
+        "passRate": 0.6766666666666666,
+        "meanScore": 74.77333333333333
+      }
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "uniqueTexts": 1059,
+      "overlap": {
+        "min": 8,
+        "max": 12,
+        "mean": 9.010033444816054,
+        "comparisons": 299
+      },
+      "memorization": [
+        {
+          "train": 1,
+          "passes": 0,
+          "total": 300,
+          "mean": 8.206666666666667
+        },
+        {
+          "train": 5,
+          "passes": 0,
+          "total": 300,
+          "mean": 27.513333333333332
+        },
+        {
+          "train": 20,
+          "passes": 0,
+          "total": 300,
+          "mean": 38.096666666666664
+        },
+        {
+          "train": 100,
+          "passes": 32,
+          "total": 300,
+          "mean": 66.57
+        },
+        {
+          "train": 500,
+          "passes": 278,
+          "total": 300,
+          "mean": 96.81333333333333
+        }
+      ],
+      "partialOneKnowledge": {
+        "attempts": 300,
+        "passes": 203,
+        "minScore": 67,
+        "maxScore": 100,
+        "totalScore": 22432,
+        "passRate": 0.6766666666666666,
+        "meanScore": 74.77333333333333
+      }
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "uniqueTexts": 797,
+      "overlap": {
+        "min": 8,
+        "max": 12,
+        "mean": 9.010033444816054,
+        "comparisons": 299
+      },
+      "memorization": [
+        {
+          "train": 1,
+          "passes": 0,
+          "total": 300,
+          "mean": 8.783333333333333
+        },
+        {
+          "train": 5,
+          "passes": 0,
+          "total": 300,
+          "mean": 31.36
+        },
+        {
+          "train": 20,
+          "passes": 0,
+          "total": 300,
+          "mean": 48.526666666666664
+        },
+        {
+          "train": 100,
+          "passes": 51,
+          "total": 300,
+          "mean": 74.54
+        },
+        {
+          "train": 500,
+          "passes": 284,
+          "total": 300,
+          "mean": 98.93333333333334
+        }
+      ],
+      "partialOneKnowledge": {
+        "attempts": 300,
+        "passes": 203,
+        "minScore": 67,
+        "maxScore": 100,
+        "totalScore": 22432,
+        "passRate": 0.6766666666666666,
+        "meanScore": 74.77333333333333
+      }
+    }
+  ],
+  "formatting": [
+    {
+      "question": {
+        "answer": "12",
+        "format": "number"
+      },
+      "submitted": "12.00",
+      "semanticLabel": true,
+      "formatLabel": true,
+      "accepted": true,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "12",
+        "format": "number"
+      },
+      "submitted": "12,00",
+      "semanticLabel": true,
+      "formatLabel": true,
+      "accepted": true,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "12",
+        "format": "number"
+      },
+      "submitted": "12 px",
+      "semanticLabel": true,
+      "formatLabel": false,
+      "accepted": false,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "12",
+        "format": "number"
+      },
+      "submitted": "Ответ: 12",
+      "semanticLabel": true,
+      "formatLabel": false,
+      "accepted": false,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "12",
+        "format": "number"
+      },
+      "submitted": "1.2e1",
+      "semanticLabel": true,
+      "formatLabel": false,
+      "accepted": false,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "12",
+        "format": "number"
+      },
+      "submitted": "11.99999999999999999999999",
+      "semanticLabel": false,
+      "formatLabel": true,
+      "accepted": true,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "оплатить 9",
+        "format": "text"
+      },
+      "submitted": "«Оплатить 9»",
+      "semanticLabel": true,
+      "formatLabel": false,
+      "accepted": false,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "stopiteration",
+        "format": "text"
+      },
+      "submitted": "StopIteration",
+      "semanticLabel": true,
+      "formatLabel": true,
+      "accepted": true,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "stopiteration",
+        "format": "text"
+      },
+      "submitted": "StopIteration.",
+      "semanticLabel": true,
+      "formatLabel": false,
+      "accepted": false,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "first-9",
+        "format": "text"
+      },
+      "submitted": "FIRST-9",
+      "semanticLabel": false,
+      "formatLabel": false,
+      "accepted": true,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "first-9",
+        "format": "text"
+      },
+      "submitted": "#first-9",
+      "semanticLabel": true,
+      "formatLabel": false,
+      "accepted": false,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "нет",
+        "alternatives": [
+          "no"
+        ],
+        "format": "text"
+      },
+      "submitted": "NO",
+      "semanticLabel": true,
+      "formatLabel": true,
+      "accepted": true,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    }
+  ],
+  "policy": [
+    {
+      "case": "initial_success",
+      "grade": "Middle",
+      "gradeChangedAt": null
+    },
+    {
+      "case": "successful_change_after_confirmation",
+      "grade": "Senior",
+      "gradeChangedAt": 1791300001001
+    },
+    {
+      "case": "failed_same_grade_preserves_grade_and_clock",
+      "grade": "Senior",
+      "gradeChangedAt": 1791300001001
+    },
+    {
+      "case": "different_grade_one_ms_before_90_days",
+      "blocked": true
+    },
+    {
+      "case": "different_grade_at_90_days",
+      "grade": "Middle",
+      "gradeChangedAt": 1799076001002
+    }
+  ]
+}

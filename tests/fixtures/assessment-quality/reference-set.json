@@ -1,0 +1,3709 @@
+{
+  "schemaVersion": 1,
+  "assessmentVersion": 3,
+  "sourceSHA256": "9de56bbd1d602a22ab5f00bdd21863a382baa63b2f4443974014d38ad0104d1c",
+  "author": "AI assessment reviewer",
+  "independence": "Новые labels получены отдельной семантической реализацией; автор прочитал исходник. Нет слепой разметки, независимого человека-эксперта, реальных кандидатов или психометрической валидации. 144 строки представляют те же семейства исходного банка, а не 144 независимых компетенции.",
+  "cases": [
+    {
+      "id": "Accessibility-Junior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "HTML: <label for=\"field-11\">Имя</label><input id=\"field-11\"><input id=\"field-28\">. Напишите id поля, связанного с label.",
+        "format": "text",
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "field-11",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Accessibility-Junior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "В DOM 11 обычных button и 8 button с disabled, нет других элементов или tabindex. Сколько кнопок достижимы обычным Tab? Ответ числом.",
+        "format": "number",
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q7"
+      },
+      "expectedAnswer": "11",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Accessibility-Junior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261008,
+      "publicQuestion": {
+        "text": "HTML: тег для действия кнопкой?",
+        "format": "text",
+        "choices": [
+          "div",
+          "button"
+        ],
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q0"
+      },
+      "expectedAnswer": "button",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 8,
+        "m": 4
+      }
+    },
+    {
+      "id": "Accessibility-Junior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "HTML: атрибут label, связывающий его с полем по id?",
+        "format": "text",
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q1"
+      },
+      "expectedAnswer": "for",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Accessibility-Junior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261007,
+      "publicQuestion": {
+        "text": "HTML: атрибут текстового описания смыслового изображения?",
+        "format": "text",
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "alt",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 10,
+        "m": 3
+      }
+    },
+    {
+      "id": "Accessibility-Junior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "Доступность: должна ли кнопка работать с клавиатуры?",
+        "format": "text",
+        "choices": [
+          "нет",
+          "да"
+        ],
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q7"
+      },
+      "expectedAnswer": "да",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 12,
+        "m": 2
+      }
+    },
+    {
+      "id": "Accessibility-Middle-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "HTML: <span id=\"name-11\">Оплатить 11</span><button aria-labelledby=\"name-11\" aria-label=\"Отмена 8\">OK</button>. Каково доступное имя кнопки?",
+        "format": "text",
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "оплатить 11",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Accessibility-Middle-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "В DOM 11 button с tabindex=\"0\", 8 с tabindex=\"-1\"; других фокусируемых элементов нет. Сколько входят в последовательный Tab-порядок? Ответ числом.",
+        "format": "number",
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q7"
+      },
+      "expectedAnswer": "11",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Accessibility-Middle-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261008,
+      "publicQuestion": {
+        "text": "Доступность: атрибут названия иконки-кнопки без текста?",
+        "format": "text",
+        "choices": [
+          "aria-hidden",
+          "aria-label"
+        ],
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q0"
+      },
+      "expectedAnswer": "aria-label",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 8,
+        "m": 4
+      }
+    },
+    {
+      "id": "Accessibility-Middle-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Доступность: какое значение tabindex включает элемент в естественный порядок?",
+        "format": "number",
+        "choices": [
+          "0",
+          "9"
+        ],
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q1"
+      },
+      "expectedAnswer": "0",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Accessibility-Middle-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261007,
+      "publicQuestion": {
+        "text": "HTML: событие отправки формы?",
+        "format": "text",
+        "choices": [
+          "hover",
+          "submit"
+        ],
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "submit",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 10,
+        "m": 3
+      }
+    },
+    {
+      "id": "Accessibility-Middle-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "Доступность: можно ли обозначать ошибку только красным цветом?",
+        "format": "text",
+        "choices": [
+          "нет",
+          "да"
+        ],
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q7"
+      },
+      "expectedAnswer": "нет",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 12,
+        "m": 2
+      }
+    },
+    {
+      "id": "Accessibility-Senior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Модальный диалог открыл button id=\"open-11\". Он остаётся в DOM и доступен. После закрытия по Escape нужно восстановить фокус на инициаторе. Напишите id целевого элемента.",
+        "format": "text",
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "open-11",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Accessibility-Senior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Focus trap диалога содержит в DOM-порядке button id=\"first-11\", input id=\"middle-8\", button id=\"last-19\". Все доступны. Фокус на последнем; нажат Tab без Shift. Напишите id следующей цели.",
+        "format": "text",
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q7"
+      },
+      "expectedAnswer": "first-11",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Accessibility-Senior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261008,
+      "publicQuestion": {
+        "text": "Доступность: куда обычно возвращают фокус после закрытия модального окна?",
+        "format": "text",
+        "choices": [
+          "body",
+          "на вызвавший элемент"
+        ],
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q0"
+      },
+      "expectedAnswer": "на вызвавший элемент",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 8,
+        "m": 4
+      }
+    },
+    {
+      "id": "Accessibility-Senior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Доступность: чем объявляют асинхронное сообщение без переноса фокуса?",
+        "format": "text",
+        "choices": [
+          "aria-live",
+          "tabindex=99"
+        ],
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q1"
+      },
+      "expectedAnswer": "aria-live",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Accessibility-Senior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261007,
+      "publicQuestion": {
+        "text": "Доступность: должен ли Escape закрывать обычный модальный диалог?",
+        "format": "text",
+        "choices": [
+          "нет",
+          "да"
+        ],
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "да",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 10,
+        "m": 3
+      }
+    },
+    {
+      "id": "Accessibility-Senior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "Доступность: заменяет ли aria-label правильную семантику и клавиатурную обработку div-кнопки?",
+        "format": "text",
+        "choices": [
+          "нет",
+          "да"
+        ],
+        "skill": "Accessibility",
+        "version": 3,
+        "id": "q7"
+      },
+      "expectedAnswer": "нет",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 12,
+        "m": 2
+      }
+    },
+    {
+      "id": "Algorithms-Junior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Стек изначально пуст. Добавлены числа от 1 до 19 по порядку, затем выполнены 8 pop. Какое число теперь наверху? Ответ числом.",
+        "format": "number",
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "11",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Algorithms-Junior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Линейный поиск идёт слева направо в массиве [8, 11, 19]. Ищем 19; все значения различны, кроме возможного равенства первых двух. Сколько сравнений? Ответ числом.",
+        "format": "number",
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q7"
+      },
+      "expectedAnswer": "3",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Algorithms-Junior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261008,
+      "publicQuestion": {
+        "text": "В массиве 12 элементов. Число сравнений полного линейного поиска отсутствующего значения?",
+        "format": "number",
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q0"
+      },
+      "expectedAnswer": "12",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 8,
+        "m": 4
+      }
+    },
+    {
+      "id": "Algorithms-Junior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Средняя сложность поиска по ключу в хеш-таблице?",
+        "format": "text",
+        "choices": [
+          "O(1)",
+          "O(n)"
+        ],
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q1"
+      },
+      "expectedAnswer": "o(1)",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Algorithms-Junior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261007,
+      "publicQuestion": {
+        "text": "Два вложенных цикла по 10 и 3 итераций. Сколько выполнений тела?",
+        "format": "number",
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "30",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 10,
+        "m": 3
+      }
+    },
+    {
+      "id": "Algorithms-Junior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "Какая структура работает по FIFO?",
+        "format": "text",
+        "choices": [
+          "очередь",
+          "стек"
+        ],
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q7"
+      },
+      "expectedAnswer": "очередь",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 12,
+        "m": 2
+      }
+    },
+    {
+      "id": "Algorithms-Middle-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Алгоритм: x=1, count=0; пока x < 88: x*=2; count+=1. Итоговый count? Ответ числом.",
+        "format": "number",
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "7",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Algorithms-Middle-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "BFS стартует из вершины 0 неориентированной цепочки 0—1—...—19. Сколько рёбер в кратчайшем пути до 11? Ответ числом.",
+        "format": "number",
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q7"
+      },
+      "expectedAnswer": "11",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Algorithms-Middle-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261008,
+      "publicQuestion": {
+        "text": "Пул имеет 8 соединений, запрос занимает 100 мс. Теоретический максимум запросов/с без накладных расходов?",
+        "format": "number",
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q0"
+      },
+      "expectedAnswer": "80",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 8,
+        "m": 4
+      }
+    },
+    {
+      "id": "Algorithms-Middle-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Сложность бинарного поиска в отсортированном массиве?",
+        "format": "text",
+        "choices": [
+          "O(log n)",
+          "O(n)"
+        ],
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q1"
+      },
+      "expectedAnswer": "o(log n)",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Algorithms-Middle-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261007,
+      "publicQuestion": {
+        "text": "Два последовательных цикла по 10 и 3 итераций. Сколько выполнений тела всего?",
+        "format": "number",
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "13",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 10,
+        "m": 3
+      }
+    },
+    {
+      "id": "Algorithms-Middle-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "Какая структура подходит для посещённых вершин при обходе графа?",
+        "format": "text",
+        "choices": [
+          "set",
+          "очередь повторов"
+        ],
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q7"
+      },
+      "expectedAnswer": "set",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 12,
+        "m": 2
+      }
+    },
+    {
+      "id": "Algorithms-Senior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Очередь содержит 11 задач. Затем за секунду приходят 1100 задач и обрабатываются 80. Потерь нет, обработчик не простаивает. Сколько задач останется? Ответ числом.",
+        "format": "number",
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "1031",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Algorithms-Senior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Кэш LRU ёмкости 2 пуст. Обращения к ключам: A, B, A, C, B. Каждый промах стоит 11 мс, попадание 0 мс. Общее время? Ответ числом.",
+        "format": "number",
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q7"
+      },
+      "expectedAnswer": "44",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Algorithms-Senior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261008,
+      "publicQuestion": {
+        "text": "Какой механизм нужен обработчику повторной доставки?",
+        "format": "text",
+        "choices": [
+          "случайная задержка",
+          "идемпотентность"
+        ],
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q0"
+      },
+      "expectedAnswer": "идемпотентность",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 8,
+        "m": 4
+      }
+    },
+    {
+      "id": "Algorithms-Senior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Сервис принимает 1100 задач/с и завершает 80 задач/с. Прирост очереди в секунду?",
+        "format": "number",
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q1"
+      },
+      "expectedAnswer": "1020",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 11,
+        "m": 8
+      }
+    },
+    {
+      "id": "Algorithms-Senior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261007,
+      "publicQuestion": {
+        "text": "Какой подход ограничивает перегрузку потребителя?",
+        "format": "text",
+        "choices": [
+          "неограниченная очередь",
+          "backpressure"
+        ],
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "backpressure",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 10,
+        "m": 3
+      }
+    },
+    {
+      "id": "Algorithms-Senior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "Какой порядок взятия двух mutex снижает риск deadlock?",
+        "format": "text",
+        "choices": [
+          "единый глобальный",
+          "случайный"
+        ],
+        "skill": "Algorithms",
+        "version": 3,
+        "id": "q7"
+      },
+      "expectedAnswer": "единый глобальный",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 12,
+        "m": 2
+      }
+    },
+    {
+      "id": "CSS-Junior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "CSS: box-sizing:content-box; width:40px; padding:3px; border:1px solid. Margin 0. Внешняя ширина в px? Ответ числом.",
+        "format": "number",
+        "skill": "CSS",
+        "version": 3,
+        "id": "q5"
+      },
+      "expectedAnswer": "48",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "CSS-Junior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "CSS: font-size корневого элемента 4px, width:3rem. Какова width в px? Ответ числом.",
+        "format": "number",
+        "skill": "CSS",
+        "version": 3,
+        "id": "q10"
+      },
+      "expectedAnswer": "12",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "CSS-Junior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261015,
+      "publicQuestion": {
+        "text": "CSS: контейнер 196px разделён на 14 равных колонок без gap. Ширина колонки в px?",
+        "format": "number",
+        "skill": "CSS",
+        "version": 3,
+        "id": "q10"
+      },
+      "expectedAnswer": "14",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 14,
+        "m": 4
+      }
+    },
+    {
+      "id": "CSS-Junior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "CSS: какое свойство меняет цвет текста?",
+        "format": "text",
+        "choices": [
+          "color",
+          "background"
+        ],
+        "skill": "CSS",
+        "version": 3,
+        "id": "q0"
+      },
+      "expectedAnswer": "color",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "CSS-Junior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261013,
+      "publicQuestion": {
+        "text": "CSS: content-box, width=150px, padding=8px с каждой стороны, border=0. Внешняя ширина?",
+        "format": "number",
+        "skill": "CSS",
+        "version": 3,
+        "id": "q5"
+      },
+      "expectedAnswer": "166",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 15,
+        "m": 8
+      }
+    },
+    {
+      "id": "CSS-Junior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "CSS: какое значение display включает flex-контейнер?",
+        "format": "text",
+        "choices": [
+          "flex",
+          "absolute"
+        ],
+        "skill": "CSS",
+        "version": 3,
+        "id": "q6"
+      },
+      "expectedAnswer": "flex",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 12,
+        "m": 2
+      }
+    },
+    {
+      "id": "CSS-Middle-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "CSS: box-sizing:border-box; width:40px; padding:3px; border:1px solid. Какова ширина content area в px? Ответ числом.",
+        "format": "number",
+        "skill": "CSS",
+        "version": 3,
+        "id": "q5"
+      },
+      "expectedAnswer": "32",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "CSS-Middle-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "CSS grid: ширина 289px; repeat(4,minmax(0,1fr)); gap:3px. Какова ширина одной колонки в px? Ответ числом.",
+        "format": "number",
+        "skill": "CSS",
+        "version": 3,
+        "id": "q10"
+      },
+      "expectedAnswer": "70",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "CSS-Middle-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261015,
+      "publicQuestion": {
+        "text": "CSS grid: контейнер 1452px, 14 равных колонок и gap=4px. Ширина колонки?",
+        "format": "number",
+        "skill": "CSS",
+        "version": 3,
+        "id": "q10"
+      },
+      "expectedAnswer": "100",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 14,
+        "m": 4
+      }
+    },
+    {
+      "id": "CSS-Middle-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "CSS: что включает padding в заданную width?",
+        "format": "text",
+        "choices": [
+          "border-box",
+          "content-box"
+        ],
+        "skill": "CSS",
+        "version": 3,
+        "id": "q0"
+      },
+      "expectedAnswer": "border-box",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "CSS-Middle-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261013,
+      "publicQuestion": {
+        "text": "CSS: какой селектор специфичнее?",
+        "format": "text",
+        "choices": [
+          "#card",
+          ".card"
+        ],
+        "skill": "CSS",
+        "version": 3,
+        "id": "q5"
+      },
+      "expectedAnswer": "#card",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 15,
+        "m": 8
+      }
+    },
+    {
+      "id": "CSS-Middle-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "CSS flex: какое значение позволяет элементам переноситься?",
+        "format": "text",
+        "choices": [
+          "wrap",
+          "nowrap"
+        ],
+        "skill": "CSS",
+        "version": 3,
+        "id": "q6"
+      },
+      "expectedAnswer": "wrap",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 12,
+        "m": 2
+      }
+    },
+    {
+      "id": "CSS-Senior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "CSS: width:clamp(8px, 12px, 20px). Нет других ограничений. Какова итоговая width в px? Ответ числом.",
+        "format": "number",
+        "skill": "CSS",
+        "version": 3,
+        "id": "q5"
+      },
+      "expectedAnswer": "12",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "CSS-Senior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "CSS grid: width:83px; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:3px. Нет padding/border. Ширина каждой колонки в px? Ответ числом.",
+        "format": "number",
+        "skill": "CSS",
+        "version": 3,
+        "id": "q10"
+      },
+      "expectedAnswer": "40",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "CSS-Senior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261015,
+      "publicQuestion": {
+        "text": "CSS: чем разрешить grid-колонке с длинным содержимым сжиматься?",
+        "format": "text",
+        "choices": [
+          "minmax(0, 1fr)",
+          "1fr с min-width:auto"
+        ],
+        "skill": "CSS",
+        "version": 3,
+        "id": "q10"
+      },
+      "expectedAnswer": "minmax(0, 1fr)",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 14,
+        "m": 4
+      }
+    },
+    {
+      "id": "CSS-Senior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "CSS: какой пользовательский media query учитывает сниженное движение?",
+        "format": "text",
+        "choices": [
+          "prefers-reduced-motion",
+          "hover"
+        ],
+        "skill": "CSS",
+        "version": 3,
+        "id": "q0"
+      },
+      "expectedAnswer": "prefers-reduced-motion",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "CSS-Senior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261013,
+      "publicQuestion": {
+        "text": "CSS: какое свойство создаёт новый stacking context при значении меньше 1?",
+        "format": "text",
+        "choices": [
+          "margin",
+          "opacity"
+        ],
+        "skill": "CSS",
+        "version": 3,
+        "id": "q5"
+      },
+      "expectedAnswer": "opacity",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 15,
+        "m": 8
+      }
+    },
+    {
+      "id": "CSS-Senior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "CSS: что изолирует расчёты размера/раскладки компонента?",
+        "format": "text",
+        "choices": [
+          "contain",
+          "text-align"
+        ],
+        "skill": "CSS",
+        "version": 3,
+        "id": "q6"
+      },
+      "expectedAnswer": "contain",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 12,
+        "m": 2
+      }
+    },
+    {
+      "id": "HTTP-Junior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "HTTP: UTF-8 тело ответа состоит из 4 латинских символов A и 3 символов Б (каждый Б занимает 2 байта). Без сжатия. Каков Content-Length в байтах? Ответ числом.",
+        "format": "number",
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q5"
+      },
+      "expectedAnswer": "10",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "HTTP-Junior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "HTTP: сервер отправляет Content-Range: bytes 4-6/70. Сколько байтов содержит диапазон включительно? Ответ числом.",
+        "format": "number",
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q10"
+      },
+      "expectedAnswer": "3",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "HTTP-Junior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261015,
+      "publicQuestion": {
+        "text": "HTTP: код ответа для отсутствующего ресурса?",
+        "format": "number",
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q10"
+      },
+      "expectedAnswer": "404",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 14,
+        "m": 4
+      }
+    },
+    {
+      "id": "HTTP-Junior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "HTTP: код успешного создания ресурса?",
+        "format": "number",
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q0"
+      },
+      "expectedAnswer": "201",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "HTTP-Junior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261013,
+      "publicQuestion": {
+        "text": "HTTP: какой метод предназначен для чтения?",
+        "format": "text",
+        "choices": [
+          "GET",
+          "POST"
+        ],
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q5"
+      },
+      "expectedAnswer": "get",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 15,
+        "m": 8
+      }
+    },
+    {
+      "id": "HTTP-Junior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "HTTP: код запроса без обязательной аутентификации?",
+        "format": "number",
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q6"
+      },
+      "expectedAnswer": "401",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 12,
+        "m": 2
+      }
+    },
+    {
+      "id": "HTTP-Middle-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "HTTP: fixed-window лимит 7 запросов. В текущем окне уже приняты 4; клиент сразу отправляет ещё 7. Без смены окна сколько новых запросов получат 429? Ответ числом.",
+        "format": "number",
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q5"
+      },
+      "expectedAnswer": "4",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "HTTP-Middle-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "HTTP: сервер хранит version=4. Два последовательных PUT имеют If-Match со старой версией 4; первый успешно меняет version на 5. Какой статус получит второй, если сервер строго применяет If-Match? Ответ числом.",
+        "format": "number",
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q10"
+      },
+      "expectedAnswer": "412",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "HTTP-Middle-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261015,
+      "publicQuestion": {
+        "text": "HTTP: какой метод идемпотентен по семантике?",
+        "format": "text",
+        "choices": [
+          "PUT",
+          "POST"
+        ],
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q10"
+      },
+      "expectedAnswer": "put",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 14,
+        "m": 4
+      }
+    },
+    {
+      "id": "HTTP-Middle-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "HTTP: какой заголовок сообщает тип тела?",
+        "format": "text",
+        "choices": [
+          "Content-Type",
+          "Host"
+        ],
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q0"
+      },
+      "expectedAnswer": "content-type",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "HTTP-Middle-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261013,
+      "publicQuestion": {
+        "text": "HTTP: какой код обычно означает конфликт версии записи?",
+        "format": "number",
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q5"
+      },
+      "expectedAnswer": "409",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 15,
+        "m": 8
+      }
+    },
+    {
+      "id": "HTTP-Middle-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "HTTP: какой код означает превышение лимита запросов?",
+        "format": "number",
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q6"
+      },
+      "expectedAnswer": "429",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 12,
+        "m": 2
+      }
+    },
+    {
+      "id": "HTTP-Senior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "HTTP: атомарная дедупликация сохраняет результат по Idempotency-Key. Получены 7 POST, среди них 3 различных ключей; тело для каждого ключа одинаково. Ошибок нет. Сколько списаний выполнится? Ответ числом.",
+        "format": "number",
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q5"
+      },
+      "expectedAnswer": "3",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "HTTP-Senior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "HTTP: version=4; 3 параллельных PATCH несут If-Match=4. Проверка и увеличение version атомарны; каждый успех прибавляет 1. Какой станет version после обработки всех запросов? Ответ числом.",
+        "format": "number",
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q10"
+      },
+      "expectedAnswer": "5",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "HTTP-Senior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261015,
+      "publicQuestion": {
+        "text": "HTTP: какой заголовок проверяет ETag перед изменением?",
+        "format": "text",
+        "choices": [
+          "If-Match",
+          "Accept"
+        ],
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q10"
+      },
+      "expectedAnswer": "if-match",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 14,
+        "m": 4
+      }
+    },
+    {
+      "id": "HTTP-Senior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "HTTP: какой механизм предотвращает повторную оплату при ретрае POST?",
+        "format": "text",
+        "choices": [
+          "idempotency key",
+          "случайный URL"
+        ],
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q0"
+      },
+      "expectedAnswer": "idempotency key",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 4,
+        "m": 3
+      }
+    },
+    {
+      "id": "HTTP-Senior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261013,
+      "publicQuestion": {
+        "text": "HTTP: какой заголовок задаёт рекомендованную задержку повтора после 429?",
+        "format": "text",
+        "choices": [
+          "Referer",
+          "Retry-After"
+        ],
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q5"
+      },
+      "expectedAnswer": "retry-after",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 15,
+        "m": 8
+      }
+    },
+    {
+      "id": "HTTP-Senior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "HTTP: код успешного условного GET без изменённого тела?",
+        "format": "number",
+        "skill": "HTTP",
+        "version": 3,
+        "id": "q6"
+      },
+      "expectedAnswer": "304",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 12,
+        "m": 2
+      }
+    },
+    {
+      "id": "Python-Junior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Python: a = list(range(19)); print(sum(a[17:])). Ответ числом.",
+        "format": "number",
+        "skill": "Python",
+        "version": 3,
+        "id": "q2"
+      },
+      "expectedAnswer": "35",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "Python-Junior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Python: a = [17, 2]; b = a[:]; b.append(19); print(len(a) * a[0]). Ответ числом.",
+        "format": "number",
+        "skill": "Python",
+        "version": 3,
+        "id": "q11"
+      },
+      "expectedAnswer": "34",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "Python-Junior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261015,
+      "publicQuestion": {
+        "text": "Python: чему равно sum(range(9))?",
+        "format": "number",
+        "skill": "Python",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "36",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 9,
+        "m": 5
+      }
+    },
+    {
+      "id": "Python-Junior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261011,
+      "publicQuestion": {
+        "text": "Python: чему равно len(set([8, 7, 8]))?",
+        "format": "number",
+        "skill": "Python",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "2",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 8,
+        "m": 7
+      }
+    },
+    {
+      "id": "Python-Junior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261007,
+      "publicQuestion": {
+        "text": "Python: результат 23 // 4?",
+        "format": "number",
+        "skill": "Python",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "5",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 19,
+        "m": 4
+      }
+    },
+    {
+      "id": "Python-Junior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Python: результат [x * 2 for x in range(17)][-1]?",
+        "format": "number",
+        "skill": "Python",
+        "version": 3,
+        "id": "q6"
+      },
+      "expectedAnswer": "32",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "Python-Middle-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Python: g = (x * 2 for x in range(17)); next(g); next(g); print(sum(g)). Ответ числом.",
+        "format": "number",
+        "skill": "Python",
+        "version": 3,
+        "id": "q2"
+      },
+      "expectedAnswer": "270",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "Python-Middle-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Python: a = [[17]]; b = a.copy(); b[0].append(2); print(sum(a[0])). Ответ числом.",
+        "format": "number",
+        "skill": "Python",
+        "version": 3,
+        "id": "q11"
+      },
+      "expectedAnswer": "19",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "Python-Middle-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261015,
+      "publicQuestion": {
+        "text": "Python: генератор g = (x for x in range(9)); next(g); чему равно sum(g)?",
+        "format": "number",
+        "skill": "Python",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "36",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 9,
+        "m": 5
+      }
+    },
+    {
+      "id": "Python-Middle-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261011,
+      "publicQuestion": {
+        "text": "Python: a = [8]; b = a; b.append(7); чему равно len(a)?",
+        "format": "number",
+        "skill": "Python",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "2",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 8,
+        "m": 7
+      }
+    },
+    {
+      "id": "Python-Middle-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261007,
+      "publicQuestion": {
+        "text": "Python: d = {'a': 19}; результат d.get('b', 4)?",
+        "format": "number",
+        "skill": "Python",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "4",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 19,
+        "m": 4
+      }
+    },
+    {
+      "id": "Python-Middle-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Python: какой контекст гарантирует закрытие файла при исключении?",
+        "format": "text",
+        "choices": [
+          "with",
+          "if"
+        ],
+        "skill": "Python",
+        "version": 3,
+        "id": "q6"
+      },
+      "expectedAnswer": "with",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "Python-Senior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Python: from collections import deque; d = deque(range(17)); d.rotate(2); print(d[0]). Ответ числом.",
+        "format": "number",
+        "skill": "Python",
+        "version": 3,
+        "id": "q2"
+      },
+      "expectedAnswer": "15",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "Python-Senior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Python: total=0. Цикл for i in range(17): в try при i % 2 == 0 выполняется continue, иначе total += i; в finally всегда total += 2. Каков total после цикла? Ответ числом.",
+        "format": "number",
+        "skill": "Python",
+        "version": 3,
+        "id": "q11"
+      },
+      "expectedAnswer": "98",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "Python-Senior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261015,
+      "publicQuestion": {
+        "text": "Python: какую очередь стандартной библиотеки используют для безопасного обмена между потоками?",
+        "format": "text",
+        "choices": [
+          "queue.Queue",
+          "обычный list"
+        ],
+        "skill": "Python",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "queue.queue",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 9,
+        "m": 5
+      }
+    },
+    {
+      "id": "Python-Senior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261011,
+      "publicQuestion": {
+        "text": "Python: что позволяет не блокировать event loop при ожидании asyncio-задачи?",
+        "format": "text",
+        "choices": [
+          "await",
+          "time.sleep"
+        ],
+        "skill": "Python",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "await",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 8,
+        "m": 7
+      }
+    },
+    {
+      "id": "Python-Senior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261007,
+      "publicQuestion": {
+        "text": "Python: итератор iter(range(19)) полностью исчерпан. Какое исключение даст next без default?",
+        "format": "text",
+        "skill": "Python",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "stopiteration",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 19,
+        "m": 4
+      }
+    },
+    {
+      "id": "Python-Senior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "Python: какой тип для ресурса предпочтительнее в гарантированном cleanup?",
+        "format": "text",
+        "choices": [
+          "context manager",
+          "глобальная переменная"
+        ],
+        "skill": "Python",
+        "version": 3,
+        "id": "q6"
+      },
+      "expectedAnswer": "context manager",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "React-Junior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "React: count=19. В одном обработчике: setCount(count+8); setCount(count+8). Обновления пакетные. Итоговый count? Ответ числом.",
+        "format": "number",
+        "skill": "React",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "27",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "React-Junior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "React: count=19. В одном обработчике: setCount(c=>c+8); setCount(c=>c+8). Итоговый count? Ответ числом.",
+        "format": "number",
+        "skill": "React",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "35",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "React-Junior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261008,
+      "publicQuestion": {
+        "text": "React: какой hook хранит локальное состояние?",
+        "format": "text",
+        "choices": [
+          "useState",
+          "useRefetch"
+        ],
+        "skill": "React",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "usestate",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 4,
+        "m": 4
+      }
+    },
+    {
+      "id": "React-Junior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "React: какое свойство задаёт обработчик клика?",
+        "format": "text",
+        "choices": [
+          "onClick",
+          "onclicked"
+        ],
+        "skill": "React",
+        "version": 3,
+        "id": "q11"
+      },
+      "expectedAnswer": "onclick",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 17,
+        "m": 3
+      }
+    },
+    {
+      "id": "React-Junior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "React: можно ли напрямую изменять объект state вместо setter?",
+        "format": "text",
+        "choices": [
+          "да",
+          "нет"
+        ],
+        "skill": "React",
+        "version": 3,
+        "id": "q8"
+      },
+      "expectedAnswer": "нет",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "React-Junior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261017,
+      "publicQuestion": {
+        "text": "React: что обычно передаёт данные от родителя ребёнку?",
+        "format": "text",
+        "choices": [
+          "props",
+          "SQL"
+        ],
+        "skill": "React",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "props",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 11,
+        "m": 2
+      }
+    },
+    {
+      "id": "React-Middle-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "React: count=19. В одном обработчике setCount(count+8); затем setCount(c=>c*2). Итоговый count после пакета? Ответ числом.",
+        "format": "number",
+        "skill": "React",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "54",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "React-Middle-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "React: список с ключами по id: [{id:'a',v:19},{id:'b',v:8}]. У компонента 'a' локальный count=27. Список поменяли местами без изменения id и типа компонентов. Какой count сохранится у 'a'? Ответ числом.",
+        "format": "number",
+        "skill": "React",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "27",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "React-Middle-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261008,
+      "publicQuestion": {
+        "text": "React: какой prop задаёт стабильный идентификатор элемента списка?",
+        "format": "text",
+        "choices": [
+          "key",
+          "indexOf"
+        ],
+        "skill": "React",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "key",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 4,
+        "m": 4
+      }
+    },
+    {
+      "id": "React-Middle-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "React: где вернуть функцию очистки подписки?",
+        "format": "text",
+        "choices": [
+          "useEffect",
+          "render"
+        ],
+        "skill": "React",
+        "version": 3,
+        "id": "q11"
+      },
+      "expectedAnswer": "useeffect",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 17,
+        "m": 3
+      }
+    },
+    {
+      "id": "React-Middle-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "React: начальный count=19; два setCount(c => c + 8). Итоговый count?",
+        "format": "number",
+        "skill": "React",
+        "version": 3,
+        "id": "q8"
+      },
+      "expectedAnswer": "35",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "React-Middle-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261017,
+      "publicQuestion": {
+        "text": "React: какой hook сохраняет mutable-значение без перерисовки?",
+        "format": "text",
+        "choices": [
+          "useRef",
+          "useState"
+        ],
+        "skill": "React",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "useref",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 11,
+        "m": 2
+      }
+    },
+    {
+      "id": "React-Senior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "React: запрос A получил id=19, затем B получил id=20. latestRequestId=20; результат применяется только при совпадении id. B вернул 8, затем A вернул 27. Какое значение останется в state? Ответ числом.",
+        "format": "number",
+        "skill": "React",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "8",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "React-Senior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "React production, без StrictMode. useEffect зависит только от userId. После mount было 19 рендеров с тем же userId и 8 рендеров, каждый с новым userId. Компонент ещё смонтирован. Сколько раз вызван cleanup эффекта? Ответ числом.",
+        "format": "number",
+        "skill": "React",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "8",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "React-Senior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261008,
+      "publicQuestion": {
+        "text": "React: что предотвращает применение устаревшего ответа поиска?",
+        "format": "text",
+        "choices": [
+          "проверка request id",
+          "увеличение таймаута"
+        ],
+        "skill": "React",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "проверка request id",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 4,
+        "m": 4
+      }
+    },
+    {
+      "id": "React-Senior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "React: где следует запускать сетевой эффект?",
+        "format": "text",
+        "choices": [
+          "useEffect",
+          "тело render"
+        ],
+        "skill": "React",
+        "version": 3,
+        "id": "q11"
+      },
+      "expectedAnswer": "useeffect",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 17,
+        "m": 3
+      }
+    },
+    {
+      "id": "React-Senior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "React: какая техника уменьшает DOM длинного списка?",
+        "format": "text",
+        "choices": [
+          "виртуализация",
+          "debounce"
+        ],
+        "skill": "React",
+        "version": 3,
+        "id": "q8"
+      },
+      "expectedAnswer": "виртуализация",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "React-Senior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261017,
+      "publicQuestion": {
+        "text": "React: может ли StrictMode в разработке повторять цикл setup/cleanup эффекта?",
+        "format": "text",
+        "choices": [
+          "нет",
+          "да"
+        ],
+        "skill": "React",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "да",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 11,
+        "m": 2
+      }
+    },
+    {
+      "id": "SQL-Junior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "SQL: таблица содержит 19 строк amount=8 и 8 строк amount=NULL. Что вернёт SELECT SUM(amount)? Ответ числом.",
+        "format": "number",
+        "skill": "SQL",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "152",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "SQL-Junior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "SQL: есть 19 различных ненулевых значений tag, каждое повторено 8 раз; ещё 8 строк содержат NULL. Что вернёт COUNT(DISTINCT tag)? Ответ числом.",
+        "format": "number",
+        "skill": "SQL",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "19",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "SQL-Junior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261008,
+      "publicQuestion": {
+        "text": "SQL: 4 строк amount=10 и 4 строк amount=20. Значение SUM(amount)?",
+        "format": "number",
+        "skill": "SQL",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "120",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 4,
+        "m": 4
+      }
+    },
+    {
+      "id": "SQL-Junior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "SQL: таблица из 20 строк, 3 значений NULL в столбце email. Значение COUNT(email)?",
+        "format": "number",
+        "skill": "SQL",
+        "version": 3,
+        "id": "q11"
+      },
+      "expectedAnswer": "17",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 17,
+        "m": 3
+      }
+    },
+    {
+      "id": "SQL-Junior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "SQL: каким оператором фильтруют строки до группировки?",
+        "format": "text",
+        "choices": [
+          "WHERE",
+          "HAVING"
+        ],
+        "skill": "SQL",
+        "version": 3,
+        "id": "q8"
+      },
+      "expectedAnswer": "where",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "SQL-Junior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 20261017,
+      "publicQuestion": {
+        "text": "SQL: значения id: 11, 2, 11. Сколько строк вернёт SELECT DISTINCT id?",
+        "format": "number",
+        "skill": "SQL",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "2",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 11,
+        "m": 2
+      }
+    },
+    {
+      "id": "SQL-Middle-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "SQL: 19 клиентов имеют по 8 заказов, ещё 2 клиента не имеют заказов. Сколько строк вернёт clients LEFT JOIN orders ON orders.client_id=clients.id? Ответ числом.",
+        "format": "number",
+        "skill": "SQL",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "154",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "SQL-Middle-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "SQL: таблица t(x) содержит 19, 8, NULL. Что вернёт SELECT SUM(COALESCE(x, 27)) FROM t? Ответ числом.",
+        "format": "number",
+        "skill": "SQL",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "54",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "SQL-Middle-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261008,
+      "publicQuestion": {
+        "text": "SQL: 4 клиентов, у каждого 4 заказов. Сколько строк даст INNER JOIN по client_id?",
+        "format": "number",
+        "skill": "SQL",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "16",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 4,
+        "m": 4
+      }
+    },
+    {
+      "id": "SQL-Middle-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "SQL: каким условием находят NULL?",
+        "format": "text",
+        "choices": [
+          "= NULL",
+          "IS NULL"
+        ],
+        "skill": "SQL",
+        "version": 3,
+        "id": "q11"
+      },
+      "expectedAnswer": "is null",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 17,
+        "m": 3
+      }
+    },
+    {
+      "id": "SQL-Middle-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "SQL: какой тип JOIN сохранит все строки левой таблицы без совпадений справа?",
+        "format": "text",
+        "choices": [
+          "LEFT",
+          "INNER"
+        ],
+        "skill": "SQL",
+        "version": 3,
+        "id": "q8"
+      },
+      "expectedAnswer": "left",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "SQL-Middle-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 20261017,
+      "publicQuestion": {
+        "text": "SQL: значения amount: 11, 2, NULL. Значение COALESCE(SUM(amount), 0)?",
+        "format": "number",
+        "skill": "SQL",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "13",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 11,
+        "m": 2
+      }
+    },
+    {
+      "id": "SQL-Senior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "SQL: таблица t(group_id,x) содержит 19 строк группы 'a', x=8 в каждой, и одну строку группы 'b', x=100. Значение SUM(x) OVER (PARTITION BY group_id) в строке группы 'a'? Ответ числом.",
+        "format": "number",
+        "skill": "SQL",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "152",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "SQL-Senior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "SQL: в начале транзакции balance=19. UPDATE прибавляет 8; SAVEPOINT s; UPDATE умножает balance на 2; ROLLBACK TO s; COMMIT. Итоговый balance? Ответ числом.",
+        "format": "number",
+        "skill": "SQL",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "27",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "SQL-Senior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261008,
+      "publicQuestion": {
+        "text": "SQL: какой уровень изоляции предотвращает write skew?",
+        "format": "text",
+        "choices": [
+          "snapshot",
+          "serializable"
+        ],
+        "skill": "SQL",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "serializable",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 4,
+        "m": 4
+      }
+    },
+    {
+      "id": "SQL-Senior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261010,
+      "publicQuestion": {
+        "text": "SQL: составной B-tree индекс (a,b). Какое поле образует ведущий префикс?",
+        "format": "text",
+        "choices": [
+          "b",
+          "a"
+        ],
+        "skill": "SQL",
+        "version": 3,
+        "id": "q11"
+      },
+      "expectedAnswer": "a",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 17,
+        "m": 3
+      }
+    },
+    {
+      "id": "SQL-Senior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "SQL: что обеспечивает атомарное изменение нескольких строк?",
+        "format": "text",
+        "choices": [
+          "транзакция",
+          "OFFSET"
+        ],
+        "skill": "SQL",
+        "version": 3,
+        "id": "q8"
+      },
+      "expectedAnswer": "транзакция",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 19,
+        "m": 8
+      }
+    },
+    {
+      "id": "SQL-Senior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 20261017,
+      "publicQuestion": {
+        "text": "SQL: 11 записей имеют одинаковый score. Гарантирует ли ORDER BY score стабильную пагинацию без уникального tie-breaker?",
+        "format": "text",
+        "choices": [
+          "да",
+          "нет"
+        ],
+        "skill": "SQL",
+        "version": 3,
+        "id": "q9"
+      },
+      "expectedAnswer": "нет",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 11,
+        "m": 2
+      }
+    },
+    {
+      "id": "TypeScript-Junior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "TypeScript: [17, 2, 19].map(x => x * 2).reduce((a,b) => a+b, 0). Ответ числом.",
+        "format": "number",
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q2"
+      },
+      "expectedAnswer": "76",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "TypeScript-Junior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "TypeScript: const a=Array(17).fill(0); const b=[...a, 2]; Чему равно a.length + b.length? Ответ числом.",
+        "format": "number",
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q11"
+      },
+      "expectedAnswer": "35",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "TypeScript-Junior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261015,
+      "publicQuestion": {
+        "text": "TypeScript: [9, 10, 11, 12].filter(x => x > 11).length?",
+        "format": "number",
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "1",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 9,
+        "m": 5
+      }
+    },
+    {
+      "id": "TypeScript-Junior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261011,
+      "publicQuestion": {
+        "text": "TypeScript: [8, 7].reduce((sum, x) => sum + x, 0)?",
+        "format": "number",
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "15",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 8,
+        "m": 7
+      }
+    },
+    {
+      "id": "TypeScript-Junior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261007,
+      "publicQuestion": {
+        "text": "TypeScript: какое значение означает отсутствие результата функции?",
+        "format": "text",
+        "choices": [
+          "string",
+          "void"
+        ],
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "void",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 19,
+        "m": 4
+      }
+    },
+    {
+      "id": "TypeScript-Junior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "JavaScript/TypeScript: чему равно 17 % 2?",
+        "format": "number",
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q6"
+      },
+      "expectedAnswer": "1",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "TypeScript-Middle-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "TypeScript: const x=0; const a=x ?? 17; const b=x || 2; Чему равно a+b? Ответ числом.",
+        "format": "number",
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q2"
+      },
+      "expectedAnswer": "2",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "TypeScript-Middle-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "TypeScript: const x: string | number = '17'; const y = typeof x === 'string' ? x.length : x + 2; Чему равно y? Ответ числом.",
+        "format": "number",
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q11"
+      },
+      "expectedAnswer": "2",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "TypeScript-Middle-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261015,
+      "publicQuestion": {
+        "text": "TypeScript: какой тип требует проверки перед использованием неизвестного значения?",
+        "format": "text",
+        "choices": [
+          "unknown",
+          "any"
+        ],
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "unknown",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 9,
+        "m": 5
+      }
+    },
+    {
+      "id": "TypeScript-Middle-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261011,
+      "publicQuestion": {
+        "text": "TypeScript: чем сузить string | number до строки: typeof x === \"string\" или Number(x)? Напишите typeof или Number.",
+        "format": "text",
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "typeof",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 8,
+        "m": 7
+      }
+    },
+    {
+      "id": "TypeScript-Middle-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261007,
+      "publicQuestion": {
+        "text": "TypeScript: const a = [19]; const b = [...a, 4]; чему равно a.length?",
+        "format": "number",
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "1",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 19,
+        "m": 4
+      }
+    },
+    {
+      "id": "TypeScript-Middle-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "TypeScript: что сохраняет литеральные типы объекта?",
+        "format": "text",
+        "choices": [
+          "as const",
+          "as any"
+        ],
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q6"
+      },
+      "expectedAnswer": "as const",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "TypeScript-Senior-applied-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "TypeScript: type V={kind:'add',v:number}|{kind:'mul',v:number}; function f(x:V){return x.kind==='add' ? x.v+2 : x.v*2}. Чему равно f({kind:'mul',v:17})? Ответ числом.",
+        "format": "number",
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q2"
+      },
+      "expectedAnswer": "34",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "TypeScript-Senior-applied-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "TypeScript: const data={items:[] as number[]}; const a=data.items?.length ?? 17; const b=data.items?.length || 2; Чему равно a+b? Ответ числом.",
+        "format": "number",
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q11"
+      },
+      "expectedAnswer": "2",
+      "expectedCorrect": true,
+      "rationale": "Независимая трассировка операций из текста; см. reference-oracle.mjs.",
+      "cognitiveDemand": "короткая трассировка/применение",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    },
+    {
+      "id": "TypeScript-Senior-knowledge-0",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261015,
+      "publicQuestion": {
+        "text": "TypeScript: какой тип используется для проверки исчерпывающего switch?",
+        "format": "text",
+        "choices": [
+          "never",
+          "object"
+        ],
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "never",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 9,
+        "m": 5
+      }
+    },
+    {
+      "id": "TypeScript-Senior-knowledge-1",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261011,
+      "publicQuestion": {
+        "text": "TypeScript: какая конструкция различает ветви union по полю kind?",
+        "format": "text",
+        "choices": [
+          "discriminated union",
+          "any"
+        ],
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q3"
+      },
+      "expectedAnswer": "discriminated union",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 8,
+        "m": 7
+      }
+    },
+    {
+      "id": "TypeScript-Senior-knowledge-2",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261007,
+      "publicQuestion": {
+        "text": "TypeScript: что проверяет структуру без замены выведенного типа?",
+        "format": "text",
+        "choices": [
+          "satisfies",
+          "as any"
+        ],
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q4"
+      },
+      "expectedAnswer": "satisfies",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 19,
+        "m": 4
+      }
+    },
+    {
+      "id": "TypeScript-Senior-knowledge-3",
+      "author": "AI assessment reviewer, отдельный от автора исходного evaluator",
+      "authorType": "AI, не человек-эксперт",
+      "labelDate": "2026-10-06",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 20261006,
+      "publicQuestion": {
+        "text": "TypeScript: гарантирует ли тип interface проверку JSON во время выполнения?",
+        "format": "text",
+        "choices": [
+          "да",
+          "нет"
+        ],
+        "skill": "TypeScript",
+        "version": 3,
+        "id": "q6"
+      },
+      "expectedAnswer": "нет",
+      "expectedCorrect": true,
+      "rationale": "Авторская разметка определения или независимый расчёт; см. reference-oracle.mjs.",
+      "cognitiveDemand": "воспроизведение/распознавание",
+      "parameters": {
+        "n": 17,
+        "m": 2
+      }
+    }
+  ]
+}

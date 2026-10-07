@@ -1,0 +1,5867 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FSP synthetic hiring MVP",
+    "version": "0.6.1",
+    "description": "Public anonymous synthetic guest demo with separate short-lived sessions; optional ChatGPT sign-in keeps existing personal workspaces protected. No real email delivery or real account activation."
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/api/state": {
+      "get": {
+        "summary": "Own role profile, invitations, demo account controls and current test (no answer key)",
+        "responses": {
+          "200": {
+            "description": "Role-filtered workspace DTO",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Workspace"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing trusted platform identity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role or origin forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Record or route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Terminal status or concurrency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Storage temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/candidates": {
+      "get": {
+        "summary": "Employer only: confirmed profiles; contacts omitted until accepted invitation",
+        "parameters": [
+          {
+            "name": "specialization",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "grade",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "skills",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "need",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fsp",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "candidates array with match score and reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "candidates": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CandidateResult"
+                      }
+                    }
+                  },
+                  "required": [
+                    "candidates"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing trusted platform identity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role or origin forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Record or route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Terminal status or concurrency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Storage temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/profile.pdf": {
+      "get": {
+        "summary": "Candidate-only own standardized profile PDF",
+        "responses": {
+          "200": {
+            "description": "PDF document",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing trusted platform identity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role or origin forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Record or route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Terminal status or concurrency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Storage temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/action": {
+      "post": {
+        "summary": "Execute a role-authorized domain action atomically",
+        "description": "Requires same-origin Origin header and trusted platform identity. register/switch selects synthetic account via HttpOnly Secure SameSite=Strict cookie. No outbound messages. salaryTo must be >= salaryFrom. Terminal invitation states cannot be changed. Unverified accounts only verify/switch. Server ignores client-supplied grade/score in profile. Test duration 30 minutes, 12 questions / 4 competencies (2 mandatory applied traces and 1 knowledge question per competency; choice order randomized), 10 starts/hour, overall score >=75 and >=2/3 correct in every competency, 90-day successful grade change cooldown.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "role",
+                      "name",
+                      "email"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "register"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "id"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "switch"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "code"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "verify"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "consent",
+                      "published"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "profile"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "company",
+                      "contact"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "company"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "linked"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "fsp"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "specialization",
+                      "grade"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "test-start"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "testId",
+                      "answers"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "test-submit"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "search"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "candidateId",
+                      "salaryFrom",
+                      "salaryTo",
+                      "description"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "invite"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "id",
+                      "status"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "invitation-status"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Action result, including per-competency evidence on submission and parsed requirements on search. Answer keys, aliases and concept IDs are excluded from client DTOs.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActionResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing trusted platform identity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Role or origin forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Record or route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Terminal status or concurrency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "UTF-8 request body exceeds 16000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Storage temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/account/state": {
+      "get": {
+        "summary": "Role-bound account status, or disabled status without enrolling a visitor",
+        "description": "Default disabled. When enabled, the stable signed-in ChatGPT subject identifies one stored role. No fsp_actor cookie, token hashes, queued payloads or other-account switcher are exposed.",
+        "responses": {
+          "200": {
+            "description": "Success; email status does not imply inbox delivery",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountState"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or unavailable verification token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing trusted ChatGPT identity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Wrong role, account, origin, or forbidden action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown route or entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version conflict or registration unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Body over 16000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Email request rate limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Feature disabled, policy/provider not configured, or storage unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/account/action": {
+      "post": {
+        "summary": "Run a role-bound action in the normalized account store",
+        "description": "Disabled by default. Requires trusted platform subject and same-origin Origin. Role never comes from cookies/body. Registration requires affirmative consent to configured current privacy policy. Email challenge and outbox are written atomically. Outbox worker has no automatic schedule; provider dispatch requires separately approved configuration. For profile/company, client contact is ignored and the verified account email is used.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RealRegistration"
+                  },
+                  {
+                    "$ref": "#/components/schemas/EmailRequest"
+                  },
+                  {
+                    "$ref": "#/components/schemas/EmailVerify"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "consent",
+                      "published"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "profile"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "company",
+                      "contact"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "company"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "specialization",
+                      "grade"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "test-start"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "testId",
+                      "answers"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "test-submit"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "search"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "candidateId",
+                      "salaryFrom",
+                      "salaryTo",
+                      "description"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "invite"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "id",
+                      "status"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "invitation-status"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success; email status does not imply inbox delivery",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RealActionResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or unavailable verification token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing trusted ChatGPT identity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Wrong role, account, origin, or forbidden action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown route or entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version conflict or registration unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Body over 16000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Email request rate limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Feature disabled, policy/provider not configured, or storage unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/account/profile.pdf": {
+      "get": {
+        "summary": "Own verified candidate PDF only",
+        "responses": {
+          "200": {
+            "description": "Own candidate PDF",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or unavailable verification token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing trusted ChatGPT identity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Wrong role, account, origin, or forbidden action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown route or entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version conflict or registration unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Body over 16000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Email request rate limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Feature disabled, policy/provider not configured, or storage unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/guest/state": {
+      "get": {
+        "summary": "Guest demo: Own role profile, invitations, demo account controls and current test (no answer key)",
+        "responses": {
+          "200": {
+            "description": "Role-filtered workspace DTO",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GuestWorkspace"
+                }
+              }
+            },
+            "headers": {
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "On new session: host-only guest token and guest actor cookies, HttpOnly; Secure; SameSite=Strict; Max-Age=7200. Secret token is not returned in JSON."
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Guest session missing or expired (state GET creates a fresh session when capacity permits)"
+          },
+          "403": {
+            "description": "Cross-origin request or forbidden role"
+          },
+          "404": {
+            "description": "Record or route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Terminal status or concurrency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Storage temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Guest capacity or rate limit reached"
+          }
+        },
+        "security": [],
+        "description": "Separate synthetic guest table; never accesses personal workspace or real-account data. Short-lived server-generated token in HttpOnly Secure SameSite=Strict host-only cookie; no token or owner accepted in URL. Requests expire after two hours; 120 requests/minute per session, 32 new sessions/minute globally, 128 active sessions, 256KiB state. POST requires matching Origin and application/json. Contact and role rules are unchanged. Reset requires action=reset-demo and confirm=true."
+      }
+    },
+    "/api/guest/candidates": {
+      "get": {
+        "summary": "Guest demo: Employer only: confirmed profiles; contacts omitted until accepted invitation",
+        "parameters": [
+          {
+            "name": "specialization",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "grade",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "skills",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "need",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fsp",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "candidates array with match score and reasons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "candidates": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CandidateResult"
+                      }
+                    }
+                  },
+                  "required": [
+                    "candidates"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Guest session missing or expired (state GET creates a fresh session when capacity permits)"
+          },
+          "403": {
+            "description": "Cross-origin request or forbidden role"
+          },
+          "404": {
+            "description": "Record or route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Terminal status or concurrency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Storage temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Guest capacity or rate limit reached"
+          }
+        },
+        "security": [
+          {
+            "GuestCookie": []
+          }
+        ],
+        "description": "Separate synthetic guest table; never accesses personal workspace or real-account data. Short-lived server-generated token in HttpOnly Secure SameSite=Strict host-only cookie; no token or owner accepted in URL. Requests expire after two hours; 120 requests/minute per session, 32 new sessions/minute globally, 128 active sessions, 256KiB state. POST requires matching Origin and application/json. Contact and role rules are unchanged. Reset requires action=reset-demo and confirm=true."
+      }
+    },
+    "/api/guest/profile.pdf": {
+      "get": {
+        "summary": "Guest demo: Candidate-only own standardized profile PDF",
+        "responses": {
+          "200": {
+            "description": "PDF document",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Guest session missing or expired (state GET creates a fresh session when capacity permits)"
+          },
+          "403": {
+            "description": "Cross-origin request or forbidden role"
+          },
+          "404": {
+            "description": "Record or route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Terminal status or concurrency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Storage temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Guest capacity or rate limit reached"
+          }
+        },
+        "security": [
+          {
+            "GuestCookie": []
+          }
+        ],
+        "description": "Separate synthetic guest table; never accesses personal workspace or real-account data. Short-lived server-generated token in HttpOnly Secure SameSite=Strict host-only cookie; no token or owner accepted in URL. Requests expire after two hours; 120 requests/minute per session, 32 new sessions/minute globally, 128 active sessions, 256KiB state. POST requires matching Origin and application/json. Contact and role rules are unchanged. Reset requires action=reset-demo and confirm=true."
+      }
+    },
+    "/api/guest/action": {
+      "post": {
+        "summary": "Guest demo: Execute a role-authorized domain action atomically",
+        "description": "Separate synthetic guest table; never accesses personal workspace or real-account data. Short-lived server-generated token in HttpOnly Secure SameSite=Strict host-only cookie; no token or owner accepted in URL. Requests expire after two hours; 120 requests/minute per session, 32 new sessions/minute globally, 128 active sessions, 256KiB state. POST requires matching Origin and application/json. Contact and role rules are unchanged. Reset requires action=reset-demo and confirm=true.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "role",
+                      "name",
+                      "email"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "register"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "id"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "switch"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "code"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "verify"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "consent",
+                      "published"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "profile"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "company",
+                      "contact"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "company"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "linked"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "fsp"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "specialization",
+                      "grade"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "test-start"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "testId",
+                      "answers"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "test-submit"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "search"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "candidateId",
+                      "salaryFrom",
+                      "salaryTo",
+                      "description"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "invite"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "action",
+                      "id",
+                      "status"
+                    ],
+                    "properties": {
+                      "action": {
+                        "const": "invitation-status"
+                      },
+                      "role": {
+                        "type": "string",
+                        "enum": [
+                          "candidate",
+                          "employer"
+                        ]
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9._+-]+@example\\.test$"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "about": {
+                        "type": "string"
+                      },
+                      "experience": {
+                        "type": "number"
+                      },
+                      "softSkills": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "consent": {
+                        "type": "boolean"
+                      },
+                      "published": {
+                        "type": "boolean"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "linked": {
+                        "type": "boolean"
+                      },
+                      "specialization": {
+                        "type": "string",
+                        "enum": [
+                          "Backend",
+                          "Frontend"
+                        ]
+                      },
+                      "grade": {
+                        "type": "string",
+                        "enum": [
+                          "Junior",
+                          "Middle",
+                          "Senior"
+                        ]
+                      },
+                      "testId": {
+                        "type": "string"
+                      },
+                      "answers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "need": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "type": "string"
+                      },
+                      "fsp": {
+                        "type": "boolean"
+                      },
+                      "candidateId": {
+                        "type": "string"
+                      },
+                      "salaryFrom": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "salaryTo": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000000
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "viewed",
+                          "accepted",
+                          "declined"
+                        ]
+                      },
+                      "salaryBasis": {
+                        "type": "string",
+                        "enum": [
+                          "gross",
+                          "net"
+                        ],
+                        "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "action": {
+                        "const": "reset-demo"
+                      },
+                      "confirm": {
+                        "const": true
+                      }
+                    },
+                    "required": [
+                      "action",
+                      "confirm"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Action result, including per-competency evidence on submission and parsed requirements on search. Answer keys, aliases and concept IDs are excluded from client DTOs.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActionResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Guest session missing or expired (state GET creates a fresh session when capacity permits)"
+          },
+          "403": {
+            "description": "Cross-origin request or forbidden role"
+          },
+          "404": {
+            "description": "Record or route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Terminal status or concurrency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "UTF-8 request body exceeds 16000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Storage temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Guest capacity or rate limit reached"
+          }
+        },
+        "security": [
+          {
+            "GuestCookie": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "Competency": {
+        "type": "object",
+        "properties": {
+          "skill": {
+            "type": "string"
+          },
+          "correct": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "total": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "score": {
+            "type": "integer"
+          },
+          "confirmed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "skill",
+          "score",
+          "confirmed"
+        ],
+        "additionalProperties": false
+      },
+      "Question": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "skill": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer"
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "text",
+              "number"
+            ],
+            "description": "Numeric responses use a finite decimal number without units."
+          },
+          "choices": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "Optional public answer options in randomized display order. Submit the selected string. Contains no answer-key marker."
+          },
+          "caseSensitive": {
+            "type": "boolean",
+            "description": "When true, the exact case-sensitive identifier must be entered. This is a format hint, not an answer."
+          }
+        },
+        "required": [
+          "id",
+          "text",
+          "skill"
+        ],
+        "additionalProperties": false
+      },
+      "Assessment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "grade": {
+            "type": "string"
+          },
+          "specialization": {
+            "type": "string"
+          },
+          "assessmentVersion": {
+            "type": "integer"
+          },
+          "createdAt": {
+            "type": "integer"
+          },
+          "expiresAt": {
+            "type": "integer"
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Question"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "grade",
+          "specialization",
+          "expiresAt",
+          "questions"
+        ]
+      },
+      "CandidateResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "specialization": {
+            "type": "string"
+          },
+          "grade": {
+            "type": "string"
+          },
+          "score": {
+            "type": "integer"
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fsp": {
+            "type": "boolean"
+          },
+          "about": {
+            "type": "string"
+          },
+          "experience": {
+            "type": "number"
+          },
+          "softSkills": {
+            "type": "string"
+          },
+          "categoryConfirmed": {
+            "type": "boolean"
+          },
+          "competencyResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Competency"
+            }
+          },
+          "evidenceSource": {
+            "type": "string"
+          },
+          "match": {
+            "type": "integer"
+          },
+          "relevance": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "missing": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "components": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "weight": {
+                  "type": "number"
+                },
+                "fit": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "contact": {
+            "type": "string",
+            "description": "Included only for the accepting candidate’s specific employer while candidate consent remains active."
+          },
+          "evidence": {
+            "$ref": "#/components/schemas/AssessmentEvidence"
+          },
+          "fspAchievements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FspAchievement"
+            }
+          },
+          "achievement": {
+            "$ref": "#/components/schemas/FspBonus"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "skills",
+          "match",
+          "reasons",
+          "missing"
+        ],
+        "additionalProperties": false
+      },
+      "Requirements": {
+        "type": "object",
+        "properties": {
+          "specialization": {
+            "type": "string"
+          },
+          "grade": {
+            "type": "string"
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "explicitSkills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "minExperience": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "specialization": {
+                "type": "string"
+              },
+              "grade": {
+                "type": "string"
+              }
+            }
+          },
+          "skillGroups": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "description": "Recognized simple two-skill OR groups. Any one confirmed skill satisfies the group."
+          }
+        },
+        "required": [
+          "specialization",
+          "grade",
+          "skills",
+          "warnings"
+        ]
+      },
+      "Invitation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "employerId": {
+            "type": "string"
+          },
+          "candidateId": {
+            "type": "string"
+          },
+          "candidateName": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "employerContact": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "salaryFrom": {
+            "type": "integer"
+          },
+          "salaryTo": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "sent",
+              "viewed",
+              "accepted",
+              "declined"
+            ]
+          },
+          "createdAt": {
+            "type": "integer"
+          },
+          "updatedAt": {
+            "type": "integer"
+          },
+          "candidateContact": {
+            "type": "string",
+            "description": "Absent until acceptance, and absent after consent withdrawal."
+          },
+          "salaryBasis": {
+            "type": "string",
+            "enum": [
+              "gross",
+              "net",
+              "unspecified"
+            ],
+            "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "salaryFrom",
+          "salaryTo"
+        ]
+      },
+      "OwnUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "candidate",
+              "employer"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "contact": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "consent": {
+            "type": "boolean"
+          },
+          "specialization": {
+            "type": "string"
+          },
+          "grade": {
+            "type": "string"
+          },
+          "score": {
+            "type": "integer"
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "competencyResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Competency"
+            }
+          },
+          "attempts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "passed": {
+                  "type": "boolean"
+                },
+                "competencyResults": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Competency"
+                  }
+                },
+                "at": {
+                  "type": "integer"
+                },
+                "stale": {
+                  "type": "boolean",
+                  "description": "Historical result belongs to an older bank and is not current confirmation."
+                },
+                "invalidated": {
+                  "type": "string",
+                  "description": "An unfinished old-bank attempt was cancelled, not graded as a failure."
+                },
+                "assessmentVersion": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "evidence": {
+            "$ref": "#/components/schemas/AssessmentEvidence"
+          },
+          "fspAchievements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FspAchievement"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "role",
+          "name",
+          "email",
+          "verified"
+        ]
+      },
+      "Workspace": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/OwnUser"
+          },
+          "invitations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Invitation"
+            }
+          },
+          "accounts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "role"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "outbox": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "test": {
+            "$ref": "#/components/schemas/Assessment"
+          },
+          "searches": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "filters": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "candidateIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "at": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "demo": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "user",
+          "invitations",
+          "accounts",
+          "demo"
+        ]
+      },
+      "ActionResult": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "switchTo": {
+            "type": "string"
+          },
+          "test": {
+            "$ref": "#/components/schemas/Assessment"
+          },
+          "score": {
+            "type": "integer"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "competencyResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Competency"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CandidateResult"
+            }
+          },
+          "filters": {
+            "type": "object",
+            "properties": {}
+          },
+          "requirements": {
+            "$ref": "#/components/schemas/Requirements"
+          },
+          "invitation": {
+            "$ref": "#/components/schemas/Invitation"
+          },
+          "verificationError": {
+            "type": "string"
+          }
+        }
+      },
+      "RealRegistration": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "const": "register"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "candidate",
+              "employer"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 80
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 254
+          },
+          "dataConsent": {
+            "const": true
+          },
+          "privacyNoticeVersion": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action",
+          "role",
+          "name",
+          "email",
+          "dataConsent",
+          "privacyNoticeVersion"
+        ]
+      },
+      "EmailRequest": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "const": "email-request"
+          }
+        },
+        "required": [
+          "action"
+        ]
+      },
+      "EmailVerify": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "const": "email-verify"
+          },
+          "challengeId": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          }
+        },
+        "required": [
+          "action",
+          "challengeId",
+          "token"
+        ]
+      },
+      "AccountState": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "enrolled": {
+            "type": "boolean"
+          },
+          "emailEnabled": {
+            "type": "boolean"
+          },
+          "emailStatus": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "privacyNoticeUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "privacyNoticeVersion": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/OwnUser"
+          },
+          "invitations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Invitation"
+            }
+          },
+          "accounts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "outbox": {
+            "type": "array",
+            "maxItems": 0
+          },
+          "demo": {
+            "const": false
+          },
+          "test": {
+            "$ref": "#/components/schemas/Assessment"
+          },
+          "searches": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "required": [
+          "enabled"
+        ]
+      },
+      "RealActionResult": {
+        "type": "object",
+        "properties": {
+          "enrolled": {
+            "type": "boolean"
+          },
+          "accountId": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "emailStatus": {
+            "type": "string"
+          },
+          "challengeId": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "integer"
+          },
+          "verificationError": {
+            "type": "string"
+          },
+          "ok": {
+            "type": "boolean"
+          },
+          "test": {
+            "$ref": "#/components/schemas/Assessment"
+          },
+          "score": {
+            "type": "integer"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "competencyResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Competency"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CandidateResult"
+            }
+          },
+          "requirements": {
+            "$ref": "#/components/schemas/Requirements"
+          },
+          "filters": {
+            "type": "object",
+            "properties": {}
+          },
+          "invitation": {
+            "$ref": "#/components/schemas/Invitation"
+          }
+        }
+      },
+      "EvidenceSkill": {
+        "type": "object",
+        "properties": {
+          "skill": {
+            "type": "string"
+          },
+          "correct": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "total": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "score": {
+            "type": "integer"
+          },
+          "confirmed": {
+            "type": "boolean"
+          },
+          "applied": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "correct": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              },
+              "total": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              }
+            },
+            "required": [
+              "correct",
+              "total"
+            ],
+            "additionalProperties": false
+          },
+          "knowledge": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "correct": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              },
+              "total": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              }
+            },
+            "required": [
+              "correct",
+              "total"
+            ],
+            "additionalProperties": false
+          },
+          "tasks": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/EvidenceTask"
+            },
+            "description": "Only completed task positions, types and awarded points. No prompts, choices, answers, aliases or concept IDs. Null when original per-task outcomes were not retained."
+          }
+        },
+        "required": [
+          "skill",
+          "score",
+          "correct",
+          "total",
+          "confirmed",
+          "applied",
+          "knowledge",
+          "tasks"
+        ],
+        "additionalProperties": false
+      },
+      "AssessmentEvidence": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "current",
+              "synthetic",
+              "stale",
+              "unavailable"
+            ]
+          },
+          "assessmentId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Opaque completed assessment reference; does not authorize access or submission."
+          },
+          "completedAt": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Completion timestamp of the same successful assessment supplying the scores; never inferred from the latest failed attempt."
+          },
+          "bankVersion": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "specialization": {
+            "type": "string"
+          },
+          "grade": {
+            "type": "string"
+          },
+          "score": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "totalCorrect": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "totalQuestions": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EvidenceSkill"
+            }
+          },
+          "limitation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "status",
+          "assessmentId",
+          "completedAt",
+          "bankVersion",
+          "specialization",
+          "grade",
+          "score",
+          "totalCorrect",
+          "totalQuestions",
+          "skills",
+          "limitation"
+        ],
+        "additionalProperties": false
+      },
+      "EvidenceTask": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "applied",
+              "knowledge"
+            ]
+          },
+          "score": {
+            "type": "integer",
+            "enum": [
+              0,
+              1
+            ]
+          },
+          "maxScore": {
+            "type": "integer",
+            "const": 1
+          }
+        },
+        "required": [
+          "number",
+          "kind",
+          "score",
+          "maxScore"
+        ],
+        "additionalProperties": false
+      },
+      "FspAchievement": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "description": "Always visibly marked DEMO."
+          },
+          "provenance": {
+            "type": "string",
+            "enum": [
+              "synthetic_seed"
+            ]
+          },
+          "verified": {
+            "type": "boolean",
+            "description": "Verified in the synthetic fixture, never an official registry claim."
+          },
+          "specialization": {
+            "type": "string"
+          },
+          "grade": {
+            "type": "string"
+          },
+          "resultType": {
+            "type": "string",
+            "enum": [
+              "winner",
+              "finalist",
+              "participant"
+            ]
+          },
+          "points": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "provenance",
+          "verified",
+          "specialization",
+          "grade",
+          "resultType",
+          "points"
+        ]
+      },
+      "FspBonus": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "bonus": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "maxBonus": {
+            "type": "number",
+            "const": 5
+          },
+          "eligibleCount": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "synthetic_seed"
+            ]
+          },
+          "limitation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "bonus",
+          "maxBonus",
+          "eligibleCount",
+          "source",
+          "limitation"
+        ]
+      },
+      "GuestWorkspace": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/OwnUser"
+          },
+          "invitations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Invitation"
+            }
+          },
+          "accounts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "role"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "outbox": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "test": {
+            "$ref": "#/components/schemas/Assessment"
+          },
+          "searches": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "filters": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "candidateIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "at": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "demo": {
+            "type": "boolean"
+          },
+          "guest": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "expiresAt": {
+                "type": "integer"
+              },
+              "ephemeral": {
+                "const": true
+              },
+              "created": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "expiresAt",
+              "ephemeral",
+              "created"
+            ]
+          }
+        },
+        "required": [
+          "user",
+          "invitations",
+          "accounts",
+          "demo",
+          "guest"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "GuestCookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "__Host-fsp_guest",
+        "description": "Ephemeral authorization for one isolated synthetic guest space only; never personal account authentication."
+      }
+    }
+  }
+}

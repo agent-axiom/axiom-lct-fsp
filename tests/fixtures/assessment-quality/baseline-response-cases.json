@@ -1,0 +1,3493 @@
+{
+  "author": "AI assessment reviewer",
+  "count": 60,
+  "limitations": [
+    "Автор — AI-рецензент после чтения исходника, не независимая экспертная панель.",
+    "Все кандидаты и ответы синтетические; реальные люди, прокторинг, психометрическая калибровка и измерение качества найма отсутствуют.",
+    "Повторы seeds коррелированы. 144 шаблона и 108000 исходных recipe evaluations не являются независимой валидацией.",
+    "Memorization предполагает полученные ответы к учебному банку (например, утечка/совместная подготовка); не утверждает, что API раскрывает ключи.",
+    "Public DTO privacy — узкая проверка перечисленных полей; bundle/network/identity attacks здесь не проверялись."
+  ],
+  "cases": [
+    {
+      "id": "Backend-Junior-strong_reference",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "strong_reference",
+      "expectedPassByAuthoredRubric": true,
+      "answers": {
+        "q0": "o(1)",
+        "q1": "16",
+        "q2": "10",
+        "q3": "18",
+        "q4": "3",
+        "q5": "3",
+        "q6": "10",
+        "q7": "20",
+        "q8": "55",
+        "q9": "18",
+        "q10": "9",
+        "q11": "201"
+      },
+      "observed": {
+        "score": 100,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Junior-weak_no_answers",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "weak_no_answers",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "не знаю",
+        "q3": "не знаю",
+        "q4": "не знаю",
+        "q5": "не знаю",
+        "q6": "не знаю",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "не знаю",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 0,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "SQL",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "HTTP",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Junior-blind_first_choice",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "blind_first_choice",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "O(1)",
+        "q1": "не знаю",
+        "q2": "не знаю",
+        "q3": "не знаю",
+        "q4": "не знаю",
+        "q5": "не знаю",
+        "q6": "не знаю",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "не знаю",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 8,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "SQL",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "HTTP",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Junior-partial_all_applied_no_knowledge",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "partial_all_applied_no_knowledge",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "10",
+        "q3": "18",
+        "q4": "3",
+        "q5": "3",
+        "q6": "не знаю",
+        "q7": "20",
+        "q8": "55",
+        "q9": "18",
+        "q10": "9",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Junior-partial_all_applied_one_knowledge_family",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "partial_all_applied_one_knowledge_family",
+      "expectedPassByAuthoredRubric": null,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "10",
+        "q3": "18",
+        "q4": "3",
+        "q5": "3",
+        "q6": "не знаю",
+        "q7": "20",
+        "q8": "55",
+        "q9": "18",
+        "q10": "9",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Junior-partial_all_applied_two_knowledge_families",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "partial_all_applied_two_knowledge_families",
+      "expectedPassByAuthoredRubric": null,
+      "answers": {
+        "q0": "o(1)",
+        "q1": "не знаю",
+        "q2": "10",
+        "q3": "18",
+        "q4": "3",
+        "q5": "3",
+        "q6": "10",
+        "q7": "20",
+        "q8": "55",
+        "q9": "18",
+        "q10": "9",
+        "q11": "201"
+      },
+      "observed": {
+        "score": 92,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Junior-partial_one_skill_missing",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "partial_one_skill_missing",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "o(1)",
+        "q1": "не знаю",
+        "q2": "10",
+        "q3": "не знаю",
+        "q4": "3",
+        "q5": "3",
+        "q6": "10",
+        "q7": "20",
+        "q8": "не знаю",
+        "q9": "18",
+        "q10": "9",
+        "q11": "201"
+      },
+      "observed": {
+        "score": 75,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "SQL",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Junior-partial_one_skill_one_correct",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "partial_one_skill_one_correct",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "o(1)",
+        "q1": "16",
+        "q2": "10",
+        "q3": "не знаю",
+        "q4": "3",
+        "q5": "3",
+        "q6": "10",
+        "q7": "20",
+        "q8": "не знаю",
+        "q9": "18",
+        "q10": "9",
+        "q11": "201"
+      },
+      "observed": {
+        "score": 83,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "SQL",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Junior-borderline_3_2_2_2",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "borderline_3_2_2_2",
+      "expectedPassByAuthoredRubric": true,
+      "answers": {
+        "q0": "o(1)",
+        "q1": "16",
+        "q2": "10",
+        "q3": "18",
+        "q4": "3",
+        "q5": "3",
+        "q6": "10",
+        "q7": "не знаю",
+        "q8": "55",
+        "q9": "не знаю",
+        "q10": "9",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 75,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Junior-borderline_2_2_2_2",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "borderline_2_2_2_2",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "o(1)",
+        "q1": "16",
+        "q2": "10",
+        "q3": "18",
+        "q4": "3",
+        "q5": "3",
+        "q6": "10",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "9",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Middle-strong_reference",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "strong_reference",
+      "expectedPassByAuthoredRubric": true,
+      "answers": {
+        "q0": "o(log n)",
+        "q1": "with",
+        "q2": "24",
+        "q3": "14",
+        "q4": "412",
+        "q5": "18",
+        "q6": "is null",
+        "q7": "22",
+        "q8": "70",
+        "q9": "7",
+        "q10": "3",
+        "q11": "content-type"
+      },
+      "observed": {
+        "score": 100,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Middle-weak_no_answers",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "weak_no_answers",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "не знаю",
+        "q3": "не знаю",
+        "q4": "не знаю",
+        "q5": "не знаю",
+        "q6": "не знаю",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "не знаю",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 0,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "SQL",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "HTTP",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Middle-blind_first_choice",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "blind_first_choice",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "O(log n)",
+        "q1": "with",
+        "q2": "не знаю",
+        "q3": "не знаю",
+        "q4": "не знаю",
+        "q5": "не знаю",
+        "q6": "IS NULL",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "не знаю",
+        "q11": "Content-Type"
+      },
+      "observed": {
+        "score": 33,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "SQL",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "HTTP",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Middle-partial_all_applied_no_knowledge",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "partial_all_applied_no_knowledge",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "24",
+        "q3": "14",
+        "q4": "412",
+        "q5": "18",
+        "q6": "не знаю",
+        "q7": "22",
+        "q8": "70",
+        "q9": "7",
+        "q10": "3",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Middle-partial_all_applied_one_knowledge_family",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "partial_all_applied_one_knowledge_family",
+      "expectedPassByAuthoredRubric": null,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "24",
+        "q3": "14",
+        "q4": "412",
+        "q5": "18",
+        "q6": "не знаю",
+        "q7": "22",
+        "q8": "70",
+        "q9": "7",
+        "q10": "3",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Middle-partial_all_applied_two_knowledge_families",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "partial_all_applied_two_knowledge_families",
+      "expectedPassByAuthoredRubric": null,
+      "answers": {
+        "q0": "o(log n)",
+        "q1": "не знаю",
+        "q2": "24",
+        "q3": "14",
+        "q4": "412",
+        "q5": "18",
+        "q6": "is null",
+        "q7": "22",
+        "q8": "70",
+        "q9": "7",
+        "q10": "3",
+        "q11": "content-type"
+      },
+      "observed": {
+        "score": 92,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Middle-partial_one_skill_missing",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "partial_one_skill_missing",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "o(log n)",
+        "q1": "не знаю",
+        "q2": "24",
+        "q3": "не знаю",
+        "q4": "412",
+        "q5": "18",
+        "q6": "is null",
+        "q7": "22",
+        "q8": "не знаю",
+        "q9": "7",
+        "q10": "3",
+        "q11": "content-type"
+      },
+      "observed": {
+        "score": 75,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "SQL",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Middle-partial_one_skill_one_correct",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "partial_one_skill_one_correct",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "o(log n)",
+        "q1": "with",
+        "q2": "24",
+        "q3": "не знаю",
+        "q4": "412",
+        "q5": "18",
+        "q6": "is null",
+        "q7": "22",
+        "q8": "не знаю",
+        "q9": "7",
+        "q10": "3",
+        "q11": "content-type"
+      },
+      "observed": {
+        "score": 83,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "SQL",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Middle-borderline_3_2_2_2",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "borderline_3_2_2_2",
+      "expectedPassByAuthoredRubric": true,
+      "answers": {
+        "q0": "o(log n)",
+        "q1": "with",
+        "q2": "24",
+        "q3": "14",
+        "q4": "412",
+        "q5": "18",
+        "q6": "is null",
+        "q7": "не знаю",
+        "q8": "70",
+        "q9": "не знаю",
+        "q10": "3",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 75,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Middle-borderline_2_2_2_2",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "borderline_2_2_2_2",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "o(log n)",
+        "q1": "with",
+        "q2": "24",
+        "q3": "14",
+        "q4": "412",
+        "q5": "18",
+        "q6": "is null",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "3",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Senior-strong_reference",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "strong_reference",
+      "expectedPassByAuthoredRubric": true,
+      "answers": {
+        "q0": "1740",
+        "q1": "context manager",
+        "q2": "12",
+        "q3": "61",
+        "q4": "4",
+        "q5": "72",
+        "q6": "a",
+        "q7": "20",
+        "q8": "4",
+        "q9": "1758",
+        "q10": "3",
+        "q11": "idempotency key"
+      },
+      "observed": {
+        "score": 100,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Senior-weak_no_answers",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "weak_no_answers",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "не знаю",
+        "q3": "не знаю",
+        "q4": "не знаю",
+        "q5": "не знаю",
+        "q6": "не знаю",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "не знаю",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 0,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "SQL",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "HTTP",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Senior-blind_first_choice",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "blind_first_choice",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "context manager",
+        "q2": "не знаю",
+        "q3": "не знаю",
+        "q4": "не знаю",
+        "q5": "не знаю",
+        "q6": "a",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "не знаю",
+        "q11": "idempotency key"
+      },
+      "observed": {
+        "score": 25,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "SQL",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "HTTP",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Senior-partial_all_applied_no_knowledge",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "partial_all_applied_no_knowledge",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "12",
+        "q3": "61",
+        "q4": "4",
+        "q5": "72",
+        "q6": "не знаю",
+        "q7": "20",
+        "q8": "4",
+        "q9": "1758",
+        "q10": "3",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Senior-partial_all_applied_one_knowledge_family",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "partial_all_applied_one_knowledge_family",
+      "expectedPassByAuthoredRubric": null,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "12",
+        "q3": "61",
+        "q4": "4",
+        "q5": "72",
+        "q6": "не знаю",
+        "q7": "20",
+        "q8": "4",
+        "q9": "1758",
+        "q10": "3",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Senior-partial_all_applied_two_knowledge_families",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "partial_all_applied_two_knowledge_families",
+      "expectedPassByAuthoredRubric": null,
+      "answers": {
+        "q0": "1740",
+        "q1": "не знаю",
+        "q2": "12",
+        "q3": "61",
+        "q4": "4",
+        "q5": "72",
+        "q6": "a",
+        "q7": "20",
+        "q8": "4",
+        "q9": "1758",
+        "q10": "3",
+        "q11": "idempotency key"
+      },
+      "observed": {
+        "score": 92,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Senior-partial_one_skill_missing",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "partial_one_skill_missing",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "1740",
+        "q1": "не знаю",
+        "q2": "12",
+        "q3": "не знаю",
+        "q4": "4",
+        "q5": "72",
+        "q6": "a",
+        "q7": "20",
+        "q8": "не знаю",
+        "q9": "1758",
+        "q10": "3",
+        "q11": "idempotency key"
+      },
+      "observed": {
+        "score": 75,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "SQL",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Senior-partial_one_skill_one_correct",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "partial_one_skill_one_correct",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "1740",
+        "q1": "context manager",
+        "q2": "12",
+        "q3": "не знаю",
+        "q4": "4",
+        "q5": "72",
+        "q6": "a",
+        "q7": "20",
+        "q8": "не знаю",
+        "q9": "1758",
+        "q10": "3",
+        "q11": "idempotency key"
+      },
+      "observed": {
+        "score": 83,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "SQL",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Senior-borderline_3_2_2_2",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "borderline_3_2_2_2",
+      "expectedPassByAuthoredRubric": true,
+      "answers": {
+        "q0": "1740",
+        "q1": "context manager",
+        "q2": "12",
+        "q3": "61",
+        "q4": "4",
+        "q5": "72",
+        "q6": "a",
+        "q7": "не знаю",
+        "q8": "4",
+        "q9": "не знаю",
+        "q10": "3",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 75,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Backend-Senior-borderline_2_2_2_2",
+      "author": "AI assessment reviewer",
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "borderline_2_2_2_2",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "1740",
+        "q1": "context manager",
+        "q2": "12",
+        "q3": "61",
+        "q4": "4",
+        "q5": "72",
+        "q6": "a",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "3",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "Python",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "SQL",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "HTTP",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Algorithms",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Junior-strong_reference",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "strong_reference",
+      "expectedPassByAuthoredRubric": true,
+      "answers": {
+        "q0": "for",
+        "q1": "4",
+        "q2": "14",
+        "q3": "19",
+        "q4": "9",
+        "q5": "18",
+        "q6": "onclick",
+        "q7": "12",
+        "q8": "56",
+        "q9": "field-18",
+        "q10": "38",
+        "q11": "color"
+      },
+      "observed": {
+        "score": 100,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Junior-weak_no_answers",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "weak_no_answers",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "не знаю",
+        "q3": "не знаю",
+        "q4": "не знаю",
+        "q5": "не знаю",
+        "q6": "не знаю",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "не знаю",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 0,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "React",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "CSS",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Junior-blind_first_choice",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "blind_first_choice",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "не знаю",
+        "q3": "не знаю",
+        "q4": "не знаю",
+        "q5": "не знаю",
+        "q6": "onClick",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "не знаю",
+        "q11": "color"
+      },
+      "observed": {
+        "score": 17,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "React",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "CSS",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Junior-partial_all_applied_no_knowledge",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "partial_all_applied_no_knowledge",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "14",
+        "q3": "19",
+        "q4": "9",
+        "q5": "18",
+        "q6": "не знаю",
+        "q7": "12",
+        "q8": "56",
+        "q9": "field-18",
+        "q10": "38",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Junior-partial_all_applied_one_knowledge_family",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "partial_all_applied_one_knowledge_family",
+      "expectedPassByAuthoredRubric": null,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "14",
+        "q3": "19",
+        "q4": "9",
+        "q5": "18",
+        "q6": "не знаю",
+        "q7": "12",
+        "q8": "56",
+        "q9": "field-18",
+        "q10": "38",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Junior-partial_all_applied_two_knowledge_families",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "partial_all_applied_two_knowledge_families",
+      "expectedPassByAuthoredRubric": null,
+      "answers": {
+        "q0": "for",
+        "q1": "не знаю",
+        "q2": "14",
+        "q3": "19",
+        "q4": "9",
+        "q5": "18",
+        "q6": "onclick",
+        "q7": "12",
+        "q8": "56",
+        "q9": "field-18",
+        "q10": "38",
+        "q11": "color"
+      },
+      "observed": {
+        "score": 92,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Junior-partial_one_skill_missing",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "partial_one_skill_missing",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "for",
+        "q1": "не знаю",
+        "q2": "14",
+        "q3": "не знаю",
+        "q4": "9",
+        "q5": "18",
+        "q6": "onclick",
+        "q7": "12",
+        "q8": "не знаю",
+        "q9": "field-18",
+        "q10": "38",
+        "q11": "color"
+      },
+      "observed": {
+        "score": 75,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "React",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Junior-partial_one_skill_one_correct",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "partial_one_skill_one_correct",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "for",
+        "q1": "4",
+        "q2": "14",
+        "q3": "не знаю",
+        "q4": "9",
+        "q5": "18",
+        "q6": "onclick",
+        "q7": "12",
+        "q8": "не знаю",
+        "q9": "field-18",
+        "q10": "38",
+        "q11": "color"
+      },
+      "observed": {
+        "score": 83,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "React",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Junior-borderline_3_2_2_2",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "borderline_3_2_2_2",
+      "expectedPassByAuthoredRubric": true,
+      "answers": {
+        "q0": "for",
+        "q1": "4",
+        "q2": "14",
+        "q3": "19",
+        "q4": "9",
+        "q5": "18",
+        "q6": "onclick",
+        "q7": "не знаю",
+        "q8": "56",
+        "q9": "не знаю",
+        "q10": "38",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 75,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Junior-borderline_2_2_2_2",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seed": 303000,
+      "archetype": "borderline_2_2_2_2",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "for",
+        "q1": "4",
+        "q2": "14",
+        "q3": "19",
+        "q4": "9",
+        "q5": "18",
+        "q6": "onclick",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "38",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Middle-strong_reference",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "strong_reference",
+      "expectedPassByAuthoredRubric": true,
+      "answers": {
+        "q0": "0",
+        "q1": "as const",
+        "q2": "12",
+        "q3": "1",
+        "q4": "60",
+        "q5": "18",
+        "q6": "useeffect",
+        "q7": "24",
+        "q8": "5",
+        "q9": "оплатить 18",
+        "q10": "22",
+        "q11": "border-box"
+      },
+      "observed": {
+        "score": 100,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Middle-weak_no_answers",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "weak_no_answers",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "не знаю",
+        "q3": "не знаю",
+        "q4": "не знаю",
+        "q5": "не знаю",
+        "q6": "не знаю",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "не знаю",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 0,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "React",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "CSS",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Middle-blind_first_choice",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "blind_first_choice",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "0",
+        "q1": "as const",
+        "q2": "не знаю",
+        "q3": "не знаю",
+        "q4": "не знаю",
+        "q5": "не знаю",
+        "q6": "useEffect",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "не знаю",
+        "q11": "border-box"
+      },
+      "observed": {
+        "score": 33,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "React",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "CSS",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Middle-partial_all_applied_no_knowledge",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "partial_all_applied_no_knowledge",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "12",
+        "q3": "1",
+        "q4": "60",
+        "q5": "18",
+        "q6": "не знаю",
+        "q7": "24",
+        "q8": "5",
+        "q9": "оплатить 18",
+        "q10": "22",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Middle-partial_all_applied_one_knowledge_family",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "partial_all_applied_one_knowledge_family",
+      "expectedPassByAuthoredRubric": null,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "12",
+        "q3": "1",
+        "q4": "60",
+        "q5": "18",
+        "q6": "не знаю",
+        "q7": "24",
+        "q8": "5",
+        "q9": "оплатить 18",
+        "q10": "22",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Middle-partial_all_applied_two_knowledge_families",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "partial_all_applied_two_knowledge_families",
+      "expectedPassByAuthoredRubric": null,
+      "answers": {
+        "q0": "0",
+        "q1": "не знаю",
+        "q2": "12",
+        "q3": "1",
+        "q4": "60",
+        "q5": "18",
+        "q6": "useeffect",
+        "q7": "24",
+        "q8": "5",
+        "q9": "оплатить 18",
+        "q10": "22",
+        "q11": "border-box"
+      },
+      "observed": {
+        "score": 92,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Middle-partial_one_skill_missing",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "partial_one_skill_missing",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "0",
+        "q1": "не знаю",
+        "q2": "12",
+        "q3": "не знаю",
+        "q4": "60",
+        "q5": "18",
+        "q6": "useeffect",
+        "q7": "24",
+        "q8": "не знаю",
+        "q9": "оплатить 18",
+        "q10": "22",
+        "q11": "border-box"
+      },
+      "observed": {
+        "score": 75,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "React",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Middle-partial_one_skill_one_correct",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "partial_one_skill_one_correct",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "0",
+        "q1": "as const",
+        "q2": "12",
+        "q3": "не знаю",
+        "q4": "60",
+        "q5": "18",
+        "q6": "useeffect",
+        "q7": "24",
+        "q8": "не знаю",
+        "q9": "оплатить 18",
+        "q10": "22",
+        "q11": "border-box"
+      },
+      "observed": {
+        "score": 83,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "React",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Middle-borderline_3_2_2_2",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "borderline_3_2_2_2",
+      "expectedPassByAuthoredRubric": true,
+      "answers": {
+        "q0": "0",
+        "q1": "as const",
+        "q2": "12",
+        "q3": "1",
+        "q4": "60",
+        "q5": "18",
+        "q6": "useeffect",
+        "q7": "не знаю",
+        "q8": "5",
+        "q9": "не знаю",
+        "q10": "22",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 75,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Middle-borderline_2_2_2_2",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seed": 303000,
+      "archetype": "borderline_2_2_2_2",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "0",
+        "q1": "as const",
+        "q2": "12",
+        "q3": "1",
+        "q4": "60",
+        "q5": "18",
+        "q6": "useeffect",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "22",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Senior-strong_reference",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "strong_reference",
+      "expectedPassByAuthoredRubric": true,
+      "answers": {
+        "q0": "aria-live",
+        "q1": "нет",
+        "q2": "2",
+        "q3": "5",
+        "q4": "30",
+        "q5": "first-18",
+        "q6": "useeffect",
+        "q7": "2",
+        "q8": "45",
+        "q9": "open-18",
+        "q10": "9",
+        "q11": "prefers-reduced-motion"
+      },
+      "observed": {
+        "score": 100,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Senior-weak_no_answers",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "weak_no_answers",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "не знаю",
+        "q3": "не знаю",
+        "q4": "не знаю",
+        "q5": "не знаю",
+        "q6": "не знаю",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "не знаю",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 0,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "React",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "CSS",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Senior-blind_first_choice",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "blind_first_choice",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "aria-live",
+        "q1": "да",
+        "q2": "не знаю",
+        "q3": "не знаю",
+        "q4": "не знаю",
+        "q5": "не знаю",
+        "q6": "useEffect",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "не знаю",
+        "q11": "prefers-reduced-motion"
+      },
+      "observed": {
+        "score": 25,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "React",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "CSS",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Senior-partial_all_applied_no_knowledge",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "partial_all_applied_no_knowledge",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "2",
+        "q3": "5",
+        "q4": "30",
+        "q5": "first-18",
+        "q6": "не знаю",
+        "q7": "2",
+        "q8": "45",
+        "q9": "open-18",
+        "q10": "9",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Senior-partial_all_applied_one_knowledge_family",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "partial_all_applied_one_knowledge_family",
+      "expectedPassByAuthoredRubric": null,
+      "answers": {
+        "q0": "не знаю",
+        "q1": "не знаю",
+        "q2": "2",
+        "q3": "5",
+        "q4": "30",
+        "q5": "first-18",
+        "q6": "не знаю",
+        "q7": "2",
+        "q8": "45",
+        "q9": "open-18",
+        "q10": "9",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Senior-partial_all_applied_two_knowledge_families",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "partial_all_applied_two_knowledge_families",
+      "expectedPassByAuthoredRubric": null,
+      "answers": {
+        "q0": "aria-live",
+        "q1": "не знаю",
+        "q2": "2",
+        "q3": "5",
+        "q4": "30",
+        "q5": "first-18",
+        "q6": "useeffect",
+        "q7": "2",
+        "q8": "45",
+        "q9": "open-18",
+        "q10": "9",
+        "q11": "prefers-reduced-motion"
+      },
+      "observed": {
+        "score": 92,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Senior-partial_one_skill_missing",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "partial_one_skill_missing",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "aria-live",
+        "q1": "не знаю",
+        "q2": "2",
+        "q3": "не знаю",
+        "q4": "30",
+        "q5": "first-18",
+        "q6": "useeffect",
+        "q7": "2",
+        "q8": "не знаю",
+        "q9": "open-18",
+        "q10": "9",
+        "q11": "prefers-reduced-motion"
+      },
+      "observed": {
+        "score": 75,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 0,
+            "total": 3,
+            "score": 0,
+            "confirmed": false
+          },
+          {
+            "skill": "React",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Senior-partial_one_skill_one_correct",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "partial_one_skill_one_correct",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "aria-live",
+        "q1": "нет",
+        "q2": "2",
+        "q3": "не знаю",
+        "q4": "30",
+        "q5": "first-18",
+        "q6": "useeffect",
+        "q7": "2",
+        "q8": "не знаю",
+        "q9": "open-18",
+        "q10": "9",
+        "q11": "prefers-reduced-motion"
+      },
+      "observed": {
+        "score": 83,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 1,
+            "total": 3,
+            "score": 33,
+            "confirmed": false
+          },
+          {
+            "skill": "React",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Senior-borderline_3_2_2_2",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "borderline_3_2_2_2",
+      "expectedPassByAuthoredRubric": true,
+      "answers": {
+        "q0": "aria-live",
+        "q1": "нет",
+        "q2": "2",
+        "q3": "5",
+        "q4": "30",
+        "q5": "first-18",
+        "q6": "useeffect",
+        "q7": "не знаю",
+        "q8": "45",
+        "q9": "не знаю",
+        "q10": "9",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 75,
+        "passed": true,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 3,
+            "total": 3,
+            "score": 100,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    },
+    {
+      "id": "Frontend-Senior-borderline_2_2_2_2",
+      "author": "AI assessment reviewer",
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seed": 303000,
+      "archetype": "borderline_2_2_2_2",
+      "expectedPassByAuthoredRubric": false,
+      "answers": {
+        "q0": "aria-live",
+        "q1": "нет",
+        "q2": "2",
+        "q3": "5",
+        "q4": "30",
+        "q5": "first-18",
+        "q6": "useeffect",
+        "q7": "не знаю",
+        "q8": "не знаю",
+        "q9": "не знаю",
+        "q10": "9",
+        "q11": "не знаю"
+      },
+      "observed": {
+        "score": 67,
+        "passed": false,
+        "competencyResults": [
+          {
+            "skill": "TypeScript",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "React",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "CSS",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          },
+          {
+            "skill": "Accessibility",
+            "correct": 2,
+            "total": 3,
+            "score": 67,
+            "confirmed": true
+          }
+        ],
+        "assessmentVersion": 3
+      }
+    }
+  ]
+}

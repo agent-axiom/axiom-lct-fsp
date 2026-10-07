@@ -1,0 +1,840 @@
+{
+  "dataset": "FSP · замороженный авторский синтетический benchmark v1",
+  "fixtureSha256": "7c949124d41cfc9361832e4039bb1b56059a19c9562285372060d1721177b2a7",
+  "frozenAt": "2026-10-06T18:07:35.930343+00:00",
+  "evaluatedAt": "2026-10-06T18:14:41.282Z",
+  "label": "v0.5",
+  "mode": "matchCandidate-with-domain-equivalent-prefilters",
+  "implementationPath": "/workspace/scratch/e0f6dc00ff6f/fsp-source-recovery/scripts/evaluation-baselines/matching-v05.mjs",
+  "implementationSha256": "21f4b7a1d5b65c1116747dfd3ee813279127599b872fa1f3d0bf42d873d8f4e7",
+  "split": "heldout",
+  "disclaimer": "36 синтетических профилей и 36 авторских запросов. Разметка выводится из заранее объявленной авторской рубрики, а не из оценок matcher. Нет независимой экспертной разметки, реальных наймов, психометрической или внешней валидации. heldout означает отложенные запросы, а не неизвестных людей или секретные данные.",
+  "metricDefinitions": {
+    "precisionAt5": "Основная: число labels>=2 в первых пяти позициях /5; незаполненные позиции нерелевантны.",
+    "legacyPrecisionAt5": "Дополнительная для совместимости: число labels>0 /5. Не смешивать с основной.",
+    "ndcgAt5": "DCG=sum((2^label-1)/log2(rank+1)); IDCG по всем размеченным кандидатам. При IDCG=0 вернуть null и исключить только из среднего NDCG, указав число таких запросов.",
+    "precisionCeiling": "min(5, число labels>=2)/5. Низкая P@5 при маленьком релевантном пуле не всегда означает ошибку ранжирования.",
+    "aggregation": "Макро-средние отдельно по train/development/heldout и по всем; heldout является основной отложенной оценкой. Не выводить статистическую значимость на этом размере."
+  },
+  "overall": {
+    "queries": 12,
+    "precisionAt5": 0.8666666666666666,
+    "legacyPrecisionAt5": 0.9500000000000001,
+    "ndcgAt5": 0.99662287164746,
+    "ndcgDenominator": 12,
+    "zeroIdealQueries": [],
+    "meanPrecisionAt5Ceiling": 0.8833333333333333
+  },
+  "bySplit": {
+    "train": {
+      "queries": 0,
+      "precisionAt5": null,
+      "legacyPrecisionAt5": null,
+      "ndcgAt5": null,
+      "ndcgDenominator": 0,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": null
+    },
+    "development": {
+      "queries": 0,
+      "precisionAt5": null,
+      "legacyPrecisionAt5": null,
+      "ndcgAt5": null,
+      "ndcgDenominator": 0,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": null
+    },
+    "heldout": {
+      "queries": 12,
+      "precisionAt5": 0.8666666666666666,
+      "legacyPrecisionAt5": 0.9500000000000001,
+      "ndcgAt5": 0.99662287164746,
+      "ndcgDenominator": 12,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 0.8833333333333333
+    }
+  },
+  "byTag": {
+    "alternative-grade": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "ambiguous": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "clause-boundary": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "contradictory-range": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "decimal": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "excluded-role": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "experience-boundary": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "full-stack": {
+      "queries": 1,
+      "precisionAt5": 0.8,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 0.8
+    },
+    "hard-negative": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "language-token-boundary": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "manual-review": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "missing-skill": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "missing-verification": {
+      "queries": 1,
+      "precisionAt5": 0.2,
+      "legacyPrecisionAt5": 0.4,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 0.2
+    },
+    "near-stack": {
+      "queries": 1,
+      "precisionAt5": 0.6,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 0.6
+    },
+    "negated-role": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "negation-scope": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "optional-list": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "same-category-achievement": {
+      "queries": 1,
+      "precisionAt5": 0.8,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 0.9594744597695195,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "sparse-relevance": {
+      "queries": 1,
+      "precisionAt5": 0.2,
+      "legacyPrecisionAt5": 0.4,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 0.2
+    },
+    "stack-combination": {
+      "queries": 1,
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "strong-without-fsp": {
+      "queries": 1,
+      "precisionAt5": 0.8,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 0.9594744597695195,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 1
+    },
+    "token-boundary": {
+      "queries": 1,
+      "precisionAt5": 0.6,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 1,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 0.6
+    },
+    "wrong-stack": {
+      "queries": 3,
+      "precisionAt5": 0.6666666666666666,
+      "legacyPrecisionAt5": 0.7999999999999999,
+      "ndcgAt5": 1,
+      "ndcgDenominator": 3,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 0.6666666666666666
+    }
+  },
+  "safetyViolationCount": 0,
+  "cases": [
+    {
+      "id": "h01-senior-platform-stack",
+      "split": "heldout",
+      "need": "Senior Backend Python SQL Docker Kubernetes",
+      "tags": [
+        "full-stack",
+        "wrong-stack"
+      ],
+      "precisionAt5": 0.8,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "precisionAt5Ceiling": 0.8,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "bs-py-award",
+          "score": 98,
+          "label": 3
+        },
+        {
+          "id": "bs-py-none",
+          "score": 98,
+          "label": 3
+        },
+        {
+          "id": "bs-go",
+          "score": 80,
+          "label": 2
+        },
+        {
+          "id": "bs-py-core",
+          "score": 77,
+          "label": 2
+        },
+        {
+          "id": "bm-py-award",
+          "score": 69,
+          "label": 1
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную."
+      ],
+      "parserExpectations": {}
+    },
+    {
+      "id": "h02-junior-react-accessibility",
+      "split": "heldout",
+      "need": "Junior Frontend React CSS Accessibility",
+      "tags": [
+        "stack-combination",
+        "missing-skill"
+      ],
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "fj-react-award",
+          "score": 96,
+          "label": 3
+        },
+        {
+          "id": "fj-react-none",
+          "score": 96,
+          "label": 3
+        },
+        {
+          "id": "fj-about-only",
+          "score": 86,
+          "label": 2
+        },
+        {
+          "id": "fj-js",
+          "score": 84,
+          "label": 2
+        },
+        {
+          "id": "fj-react-cross-grade",
+          "score": 82,
+          "label": 2
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную."
+      ],
+      "parserExpectations": {}
+    },
+    {
+      "id": "h03-middle-javascript",
+      "split": "heldout",
+      "need": "Middle Frontend JavaScript CSS",
+      "tags": [
+        "wrong-stack",
+        "language-token-boundary"
+      ],
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "fm-js",
+          "score": 99,
+          "label": 3
+        },
+        {
+          "id": "fs-js",
+          "score": 82,
+          "label": 2
+        },
+        {
+          "id": "fj-js",
+          "score": 80,
+          "label": 2
+        },
+        {
+          "id": "fm-react-award",
+          "score": 77,
+          "label": 2
+        },
+        {
+          "id": "fm-react-cross",
+          "score": 77,
+          "label": 2
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную."
+      ],
+      "parserExpectations": {}
+    },
+    {
+      "id": "h04-senior-accessible-strength",
+      "split": "heldout",
+      "need": "Senior Frontend CSS Accessibility; сильные тесты и подтверждённые достижения ФСП в этой категории",
+      "tags": [
+        "same-category-achievement",
+        "strong-without-fsp"
+      ],
+      "precisionAt5": 0.8,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 0.9594744597695195,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "fs-js",
+          "score": 99,
+          "label": 3
+        },
+        {
+          "id": "fs-react-award",
+          "score": 99,
+          "label": 3
+        },
+        {
+          "id": "fs-react-none",
+          "score": 99,
+          "label": 3
+        },
+        {
+          "id": "fs-css",
+          "score": 97,
+          "label": 3
+        },
+        {
+          "id": "fj-about-only",
+          "score": 81,
+          "label": 1
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную."
+      ],
+      "parserExpectations": {}
+    },
+    {
+      "id": "h05-postgres-not-sql",
+      "split": "heldout",
+      "need": "Backend Middle Python PostgreSQL HTTP",
+      "tags": [
+        "near-stack",
+        "token-boundary"
+      ],
+      "precisionAt5": 0.6,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "precisionAt5Ceiling": 0.6,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "bm-postgres",
+          "score": 97,
+          "label": 3
+        },
+        {
+          "id": "bm-py-award",
+          "score": 83,
+          "label": 2
+        },
+        {
+          "id": "bm-py-none",
+          "score": 83,
+          "label": 2
+        },
+        {
+          "id": "bm-about-only",
+          "score": 73,
+          "label": 1
+        },
+        {
+          "id": "bm-java",
+          "score": 72,
+          "label": 1
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную."
+      ],
+      "parserExpectations": {}
+    },
+    {
+      "id": "h06-jvm-senior",
+      "split": "heldout",
+      "need": "Senior Backend Java Kotlin",
+      "tags": [
+        "wrong-stack",
+        "sparse-relevance",
+        "missing-verification"
+      ],
+      "precisionAt5": 0.2,
+      "legacyPrecisionAt5": 0.4,
+      "ndcgAt5": 1,
+      "precisionAt5Ceiling": 0.2,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "bs-java",
+          "score": 98,
+          "label": 3
+        },
+        {
+          "id": "bm-java",
+          "score": 61,
+          "label": 1
+        },
+        {
+          "id": "bs-go",
+          "score": 60,
+          "label": 0
+        },
+        {
+          "id": "bs-py-award",
+          "score": 58,
+          "label": 0
+        },
+        {
+          "id": "bs-py-none",
+          "score": 58,
+          "label": 0
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную."
+      ],
+      "parserExpectations": {}
+    },
+    {
+      "id": "h07-half-year-boundary",
+      "split": "heldout",
+      "need": "Frontend React TypeScript, не менее 2,5 лет",
+      "tags": [
+        "decimal",
+        "experience-boundary"
+      ],
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "fs-react-award",
+          "score": 99,
+          "label": 3
+        },
+        {
+          "id": "fs-react-none",
+          "score": 99,
+          "label": 3
+        },
+        {
+          "id": "fm-react-short",
+          "score": 98,
+          "label": 3
+        },
+        {
+          "id": "fs-react-nocss",
+          "score": 98,
+          "label": 3
+        },
+        {
+          "id": "fm-react-award",
+          "score": 97,
+          "label": 3
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную."
+      ],
+      "parserExpectations": {}
+    },
+    {
+      "id": "h08-optional-list",
+      "split": "heldout",
+      "need": "Backend SQL; Python и Docker необязательны",
+      "tags": [
+        "optional-list",
+        "negation-scope"
+      ],
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "bs-py-award",
+          "score": 98,
+          "label": 3
+        },
+        {
+          "id": "bs-py-none",
+          "score": 98,
+          "label": 3
+        },
+        {
+          "id": "bm-py-award",
+          "score": 97,
+          "label": 3
+        },
+        {
+          "id": "bm-py-none",
+          "score": 97,
+          "label": 3
+        },
+        {
+          "id": "bs-py-core",
+          "score": 97,
+          "label": 3
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную.",
+        "Необязательные условия не влияют на балл: Docker."
+      ],
+      "parserExpectations": {
+        "nonRequiredSkills": [
+          "Python",
+          "Docker"
+        ]
+      }
+    },
+    {
+      "id": "h09-negated-role-positive-grade",
+      "split": "heldout",
+      "need": "Backend Python; Frontend не нужен; грейд Senior",
+      "tags": [
+        "negated-role",
+        "clause-boundary"
+      ],
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "bs-py-award",
+          "score": 98,
+          "label": 3
+        },
+        {
+          "id": "bs-py-none",
+          "score": 98,
+          "label": 3
+        },
+        {
+          "id": "bs-py-core",
+          "score": 97,
+          "label": 3
+        },
+        {
+          "id": "bm-postgres",
+          "score": 80,
+          "label": 2
+        },
+        {
+          "id": "bm-py-award",
+          "score": 79,
+          "label": 2
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную.",
+        "Отрицание не даёт положительного балла: Frontend. Это не фильтр исключения кандидатов; проверьте условие вручную."
+      ],
+      "parserExpectations": {}
+    },
+    {
+      "id": "h10-alternative-grade",
+      "split": "heldout",
+      "need": "Frontend; Middle или Senior; React TypeScript",
+      "tags": [
+        "alternative-grade",
+        "ambiguous"
+      ],
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "fs-react-award",
+          "score": 99,
+          "label": 3
+        },
+        {
+          "id": "fs-react-none",
+          "score": 99,
+          "label": 3
+        },
+        {
+          "id": "fm-react-short",
+          "score": 98,
+          "label": 3
+        },
+        {
+          "id": "fs-react-nocss",
+          "score": 98,
+          "label": 3
+        },
+        {
+          "id": "fm-react-award",
+          "score": 97,
+          "label": 3
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную.",
+        "Альтернативы не объединяются в обязательный стек и не влияют на балл: Middle, Senior. Уточните фильтры."
+      ],
+      "parserExpectations": {
+        "requiresWarning": true,
+        "reason": "Неподдерживаемый диапазон грейдов должен быть явно отмечен."
+      }
+    },
+    {
+      "id": "h11-excluded-specialization",
+      "split": "heldout",
+      "need": "Исключить Backend. Нужен Frontend Middle React",
+      "tags": [
+        "excluded-role",
+        "hard-negative"
+      ],
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "fm-react-short",
+          "score": 98,
+          "label": 3
+        },
+        {
+          "id": "fm-react-award",
+          "score": 97,
+          "label": 3
+        },
+        {
+          "id": "fm-react-cross",
+          "score": 97,
+          "label": 3
+        },
+        {
+          "id": "fm-react-none",
+          "score": 97,
+          "label": 3
+        },
+        {
+          "id": "fm-react-unverified",
+          "score": 97,
+          "label": 3
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную.",
+        "Отрицание не даёт положительного балла: Backend. Это не фильтр исключения кандидатов; проверьте условие вручную."
+      ],
+      "parserExpectations": {}
+    },
+    {
+      "id": "h12-conflicting-experience",
+      "split": "heldout",
+      "need": "Backend Middle Python SQL; опыт от 5 до 3 лет",
+      "tags": [
+        "contradictory-range",
+        "manual-review"
+      ],
+      "precisionAt5": 1,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 1,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "bm-py-award",
+          "score": 97,
+          "label": 3
+        },
+        {
+          "id": "bm-py-none",
+          "score": 97,
+          "label": 3
+        },
+        {
+          "id": "bs-py-award",
+          "score": 81,
+          "label": 2
+        },
+        {
+          "id": "bs-py-none",
+          "score": 81,
+          "label": 2
+        },
+        {
+          "id": "bm-about-only",
+          "score": 79,
+          "label": 2
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную.",
+        "Верхняя граница стажа автоматически не применяется. Проверьте её вручную.",
+        "Противоречивые границы стажа: опыт не влияет на балл до уточнения."
+      ],
+      "parserExpectations": {
+        "requiresWarning": true,
+        "expectedMinExperience": null,
+        "reason": "Невозможный диапазон 5..3 лет."
+      }
+    }
+  ]
+}

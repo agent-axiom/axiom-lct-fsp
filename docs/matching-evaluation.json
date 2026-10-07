@@ -1,0 +1,321 @@
+{
+  "dataset": "Synthetic developer-authored relevance suite v2",
+  "disclaimer": "Small synthetic regression fixture authored with the implementation. No independent expert labels, held-out sample, hiring outcome data, or psychometric validation.",
+  "queries": 12,
+  "candidates": 10,
+  "metricDefinitions": {
+    "precisionAt5": "Count of items with relevance > 0 divided by 5; unfilled positions count as nonrelevant.",
+    "ndcgAt5": "DCG using gain 2^relevance - 1, divided by ideal DCG at 5."
+  },
+  "v1": {
+    "precisionAt5": 0.6,
+    "ndcgAt5": 0.6176844315309218
+  },
+  "v2": {
+    "precisionAt5": 0.9500000000000001,
+    "ndcgAt5": 1
+  },
+  "cases": [
+    {
+      "id": "junior-backend",
+      "query": "Нужен Junior Backend-разработчик",
+      "v1": {
+        "precisionAt5": 0.6,
+        "ndcgAt5": 0.33045054282876823,
+        "top": [
+          "b-m-high",
+          "f-m",
+          "b-s",
+          "f-s-css",
+          "b-j-sql"
+        ]
+      },
+      "v2": {
+        "precisionAt5": 1,
+        "ndcgAt5": 1,
+        "top": [
+          "b-j-sql",
+          "b-j",
+          "b-m-high",
+          "b-s",
+          "b-m"
+        ]
+      }
+    },
+    {
+      "id": "senior-frontend",
+      "query": "Нужен Senior Frontend-разработчик",
+      "v1": {
+        "precisionAt5": 0.4,
+        "ndcgAt5": 0.2862929860160984,
+        "top": [
+          "b-m-high",
+          "f-m",
+          "b-s",
+          "f-s-css",
+          "b-j-sql"
+        ]
+      },
+      "v2": {
+        "precisionAt5": 1,
+        "ndcgAt5": 1,
+        "top": [
+          "f-s-css",
+          "f-s",
+          "f-m",
+          "f-m-react",
+          "f-j"
+        ]
+      }
+    },
+    {
+      "id": "middle-backend",
+      "query": "Ищем middle бэкенд",
+      "v1": {
+        "precisionAt5": 0.6,
+        "ndcgAt5": 0.6193520884742489,
+        "top": [
+          "b-m-high",
+          "f-m",
+          "b-s",
+          "f-s-css",
+          "b-j-sql"
+        ]
+      },
+      "v2": {
+        "precisionAt5": 1,
+        "ndcgAt5": 1,
+        "top": [
+          "b-m-high",
+          "b-m",
+          "b-s",
+          "b-j-sql",
+          "b-j"
+        ]
+      }
+    },
+    {
+      "id": "junior-frontend",
+      "query": "Нужен джун фронтенд",
+      "v1": {
+        "precisionAt5": 0.4,
+        "ndcgAt5": 0.11863565531691166,
+        "top": [
+          "b-m-high",
+          "f-m",
+          "b-s",
+          "f-s-css",
+          "b-j-sql"
+        ]
+      },
+      "v2": {
+        "precisionAt5": 1,
+        "ndcgAt5": 1,
+        "top": [
+          "f-j",
+          "f-m",
+          "f-m-react",
+          "f-s",
+          "f-s-css"
+        ]
+      }
+    },
+    {
+      "id": "python-sql",
+      "query": "Python SQL backend",
+      "v1": {
+        "precisionAt5": 0.8,
+        "ndcgAt5": 0.9788813866706703,
+        "top": [
+          "b-m-high",
+          "b-s",
+          "b-m",
+          "b-j"
+        ]
+      },
+      "v2": {
+        "precisionAt5": 1,
+        "ndcgAt5": 1,
+        "top": [
+          "b-m-high",
+          "b-s",
+          "b-m",
+          "b-j",
+          "b-j-sql"
+        ]
+      }
+    },
+    {
+      "id": "react-typescript",
+      "query": "Frontend React TypeScript",
+      "v1": {
+        "precisionAt5": 0.8,
+        "ndcgAt5": 0.9788813866706703,
+        "top": [
+          "f-m",
+          "f-m-react",
+          "f-s",
+          "f-j"
+        ]
+      },
+      "v2": {
+        "precisionAt5": 1,
+        "ndcgAt5": 1,
+        "top": [
+          "f-m",
+          "f-m-react",
+          "f-s",
+          "f-j",
+          "f-s-css"
+        ]
+      }
+    },
+    {
+      "id": "senior-css",
+      "query": "Senior Frontend CSS Accessibility",
+      "v1": {
+        "precisionAt5": 0.4,
+        "ndcgAt5": 0.33623801165157113,
+        "top": [
+          "b-m-high",
+          "f-m",
+          "b-s",
+          "f-s-css",
+          "b-j-sql"
+        ]
+      },
+      "v2": {
+        "precisionAt5": 1,
+        "ndcgAt5": 1,
+        "top": [
+          "f-s-css",
+          "f-s",
+          "f-m",
+          "f-j",
+          "f-m-react"
+        ]
+      }
+    },
+    {
+      "id": "backend-senior-python",
+      "query": "Senior Backend Python SQL",
+      "v1": {
+        "precisionAt5": 0.8,
+        "ndcgAt5": 0.845660664674938,
+        "top": [
+          "b-m-high",
+          "b-s",
+          "b-m",
+          "b-j"
+        ]
+      },
+      "v2": {
+        "precisionAt5": 1,
+        "ndcgAt5": 1,
+        "top": [
+          "b-s",
+          "b-m-high",
+          "b-m",
+          "b-j",
+          "b-j-sql"
+        ]
+      }
+    },
+    {
+      "id": "experience",
+      "query": "Frontend от 5 лет",
+      "v1": {
+        "precisionAt5": 0.4,
+        "ndcgAt5": 0.33623801165157113,
+        "top": [
+          "b-m-high",
+          "f-m",
+          "b-s",
+          "f-s-css",
+          "b-j-sql"
+        ]
+      },
+      "v2": {
+        "precisionAt5": 1,
+        "ndcgAt5": 1,
+        "top": [
+          "f-s-css",
+          "f-s",
+          "f-m",
+          "f-m-react",
+          "f-j"
+        ]
+      }
+    },
+    {
+      "id": "junior-python",
+      "query": "Junior Backend Python",
+      "v1": {
+        "precisionAt5": 0.8,
+        "ndcgAt5": 0.7793059128973413,
+        "top": [
+          "b-m-high",
+          "b-s",
+          "b-m",
+          "b-j"
+        ]
+      },
+      "v2": {
+        "precisionAt5": 1,
+        "ndcgAt5": 1,
+        "top": [
+          "b-j",
+          "b-m-high",
+          "b-s",
+          "b-m",
+          "b-j-sql"
+        ]
+      }
+    },
+    {
+      "id": "strict-filter",
+      "query": "Backend Python SQL",
+      "v1": {
+        "precisionAt5": 0.4,
+        "ndcgAt5": 1,
+        "top": [
+          "b-m-high",
+          "b-m"
+        ]
+      },
+      "v2": {
+        "precisionAt5": 0.4,
+        "ndcgAt5": 1,
+        "top": [
+          "b-m-high",
+          "b-m"
+        ]
+      }
+    },
+    {
+      "id": "no-fsp-priority",
+      "query": "Senior Frontend React",
+      "v1": {
+        "precisionAt5": 0.8,
+        "ndcgAt5": 0.8022765315182716,
+        "top": [
+          "f-m",
+          "f-m-react",
+          "f-s",
+          "f-j"
+        ]
+      },
+      "v2": {
+        "precisionAt5": 1,
+        "ndcgAt5": 1,
+        "top": [
+          "f-s",
+          "f-m",
+          "f-m-react",
+          "f-j",
+          "f-s-css"
+        ]
+      }
+    }
+  ]
+}

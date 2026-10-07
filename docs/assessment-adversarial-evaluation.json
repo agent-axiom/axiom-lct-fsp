@@ -1,0 +1,787 @@
+{
+  "assessmentVersion": 3,
+  "disclaimer": "Developer-authored synthetic adversarial checks. Seed/recipe repetitions are correlated, not independent cases or expert/psychometric validation. The second seed interval was not used when authoring the bank; recipe families remain known. Public DTOs only are supplied to the recipes.",
+  "totalRecipeAttemptEvaluations": 108000,
+  "rows": [
+    {
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seedInterval": [
+        0,
+        1000
+      ],
+      "attemptsPerRecipe": 1000,
+      "stats": {
+        "old_first_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "old_first_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 25,
+          "totalScore": 3999
+        },
+        "last_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 25,
+          "totalScore": 4122
+        },
+        "longest_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 8,
+          "totalScore": 3072
+        },
+        "always_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "always_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_number": {
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 42,
+          "totalScore": 16285
+        },
+        "last_number": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 7313
+        }
+      }
+    },
+    {
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seedInterval": [
+        900001,
+        901001
+      ],
+      "attemptsPerRecipe": 1000,
+      "stats": {
+        "old_first_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "old_first_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 25,
+          "totalScore": 3923
+        },
+        "last_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 25,
+          "totalScore": 3988
+        },
+        "longest_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 8,
+          "totalScore": 2840
+        },
+        "always_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "always_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_number": {
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 42,
+          "totalScore": 16200
+        },
+        "last_number": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 25,
+          "totalScore": 7227
+        }
+      }
+    },
+    {
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seedInterval": [
+        0,
+        1000
+      ],
+      "attemptsPerRecipe": 1000,
+      "stats": {
+        "old_first_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "old_first_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 7293
+        },
+        "last_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 7379
+        },
+        "longest_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 8608
+        },
+        "always_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "always_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_number": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 7536
+        },
+        "last_number": {
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 42,
+          "totalScore": 18252
+        }
+      }
+    },
+    {
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seedInterval": [
+        900001,
+        901001
+      ],
+      "attemptsPerRecipe": 1000,
+      "stats": {
+        "old_first_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "old_first_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 6914
+        },
+        "last_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 6848
+        },
+        "longest_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 7777
+        },
+        "always_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "always_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_number": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 7184
+        },
+        "last_number": {
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 42,
+          "totalScore": 17940
+        }
+      }
+    },
+    {
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seedInterval": [
+        0,
+        1000
+      ],
+      "attemptsPerRecipe": 1000,
+      "stats": {
+        "old_first_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "old_first_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 13454
+        },
+        "last_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 13394
+        },
+        "longest_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 25,
+          "totalScore": 15534
+        },
+        "always_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "always_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 8,
+          "totalScore": 1944
+        },
+        "first_number": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 13454
+        },
+        "last_number": {
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 50,
+          "totalScore": 22406
+        }
+      }
+    },
+    {
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seedInterval": [
+        900001,
+        901001
+      ],
+      "attemptsPerRecipe": 1000,
+      "stats": {
+        "old_first_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "old_first_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 13368
+        },
+        "last_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 13731
+        },
+        "longest_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 25,
+          "totalScore": 15536
+        },
+        "always_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "always_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 8,
+          "totalScore": 2248
+        },
+        "first_number": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 13368
+        },
+        "last_number": {
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 50,
+          "totalScore": 22351
+        }
+      }
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seedInterval": [
+        0,
+        1000
+      ],
+      "attemptsPerRecipe": 1000,
+      "stats": {
+        "old_first_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "old_first_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 9282
+        },
+        "last_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 9484
+        },
+        "longest_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 17,
+          "totalScore": 6068
+        },
+        "always_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 8,
+          "totalScore": 1960
+        },
+        "always_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 8,
+          "totalScore": 1968
+        },
+        "first_number": {
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 42,
+          "totalScore": 18044
+        },
+        "last_number": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 9874
+        }
+      }
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seedInterval": [
+        900001,
+        901001
+      ],
+      "attemptsPerRecipe": 1000,
+      "stats": {
+        "old_first_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "old_first_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 9170
+        },
+        "last_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 9414
+        },
+        "longest_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 17,
+          "totalScore": 6448
+        },
+        "always_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 8,
+          "totalScore": 1928
+        },
+        "always_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 8,
+          "totalScore": 2000
+        },
+        "first_number": {
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 42,
+          "totalScore": 17929
+        },
+        "last_number": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 9815
+        }
+      }
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seedInterval": [
+        0,
+        1000
+      ],
+      "attemptsPerRecipe": 1000,
+      "stats": {
+        "old_first_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "old_first_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 12541
+        },
+        "last_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 12578
+        },
+        "longest_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 12674
+        },
+        "always_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "always_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 8,
+          "totalScore": 1960
+        },
+        "first_number": {
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 42,
+          "totalScore": 20900
+        },
+        "last_number": {
+          "passes": 0,
+          "minScore": 17,
+          "maxScore": 58,
+          "totalScore": 29697
+        }
+      }
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seedInterval": [
+        900001,
+        901001
+      ],
+      "attemptsPerRecipe": 1000,
+      "stats": {
+        "old_first_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "old_first_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 12669
+        },
+        "last_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 12322
+        },
+        "longest_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 12515
+        },
+        "always_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "always_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 8,
+          "totalScore": 1928
+        },
+        "first_number": {
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 42,
+          "totalScore": 21055
+        },
+        "last_number": {
+          "passes": 0,
+          "minScore": 17,
+          "maxScore": 58,
+          "totalScore": 30009
+        }
+      }
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seedInterval": [
+        0,
+        1000
+      ],
+      "attemptsPerRecipe": 1000,
+      "stats": {
+        "old_first_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "old_first_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 16963
+        },
+        "last_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 16401
+        },
+        "longest_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 17585
+        },
+        "always_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 17,
+          "totalScore": 3909
+        },
+        "always_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 17,
+          "totalScore": 4022
+        },
+        "first_number": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 50,
+          "totalScore": 19491
+        },
+        "last_number": {
+          "passes": 0,
+          "minScore": 17,
+          "maxScore": 58,
+          "totalScore": 38402
+        }
+      }
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seedInterval": [
+        900001,
+        901001
+      ],
+      "attemptsPerRecipe": 1000,
+      "stats": {
+        "old_first_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "old_first_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0
+        },
+        "first_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 16867
+        },
+        "last_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 16509
+        },
+        "longest_option": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 17449
+        },
+        "always_yes": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 17,
+          "totalScore": 4472
+        },
+        "always_no": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 17,
+          "totalScore": 3886
+        },
+        "first_number": {
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 58,
+          "totalScore": 19282
+        },
+        "last_number": {
+          "passes": 0,
+          "minScore": 17,
+          "maxScore": 58,
+          "totalScore": 38434
+        }
+      }
+    }
+  ]
+}
