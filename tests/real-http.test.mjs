@@ -19,3 +19,12 @@ test('incomplete live email settings return a stable 503 before HTTP enrollment 
     assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM real_accounts').first()).n,0);
   }finally{db.close();}
 });
+
+test('draft partition is derived from the trusted account principal, never from a client hint or credential',async()=>{
+ const db=sqliteD1();try{
+  const get=async(who,headers={})=>(await handleAccountRequest(new Request('https://example.test/api/account/state',{headers}),{principal:who,db,config})).json();
+  const first=await get(principal),other=await get({issuer:'test',subject:'mallory'});assert.match(first.draftIdentity,/^[a-f0-9]{64}$/);assert.notEqual(first.draftIdentity,other.draftIdentity);
+  assert.equal((await get(principal,{'draft-identity':other.draftIdentity,cookie:'fsp_actor=mallory'})).draftIdentity,first.draftIdentity);
+  const forged=await handleAccountRequest(new Request('https://example.test/api/account/state',{headers:{'draft-identity':first.draftIdentity}}),{principal:null,db,config});assert.equal(forged.status,401);
+ }finally{db.close();}
+});

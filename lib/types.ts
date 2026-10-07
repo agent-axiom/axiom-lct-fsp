@@ -13,7 +13,7 @@ export interface Assessment { id: string; specialization: string; grade: string;
 export interface SearchFilters { need: string; specialization: string; grade: string; skills: string; fsp: boolean }
 export interface Requirements { specialization: string; grade: string; skills: string[]; skillGroups?: string[][]; minExperience: number | null; warnings: string[] }
 export interface SearchHistory { id: string; filters: SearchFilters; candidateIds: string[]; at: number }
-export interface WorkspaceData { guest?: {expiresAt:number;ephemeral:boolean;created:boolean}; user: User; invitations: Invitation[]; accounts: Pick<User, 'id' | 'name' | 'role'>[]; outbox: { userId: string; code: string; label: string }[]; searches: SearchHistory[]; test?: Assessment; error?: string }
+export interface WorkspaceData { draftIdentity?: string; guest?: {expiresAt:number;ephemeral:boolean;created:boolean}; user: User; invitations: Invitation[]; accounts: Pick<User, 'id' | 'name' | 'role'>[]; outbox: { userId: string; code: string; label: string }[]; searches: SearchHistory[]; test?: Assessment; error?: string }
 export interface ActionResult { error?: string; verificationError?: string; candidates: Candidate[]; requirements: Requirements; score: number; message: string; test: Assessment }
 export interface ProfileForm { about: string; experience: string | number; softSkills: string; contact: string; published: boolean; consent: boolean }
 export interface CompanyForm { company: string; description: string; contact: string }

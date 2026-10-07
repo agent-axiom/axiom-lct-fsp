@@ -22,3 +22,13 @@ test('same-session concurrent writes retain both updates through compare-and-swa
 test('homepage uses optional identity and guest mode, without fake platform headers or a forced sign-in',()=>{const page=readFileSync(new URL('../app/page.tsx',import.meta.url),'utf8'),route=readFileSync(new URL('../app/api/guest/[...path]/route.ts',import.meta.url),'utf8'),ui=readFileSync(new URL('../app/workspace.tsx',import.meta.url),'utf8');assert.ok(page.includes('getChatGPTUser'));assert.ok(!page.includes('requireChatGPTUser'));assert.ok(page.includes('guest={!user}'));assert.ok(!route.includes('oai-authenticated-user')&&!route.includes('getChatGPTUser'));assert.ok(ui.includes("guest?'/api/guest':'/api'"));assert.ok(ui.includes('Гостевое демо без входа'));assert.ok(ui.includes('target="_top"'));assert.ok(ui.includes("action:'reset-demo',confirm:true"));});
 
 test('oversized guest state is rejected without replacing the last valid state',async()=>{const db=sqliteD1();try{const c=client(db);await c.request();const hash=await guestTokenHash(c.jar.get(GUEST_COOKIE)),repository=new GuestDemoRepository(db);await assert.rejects(repository.mutate(hash,s=>{s.users[0].about='x'.repeat(GUEST_LIMITS.stateBytes);return {ok:true};},now),e=>e.status===413);assert.ok((await c.request()).data.user.about.length<200);assert.equal((await post(c,{action:'reset-demo',confirm:true})).status,200);}finally{db.close();}});
+
+test('draft partition is stable only for the resolved guest session and never exposes or authorizes its cookie',async()=>{
+ const db=sqliteD1();try{
+  const a=client(db),b=client(db),first=(await a.request()).data,second=(await b.request()).data;
+  assert.match(first.draftIdentity,/^[a-f0-9]{64}$/);assert.notEqual(first.draftIdentity,second.draftIdentity);assert.equal((await a.request()).data.draftIdentity,first.draftIdentity);
+  const token=a.jar.get(GUEST_COOKIE),hash=await guestTokenHash(token);assert.notEqual(first.draftIdentity,token);assert.notEqual(first.draftIdentity,hash);
+  const forged=client(db);forged.jar.set(GUEST_COOKIE,first.draftIdentity);assert.equal((await post(forged,{action:'switch',id:'demo-employer'})).status,401);
+  assert.notEqual((await a.request('/api/guest/state',undefined,{now:now+GUEST_TTL})).data.draftIdentity,first.draftIdentity);
+ }finally{db.close();}
+});
