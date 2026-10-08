@@ -24,3 +24,57 @@ test('normalized hiring scenario persists evidence and exposes contact only afte
 test('repository stale CAS cannot overwrite another committed account profile',async()=>{const f=fixture();try{await enrolled(f,'alice');const left=await f.service.repository.snapshot(),right=await f.service.repository.snapshot();left.state.users[0].about='left';right.state.users[0].about='right';await f.service.repository.save(left,left.state);await assert.rejects(f.service.repository.save(right,right.state),error=>error.status===409);assert.equal((await f.service.repository.snapshot()).state.users[0].about,'left');}finally{f.db.close();}});
 test('email rate limits operate on normalized database records',async()=>{const f=fixture();try{const now=Date.now();await enrolled(f,'alice','candidate',now);await assert.rejects(f.service.execute(principal('alice'),{action:'email-request'},now+1),error=>error.status===429);for(let i=1;i<5;i++)await f.service.execute(principal('alice'),{action:'email-request'},now+i*60000);await assert.rejects(f.service.execute(principal('alice'),{action:'email-request'},now+5*60000),error=>error.status===429);}finally{f.db.close();}});
 test('scoped reads exclude unrelated unpublished accounts and use actual query indexes',async()=>{const f=fixture();try{await enrolled(f,'alice');await enrolled(f,'bob');await enrolled(f,'company','employer');const view=await f.service.repository.snapshot(principal('alice'));assert.deepEqual(view.state.users.map(u=>u.email),['alice@example.test']);const employer=await f.service.repository.snapshot(principal('company'));assert.deepEqual(employer.state.users.map(u=>u.email),['company@example.test']);const plan=await f.db.prepare("EXPLAIN QUERY PLAN SELECT * FROM real_candidate_profiles WHERE published=1 AND consent=1 AND category_confirmed=1").all();assert.ok(plan.results.some(row=>row.detail.includes('real_candidates_visibility')));}finally{f.db.close();}});
+
+const invalidLiveSettings=[
+  ['missing API key',{resendApiKey:''}],
+  ['blank sender',{sender:'   '}],
+  ['missing token secret',{tokenSecret:''}],
+  ['short token secret',{tokenSecret:'too-short'}],
+  ['blank token secret',{tokenSecret:' '.repeat(32)}],
+  ['missing origin',{siteOrigin:''}],
+  ['malformed origin',{siteOrigin:'not-a-url'}],
+  ['HTTP origin',{siteOrigin:'http://example.test'}],
+  ['origin with path',{siteOrigin:'https://example.test/account'}],
+  ['origin with query',{siteOrigin:'https://example.test/?query=1'}],
+  ['origin with fragment',{siteOrigin:'https://example.test/#fragment'}],
+  ['origin with credentials',{siteOrigin:'https://synthetic:unused@example.test'}],
+];
+for(const [label,override] of invalidLiveSettings){
+  test(`live enrollment fails before writing account or email records: ${label}`,async()=>{
+    const f=fixture({emailMode:'live',...override});
+    try{
+      await assert.rejects(enrolled(f,'alice'),error=>error.status===503);
+      for(const table of ['real_accounts','real_candidate_profiles','real_email_challenges','real_email_outbox'])assert.equal((await f.db.prepare(`SELECT COUNT(*) AS n FROM ${table}`).first()).n,0);
+      assert.equal((await f.db.prepare("SELECT revision FROM real_revisions WHERE id='main'").first()).revision,0);
+    }finally{f.db.close();}
+  });
+  test(`live resend fails without changing existing records: ${label}`,async()=>{
+    const f=fixture({emailMode:'live'}),now=Date.now();
+    try{
+      await enrolled(f,'alice','candidate',now);
+      const before=await f.db.prepare("SELECT revision FROM real_revisions WHERE id='main'").first();
+      Object.assign(f.settings,override);
+      await assert.rejects(f.service.execute(principal('alice'),{action:'email-request'},now+60000),error=>error.status===503);
+      for(const table of ['real_email_challenges','real_email_outbox'])assert.equal((await f.db.prepare(`SELECT COUNT(*) AS n FROM ${table}`).first()).n,1);
+      assert.equal((await f.db.prepare("SELECT revision FROM real_revisions WHERE id='main'").first()).revision,before.revision);
+    }finally{f.db.close();}
+  });
+}
+test('OFF enrollment still works without delivery configuration and creates no email job without a token secret',async()=>{
+  const f=fixture({resendApiKey:'',sender:'',siteOrigin:'',tokenSecret:''});
+  try{
+    assert.equal((await enrolled(f,'alice')).emailStatus,'not_configured');
+    assert.equal((await f.db.prepare('SELECT COUNT(*) AS n FROM real_accounts').first()).n,1);
+    assert.equal((await f.db.prepare('SELECT COUNT(*) AS n FROM real_email_outbox').first()).n,0);
+  }finally{f.db.close();}
+});
+test('an email configuration outage does not block existing verified account state or role actions',async()=>{
+  const f=fixture({emailMode:'live'}),now=Date.now();
+  try{
+    await enrolled(f,'company','employer',now);await verify(f,'company',now+1);
+    Object.assign(f.settings,{resendApiKey:'',sender:'',siteOrigin:'',tokenSecret:''});
+    assert.equal((await f.service.state(principal('company'))).user.verified,true);
+    assert.equal((await f.service.execute(principal('company'),{action:'company',company:'Synthetic company'})).ok,true);
+    assert.equal((await f.service.execute(principal('company'),{action:'email-request'})).emailStatus,'verified');
+  }finally{f.db.close();}
+});
