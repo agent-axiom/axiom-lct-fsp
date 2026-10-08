@@ -5179,6 +5179,11 @@
           },
           "demo": {
             "type": "boolean"
+          },
+          "draftIdentity": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Opaque, non-authorizing partition for a tab-local assessment draft. Derived from the trusted principal or resolved guest session; never accepted as authentication."
           }
         },
         "required": [
@@ -5374,6 +5379,11 @@
               "type": "object",
               "properties": {}
             }
+          },
+          "draftIdentity": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Opaque, non-authorizing partition for a tab-local assessment draft. Derived from the trusted principal or resolved guest session; never accepted as authentication."
           }
         },
         "required": [
@@ -5844,6 +5854,11 @@
               "ephemeral",
               "created"
             ]
+          },
+          "draftIdentity": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Opaque, non-authorizing partition for a tab-local assessment draft. Derived from the trusted principal or resolved guest session; never accepted as authentication."
           }
         },
         "required": [
