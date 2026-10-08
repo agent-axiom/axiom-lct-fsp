@@ -6,6 +6,8 @@
 
 На этом исходнике прошли 195 тестов, typecheck, lint, production build, миграции и настоящий локальный HTTP-запуск. [CI проверенного merge-коммита](https://github.com/agent-axiom/axiom-lct-fsp/actions/runs/37734640908). Результат относится к указанному коммиту; для последующих изменений проверяйте их собственный CI.
 
+В изолированном изменении request-time email-dispatch полный набор вырос до 229 тестов, включая 34 новых HTTP/migration-проверки с синтетическими данными и mock транспорта. Typecheck, lint и сборка проходят; браузерный UI-прогон этого изменения заблокирован средой. Это не подтверждение реальной доставки. Методика и границы: [email-request-dispatch.md](email-request-dispatch.md).
+
 ```sh
 npm run install:ci
 npm test

@@ -29,6 +29,13 @@
       "when": 1791314948446,
       "tag": "0003_wild_tyrannus",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1791439329186,
+      "tag": "0004_email_payload_fingerprint",
+      "breakpoints": true
     }
   ]
 }

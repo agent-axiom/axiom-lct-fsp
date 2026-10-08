@@ -1831,7 +1831,7 @@
     "/api/account/action": {
       "post": {
         "summary": "Run a role-bound action in the normalized account store",
-        "description": "Disabled by default. Requires trusted platform subject and same-origin Origin. Role never comes from cookies/body. Registration requires affirmative consent to configured current privacy policy. Email challenge and outbox are written atomically. Outbox worker has no automatic schedule; provider dispatch requires separately approved configuration. For profile/company, client contact is ignored and the verified account email is used.",
+        "description": "Disabled by default. Requires trusted platform principal and same-origin Origin. Registration requires current privacy consent; replay preserves account role/email and reuses the newest existing challenge. Register, email-request and email-retry await at most one own-account, server-selected dispatch with a ten-second transport timeout. Retry reuses the exact payload/key and honors backoff/leases/five attempts. No public/global drain or automatic background retry exists. Provider sending requires separately approved configuration. For profile/company, client contact is ignored and the verified account email is used.",
         "requestBody": {
           "required": true,
           "content": {
@@ -2700,6 +2700,9 @@
                         "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
                       }
                     }
+                  },
+                  {
+                    "$ref": "#/components/schemas/EmailRetry"
                   }
                 ]
               }
@@ -5289,7 +5292,9 @@
         },
         "required": [
           "action"
-        ]
+        ],
+        "additionalProperties": false,
+        "description": "Create one fresh challenge under minute/hour limits and await at most one dispatch for that exact challenge. The previous accepted link is not superseded until the new delivery is accepted."
       },
       "EmailVerify": {
         "type": "object",
@@ -5325,7 +5330,20 @@
             "type": "boolean"
           },
           "emailStatus": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "verified",
+              "blocked",
+              "queued",
+              "leased",
+              "retry",
+              "sent",
+              "failed",
+              "cancelled",
+              "not_configured",
+              "not_requested"
+            ],
+            "description": "Provider acceptance is not inbox delivery. No automatic background retries are configured."
           },
           "message": {
             "type": "string"
@@ -5384,6 +5402,27 @@
             "type": "string",
             "pattern": "^[a-f0-9]{64}$",
             "description": "Opaque, non-authorizing partition for a tab-local assessment draft. Derived from the trusted principal or resolved guest session; never accepted as authentication."
+          },
+          "emailAttempts": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "emailRetryAllowed": {
+            "type": "boolean",
+            "description": "This existing attempt can be explicitly retried, no earlier than emailRetryAt. Server rechecks eligibility."
+          },
+          "emailRetryAt": {
+            "type": "integer",
+            "description": "Unix milliseconds when lease/backoff permits another explicit attempt; not a scheduled delivery."
+          },
+          "challengeId": {
+            "type": "string",
+            "description": "Own server-selected challenge identifier; never a mail-dispatch input."
+          },
+          "expiresAt": {
+            "type": "integer",
+            "description": "Challenge expiry in Unix milliseconds."
           }
         },
         "required": [
@@ -5403,13 +5442,28 @@
             "type": "string"
           },
           "emailStatus": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "verified",
+              "blocked",
+              "queued",
+              "leased",
+              "retry",
+              "sent",
+              "failed",
+              "cancelled",
+              "not_configured",
+              "not_requested"
+            ],
+            "description": "Provider acceptance is not inbox delivery. No automatic background retries are configured."
           },
           "challengeId": {
-            "type": "string"
+            "type": "string",
+            "description": "Own server-selected challenge identifier; never a mail-dispatch input."
           },
           "expiresAt": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Challenge expiry in Unix milliseconds."
           },
           "verificationError": {
             "type": "string"
@@ -5450,6 +5504,19 @@
           },
           "invitation": {
             "$ref": "#/components/schemas/Invitation"
+          },
+          "emailAttempts": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "emailRetryAllowed": {
+            "type": "boolean",
+            "description": "This existing attempt can be explicitly retried, no earlier than emailRetryAt. Server rechecks eligibility."
+          },
+          "emailRetryAt": {
+            "type": "integer",
+            "description": "Unix milliseconds when lease/backoff permits another explicit attempt; not a scheduled delivery."
           }
         }
       },
@@ -5868,6 +5935,19 @@
           "demo",
           "guest"
         ]
+      },
+      "EmailRetry": {
+        "type": "object",
+        "description": "Explicit retry of the newest existing challenge for the trusted principal. Does not create a challenge; honors lease, backoff, expiry and five-attempt cap. No client-selected recipient, account or challenge.",
+        "properties": {
+          "action": {
+            "const": "email-retry"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
       }
     },
     "securitySchemes": {
