@@ -1,0 +1,1 @@
+ALTER TABLE `real_invitations` ADD `salary_basis` text DEFAULT 'unspecified' NOT NULL;

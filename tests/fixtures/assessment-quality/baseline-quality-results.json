@@ -1,0 +1,2515 @@
+{
+  "schemaVersion": 1,
+  "runAt": "2026-10-06T18:22:11.755Z",
+  "assessmentVersion": 3,
+  "sourcePath": "../../fsp-source-recovery",
+  "sourceSHA256": "9de56bbd1d602a22ab5f00bdd21863a382baa63b2f4443974014d38ad0104d1c",
+  "corpusSHA256": "72185a9413de903d2dd1664c8ba15214cf7e8f00669101c281af6bd61d002750",
+  "originalEvaluatorSHA256": "d4596b5c3ed409ee6d4a221af7d3f05bd7c1a4991f44c55b0772a043b33554db",
+  "limitations": [
+    "Автор — AI-рецензент после чтения исходника, не независимая экспертная панель.",
+    "Все кандидаты и ответы синтетические; реальные люди, прокторинг, психометрическая калибровка и измерение качества найма отсутствуют.",
+    "Повторы seeds коррелированы. 144 шаблона и 108000 исходных recipe evaluations не являются независимой валидацией.",
+    "Memorization предполагает полученные ответы к учебному банку (например, утечка/совместная подготовка); не утверждает, что API раскрывает ключи.",
+    "Public DTO privacy — узкая проверка перечисленных полей; bundle/network/identity attacks здесь не проверялись."
+  ],
+  "referenceCheck": {
+    "cases": 144,
+    "accepted": 144,
+    "rejected": [],
+    "wrongAccepted": [],
+    "author": "AI assessment reviewer",
+    "independence": "Новые labels получены отдельной семантической реализацией; автор прочитал исходник. Нет слепой разметки, независимого человека-эксперта, реальных кандидатов или психометрической валидации. 144 строки представляют те же семейства исходного банка, а не 144 независимых компетенции."
+  },
+  "checkedVariantAnswers": 21600,
+  "keyDisagreements": [],
+  "rows": [
+    {
+      "specialization": "Backend",
+      "grade": "Junior",
+      "seedInterval": [
+        303000,
+        303300
+      ],
+      "variantCount": 300,
+      "uniqueConcepts": 24,
+      "totalQuestionOccurrences": 3600,
+      "uniquePublicTexts": 1282,
+      "uniqueTextAnswerPairs": 1282,
+      "duplicateTextOccurrences": 2318,
+      "textAnswerConflicts": 0,
+      "consecutiveConceptOverlap": {
+        "min": 8,
+        "max": 12,
+        "mean": 9.010033444816054,
+        "comparisons": 299
+      },
+      "perConcept": [
+        {
+          "id": "Algorithms-Junior-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 76
+        },
+        {
+          "id": "Python-Junior-knowledge-3",
+          "distinctTexts": 16,
+          "distinctAnswers": 16,
+          "occurrences": 63
+        },
+        {
+          "id": "SQL-Junior-applied-1",
+          "distinctTexts": 110,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "Python-Junior-applied-1",
+          "distinctTexts": 107,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "HTTP-Junior-applied-1",
+          "distinctTexts": 109,
+          "distinctAnswers": 7,
+          "occurrences": 300
+        },
+        {
+          "id": "Algorithms-Junior-applied-1",
+          "distinctTexts": 112,
+          "distinctAnswers": 1,
+          "occurrences": 300
+        },
+        {
+          "id": "SQL-Junior-knowledge-1",
+          "distinctTexts": 57,
+          "distinctAnswers": 17,
+          "occurrences": 87
+        },
+        {
+          "id": "SQL-Junior-applied-0",
+          "distinctTexts": 110,
+          "distinctAnswers": 68,
+          "occurrences": 300
+        },
+        {
+          "id": "Python-Junior-applied-0",
+          "distinctTexts": 107,
+          "distinctAnswers": 81,
+          "occurrences": 300
+        },
+        {
+          "id": "Algorithms-Junior-applied-0",
+          "distinctTexts": 112,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "HTTP-Junior-applied-0",
+          "distinctTexts": 109,
+          "distinctAnswers": 28,
+          "occurrences": 300
+        },
+        {
+          "id": "HTTP-Junior-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 97
+        },
+        {
+          "id": "HTTP-Junior-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 66
+        },
+        {
+          "id": "SQL-Junior-knowledge-3",
+          "distinctTexts": 62,
+          "distinctAnswers": 2,
+          "occurrences": 78
+        },
+        {
+          "id": "Algorithms-Junior-knowledge-0",
+          "distinctTexts": 20,
+          "distinctAnswers": 20,
+          "occurrences": 72
+        },
+        {
+          "id": "Python-Junior-knowledge-1",
+          "distinctTexts": 52,
+          "distinctAnswers": 2,
+          "occurrences": 68
+        },
+        {
+          "id": "Algorithms-Junior-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 78
+        },
+        {
+          "id": "Algorithms-Junior-knowledge-2",
+          "distinctTexts": 59,
+          "distinctAnswers": 45,
+          "occurrences": 74
+        },
+        {
+          "id": "Python-Junior-knowledge-2",
+          "distinctTexts": 63,
+          "distinctAnswers": 9,
+          "occurrences": 86
+        },
+        {
+          "id": "SQL-Junior-knowledge-0",
+          "distinctTexts": 53,
+          "distinctAnswers": 22,
+          "occurrences": 69
+        },
+        {
+          "id": "HTTP-Junior-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 73
+        },
+        {
+          "id": "Python-Junior-knowledge-0",
+          "distinctTexts": 17,
+          "distinctAnswers": 17,
+          "occurrences": 83
+        },
+        {
+          "id": "SQL-Junior-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 66
+        },
+        {
+          "id": "HTTP-Junior-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 64
+        }
+      ],
+      "archetypes": {
+        "strong_reference": {
+          "attempts": 300,
+          "passes": 300,
+          "minScore": 100,
+          "maxScore": 100,
+          "totalScore": 30000,
+          "passRate": 1,
+          "meanScore": 100
+        },
+        "weak_no_answers": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0,
+          "passRate": 0,
+          "meanScore": 0
+        },
+        "blind_first_choice": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 25,
+          "totalScore": 1185,
+          "passRate": 0,
+          "meanScore": 3.95
+        },
+        "partial_all_applied_no_knowledge": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 67,
+          "maxScore": 67,
+          "totalScore": 20100,
+          "passRate": 0,
+          "meanScore": 67
+        },
+        "partial_all_applied_one_knowledge_family": {
+          "attempts": 300,
+          "passes": 203,
+          "minScore": 67,
+          "maxScore": 100,
+          "totalScore": 22432,
+          "passRate": 0.6766666666666666,
+          "meanScore": 74.77333333333333
+        },
+        "partial_all_applied_two_knowledge_families": {
+          "attempts": 300,
+          "passes": 279,
+          "minScore": 67,
+          "maxScore": 100,
+          "totalScore": 25152,
+          "passRate": 0.93,
+          "meanScore": 83.84
+        },
+        "partial_one_skill_missing": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 75,
+          "maxScore": 75,
+          "totalScore": 22500,
+          "passRate": 0,
+          "meanScore": 75
+        },
+        "partial_one_skill_one_correct": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 83,
+          "maxScore": 83,
+          "totalScore": 24900,
+          "passRate": 0,
+          "meanScore": 83
+        },
+        "borderline_3_2_2_2": {
+          "attempts": 300,
+          "passes": 300,
+          "minScore": 75,
+          "maxScore": 75,
+          "totalScore": 22500,
+          "passRate": 1,
+          "meanScore": 75
+        },
+        "borderline_2_2_2_2": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 67,
+          "maxScore": 67,
+          "totalScore": 20100,
+          "passRate": 0,
+          "meanScore": 67
+        }
+      },
+      "memorization": [
+        {
+          "trainingAttempts": 1,
+          "memorizedExactPrompts": 12,
+          "recognized": 89,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 720,
+          "passRate": 0,
+          "meanScore": 2.4
+        },
+        {
+          "trainingAttempts": 5,
+          "memorizedExactPrompts": 58,
+          "recognized": 570,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 58,
+          "totalScore": 4748,
+          "passRate": 0,
+          "meanScore": 15.826666666666666
+        },
+        {
+          "trainingAttempts": 20,
+          "memorizedExactPrompts": 195,
+          "recognized": 972,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 75,
+          "totalScore": 8094,
+          "passRate": 0,
+          "meanScore": 26.98
+        },
+        {
+          "trainingAttempts": 100,
+          "memorizedExactPrompts": 715,
+          "recognized": 2132,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 32,
+          "minScore": 8,
+          "maxScore": 100,
+          "totalScore": 17767,
+          "passRate": 0.10666666666666667,
+          "meanScore": 59.223333333333336
+        },
+        {
+          "trainingAttempts": 500,
+          "memorizedExactPrompts": 1460,
+          "recognized": 3390,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 278,
+          "minScore": 58,
+          "maxScore": 100,
+          "totalScore": 28272,
+          "passRate": 0.9266666666666666,
+          "meanScore": 94.24
+        }
+      ]
+    },
+    {
+      "specialization": "Backend",
+      "grade": "Middle",
+      "seedInterval": [
+        303000,
+        303300
+      ],
+      "variantCount": 300,
+      "uniqueConcepts": 24,
+      "totalQuestionOccurrences": 3600,
+      "uniquePublicTexts": 983,
+      "uniqueTextAnswerPairs": 983,
+      "duplicateTextOccurrences": 2617,
+      "textAnswerConflicts": 0,
+      "consecutiveConceptOverlap": {
+        "min": 8,
+        "max": 12,
+        "mean": 9.010033444816054,
+        "comparisons": 299
+      },
+      "perConcept": [
+        {
+          "id": "Algorithms-Middle-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 76
+        },
+        {
+          "id": "Python-Middle-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 63
+        },
+        {
+          "id": "SQL-Middle-applied-1",
+          "distinctTexts": 110,
+          "distinctAnswers": 22,
+          "occurrences": 300
+        },
+        {
+          "id": "Python-Middle-applied-1",
+          "distinctTexts": 107,
+          "distinctAnswers": 22,
+          "occurrences": 300
+        },
+        {
+          "id": "HTTP-Middle-applied-1",
+          "distinctTexts": 17,
+          "distinctAnswers": 1,
+          "occurrences": 300
+        },
+        {
+          "id": "Algorithms-Middle-applied-1",
+          "distinctTexts": 112,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "SQL-Middle-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 87
+        },
+        {
+          "id": "SQL-Middle-applied-0",
+          "distinctTexts": 110,
+          "distinctAnswers": 68,
+          "occurrences": 300
+        },
+        {
+          "id": "Python-Middle-applied-0",
+          "distinctTexts": 17,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "Algorithms-Middle-applied-0",
+          "distinctTexts": 69,
+          "distinctAnswers": 6,
+          "occurrences": 300
+        },
+        {
+          "id": "HTTP-Middle-applied-0",
+          "distinctTexts": 109,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "HTTP-Middle-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 97
+        },
+        {
+          "id": "HTTP-Middle-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 66
+        },
+        {
+          "id": "SQL-Middle-knowledge-3",
+          "distinctTexts": 62,
+          "distinctAnswers": 22,
+          "occurrences": 78
+        },
+        {
+          "id": "Algorithms-Middle-knowledge-0",
+          "distinctTexts": 17,
+          "distinctAnswers": 17,
+          "occurrences": 72
+        },
+        {
+          "id": "Python-Middle-knowledge-1",
+          "distinctTexts": 52,
+          "distinctAnswers": 1,
+          "occurrences": 68
+        },
+        {
+          "id": "Algorithms-Middle-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 78
+        },
+        {
+          "id": "Algorithms-Middle-knowledge-2",
+          "distinctTexts": 59,
+          "distinctAnswers": 22,
+          "occurrences": 74
+        },
+        {
+          "id": "Python-Middle-knowledge-2",
+          "distinctTexts": 63,
+          "distinctAnswers": 7,
+          "occurrences": 86
+        },
+        {
+          "id": "SQL-Middle-knowledge-0",
+          "distinctTexts": 53,
+          "distinctAnswers": 40,
+          "occurrences": 69
+        },
+        {
+          "id": "HTTP-Middle-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 73
+        },
+        {
+          "id": "Python-Middle-knowledge-0",
+          "distinctTexts": 17,
+          "distinctAnswers": 17,
+          "occurrences": 83
+        },
+        {
+          "id": "SQL-Middle-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 66
+        },
+        {
+          "id": "HTTP-Middle-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 64
+        }
+      ],
+      "archetypes": {
+        "strong_reference": {
+          "attempts": 300,
+          "passes": 300,
+          "minScore": 100,
+          "maxScore": 100,
+          "totalScore": 30000,
+          "passRate": 1,
+          "meanScore": 100
+        },
+        "weak_no_answers": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0,
+          "passRate": 0,
+          "meanScore": 0
+        },
+        "blind_first_choice": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 2189,
+          "passRate": 0,
+          "meanScore": 7.296666666666667
+        },
+        "partial_all_applied_no_knowledge": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 67,
+          "maxScore": 67,
+          "totalScore": 20100,
+          "passRate": 0,
+          "meanScore": 67
+        },
+        "partial_all_applied_one_knowledge_family": {
+          "attempts": 300,
+          "passes": 203,
+          "minScore": 67,
+          "maxScore": 100,
+          "totalScore": 22432,
+          "passRate": 0.6766666666666666,
+          "meanScore": 74.77333333333333
+        },
+        "partial_all_applied_two_knowledge_families": {
+          "attempts": 300,
+          "passes": 279,
+          "minScore": 67,
+          "maxScore": 100,
+          "totalScore": 25152,
+          "passRate": 0.93,
+          "meanScore": 83.84
+        },
+        "partial_one_skill_missing": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 75,
+          "maxScore": 75,
+          "totalScore": 22500,
+          "passRate": 0,
+          "meanScore": 75
+        },
+        "partial_one_skill_one_correct": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 83,
+          "maxScore": 83,
+          "totalScore": 24900,
+          "passRate": 0,
+          "meanScore": 83
+        },
+        "borderline_3_2_2_2": {
+          "attempts": 300,
+          "passes": 300,
+          "minScore": 75,
+          "maxScore": 75,
+          "totalScore": 22500,
+          "passRate": 1,
+          "meanScore": 75
+        },
+        "borderline_2_2_2_2": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 67,
+          "maxScore": 67,
+          "totalScore": 20100,
+          "passRate": 0,
+          "meanScore": 67
+        }
+      },
+      "memorization": [
+        {
+          "trainingAttempts": 1,
+          "memorizedExactPrompts": 12,
+          "recognized": 122,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 994,
+          "passRate": 0,
+          "meanScore": 3.3133333333333335
+        },
+        {
+          "trainingAttempts": 5,
+          "memorizedExactPrompts": 54,
+          "recognized": 857,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 67,
+          "totalScore": 7151,
+          "passRate": 0,
+          "meanScore": 23.836666666666666
+        },
+        {
+          "trainingAttempts": 20,
+          "memorizedExactPrompts": 171,
+          "recognized": 1460,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 2,
+          "minScore": 8,
+          "maxScore": 83,
+          "totalScore": 12169,
+          "passRate": 0.006666666666666667,
+          "meanScore": 40.56333333333333
+        },
+        {
+          "trainingAttempts": 100,
+          "memorizedExactPrompts": 554,
+          "recognized": 2492,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 75,
+          "minScore": 25,
+          "maxScore": 100,
+          "totalScore": 20770,
+          "passRate": 0.25,
+          "meanScore": 69.23333333333333
+        },
+        {
+          "trainingAttempts": 500,
+          "memorizedExactPrompts": 1114,
+          "recognized": 3421,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 283,
+          "minScore": 58,
+          "maxScore": 100,
+          "totalScore": 28531,
+          "passRate": 0.9433333333333334,
+          "meanScore": 95.10333333333334
+        }
+      ]
+    },
+    {
+      "specialization": "Backend",
+      "grade": "Senior",
+      "seedInterval": [
+        303000,
+        303300
+      ],
+      "variantCount": 300,
+      "uniqueConcepts": 24,
+      "totalQuestionOccurrences": 3600,
+      "uniquePublicTexts": 886,
+      "uniqueTextAnswerPairs": 886,
+      "duplicateTextOccurrences": 2714,
+      "textAnswerConflicts": 0,
+      "consecutiveConceptOverlap": {
+        "min": 8,
+        "max": 12,
+        "mean": 9.010033444816054,
+        "comparisons": 299
+      },
+      "perConcept": [
+        {
+          "id": "Algorithms-Senior-knowledge-1",
+          "distinctTexts": 58,
+          "distinctAnswers": 58,
+          "occurrences": 76
+        },
+        {
+          "id": "Python-Senior-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 63
+        },
+        {
+          "id": "SQL-Senior-applied-1",
+          "distinctTexts": 110,
+          "distinctAnswers": 22,
+          "occurrences": 300
+        },
+        {
+          "id": "Python-Senior-applied-1",
+          "distinctTexts": 107,
+          "distinctAnswers": 88,
+          "occurrences": 300
+        },
+        {
+          "id": "HTTP-Senior-applied-1",
+          "distinctTexts": 109,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "Algorithms-Senior-applied-1",
+          "distinctTexts": 17,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "SQL-Senior-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 87
+        },
+        {
+          "id": "SQL-Senior-applied-0",
+          "distinctTexts": 110,
+          "distinctAnswers": 68,
+          "occurrences": 300
+        },
+        {
+          "id": "Python-Senior-applied-0",
+          "distinctTexts": 107,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "Algorithms-Senior-applied-0",
+          "distinctTexts": 112,
+          "distinctAnswers": 112,
+          "occurrences": 300
+        },
+        {
+          "id": "HTTP-Senior-applied-0",
+          "distinctTexts": 109,
+          "distinctAnswers": 7,
+          "occurrences": 300
+        },
+        {
+          "id": "HTTP-Senior-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 97
+        },
+        {
+          "id": "HTTP-Senior-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 66
+        },
+        {
+          "id": "SQL-Senior-knowledge-3",
+          "distinctTexts": 17,
+          "distinctAnswers": 1,
+          "occurrences": 78
+        },
+        {
+          "id": "Algorithms-Senior-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 72
+        },
+        {
+          "id": "Python-Senior-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 68
+        },
+        {
+          "id": "Algorithms-Senior-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 78
+        },
+        {
+          "id": "Algorithms-Senior-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 74
+        },
+        {
+          "id": "Python-Senior-knowledge-2",
+          "distinctTexts": 17,
+          "distinctAnswers": 1,
+          "occurrences": 86
+        },
+        {
+          "id": "SQL-Senior-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 69
+        },
+        {
+          "id": "HTTP-Senior-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 73
+        },
+        {
+          "id": "Python-Senior-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 83
+        },
+        {
+          "id": "SQL-Senior-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 66
+        },
+        {
+          "id": "HTTP-Senior-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 64
+        }
+      ],
+      "archetypes": {
+        "strong_reference": {
+          "attempts": 300,
+          "passes": 300,
+          "minScore": 100,
+          "maxScore": 100,
+          "totalScore": 30000,
+          "passRate": 1,
+          "meanScore": 100
+        },
+        "weak_no_answers": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0,
+          "passRate": 0,
+          "meanScore": 0
+        },
+        "blind_first_choice": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 4038,
+          "passRate": 0,
+          "meanScore": 13.46
+        },
+        "partial_all_applied_no_knowledge": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 67,
+          "maxScore": 67,
+          "totalScore": 20100,
+          "passRate": 0,
+          "meanScore": 67
+        },
+        "partial_all_applied_one_knowledge_family": {
+          "attempts": 300,
+          "passes": 203,
+          "minScore": 67,
+          "maxScore": 100,
+          "totalScore": 22432,
+          "passRate": 0.6766666666666666,
+          "meanScore": 74.77333333333333
+        },
+        "partial_all_applied_two_knowledge_families": {
+          "attempts": 300,
+          "passes": 279,
+          "minScore": 67,
+          "maxScore": 100,
+          "totalScore": 25152,
+          "passRate": 0.93,
+          "meanScore": 83.84
+        },
+        "partial_one_skill_missing": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 75,
+          "maxScore": 75,
+          "totalScore": 22500,
+          "passRate": 0,
+          "meanScore": 75
+        },
+        "partial_one_skill_one_correct": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 83,
+          "maxScore": 83,
+          "totalScore": 24900,
+          "passRate": 0,
+          "meanScore": 83
+        },
+        "borderline_3_2_2_2": {
+          "attempts": 300,
+          "passes": 300,
+          "minScore": 75,
+          "maxScore": 75,
+          "totalScore": 22500,
+          "passRate": 1,
+          "meanScore": 75
+        },
+        "borderline_2_2_2_2": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 67,
+          "maxScore": 67,
+          "totalScore": 20100,
+          "passRate": 0,
+          "meanScore": 67
+        }
+      },
+      "memorization": [
+        {
+          "trainingAttempts": 1,
+          "memorizedExactPrompts": 12,
+          "recognized": 246,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 42,
+          "totalScore": 2021,
+          "passRate": 0,
+          "meanScore": 6.736666666666666
+        },
+        {
+          "trainingAttempts": 5,
+          "memorizedExactPrompts": 54,
+          "recognized": 987,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 67,
+          "totalScore": 8223,
+          "passRate": 0,
+          "meanScore": 27.41
+        },
+        {
+          "trainingAttempts": 20,
+          "memorizedExactPrompts": 170,
+          "recognized": 1562,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 17,
+          "maxScore": 83,
+          "totalScore": 13014,
+          "passRate": 0,
+          "meanScore": 43.38
+        },
+        {
+          "trainingAttempts": 100,
+          "memorizedExactPrompts": 554,
+          "recognized": 2610,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 46,
+          "minScore": 33,
+          "maxScore": 100,
+          "totalScore": 21743,
+          "passRate": 0.15333333333333332,
+          "meanScore": 72.47666666666667
+        },
+        {
+          "trainingAttempts": 500,
+          "memorizedExactPrompts": 964,
+          "recognized": 3532,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 283,
+          "minScore": 75,
+          "maxScore": 100,
+          "totalScore": 29439,
+          "passRate": 0.9433333333333334,
+          "meanScore": 98.13
+        }
+      ]
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "seedInterval": [
+        303000,
+        303300
+      ],
+      "variantCount": 300,
+      "uniqueConcepts": 24,
+      "totalQuestionOccurrences": 3600,
+      "uniquePublicTexts": 1139,
+      "uniqueTextAnswerPairs": 1139,
+      "duplicateTextOccurrences": 2461,
+      "textAnswerConflicts": 0,
+      "consecutiveConceptOverlap": {
+        "min": 8,
+        "max": 12,
+        "mean": 9.010033444816054,
+        "comparisons": 299
+      },
+      "perConcept": [
+        {
+          "id": "Accessibility-Junior-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 76
+        },
+        {
+          "id": "TypeScript-Junior-knowledge-3",
+          "distinctTexts": 50,
+          "distinctAnswers": 7,
+          "occurrences": 63
+        },
+        {
+          "id": "React-Junior-applied-1",
+          "distinctTexts": 110,
+          "distinctAnswers": 28,
+          "occurrences": 300
+        },
+        {
+          "id": "TypeScript-Junior-applied-1",
+          "distinctTexts": 107,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "CSS-Junior-applied-1",
+          "distinctTexts": 109,
+          "distinctAnswers": 69,
+          "occurrences": 300
+        },
+        {
+          "id": "Accessibility-Junior-applied-1",
+          "distinctTexts": 112,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "React-Junior-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 87
+        },
+        {
+          "id": "React-Junior-applied-0",
+          "distinctTexts": 110,
+          "distinctAnswers": 22,
+          "occurrences": 300
+        },
+        {
+          "id": "TypeScript-Junior-applied-0",
+          "distinctTexts": 107,
+          "distinctAnswers": 22,
+          "occurrences": 300
+        },
+        {
+          "id": "Accessibility-Junior-applied-0",
+          "distinctTexts": 112,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "CSS-Junior-applied-0",
+          "distinctTexts": 109,
+          "distinctAnswers": 81,
+          "occurrences": 300
+        },
+        {
+          "id": "CSS-Junior-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 97
+        },
+        {
+          "id": "CSS-Junior-knowledge-0",
+          "distinctTexts": 52,
+          "distinctAnswers": 7,
+          "occurrences": 66
+        },
+        {
+          "id": "React-Junior-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 78
+        },
+        {
+          "id": "Accessibility-Junior-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 72
+        },
+        {
+          "id": "TypeScript-Junior-knowledge-1",
+          "distinctTexts": 52,
+          "distinctAnswers": 21,
+          "occurrences": 68
+        },
+        {
+          "id": "Accessibility-Junior-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 78
+        },
+        {
+          "id": "Accessibility-Junior-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 74
+        },
+        {
+          "id": "TypeScript-Junior-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 86
+        },
+        {
+          "id": "React-Junior-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 69
+        },
+        {
+          "id": "CSS-Junior-knowledge-2",
+          "distinctTexts": 56,
+          "distinctAnswers": 52,
+          "occurrences": 73
+        },
+        {
+          "id": "TypeScript-Junior-knowledge-0",
+          "distinctTexts": 42,
+          "distinctAnswers": 3,
+          "occurrences": 83
+        },
+        {
+          "id": "React-Junior-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 66
+        },
+        {
+          "id": "CSS-Junior-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 64
+        }
+      ],
+      "archetypes": {
+        "strong_reference": {
+          "attempts": 300,
+          "passes": 300,
+          "minScore": 100,
+          "maxScore": 100,
+          "totalScore": 30000,
+          "passRate": 1,
+          "meanScore": 100
+        },
+        "weak_no_answers": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0,
+          "passRate": 0,
+          "meanScore": 0
+        },
+        "blind_first_choice": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 3045,
+          "passRate": 0,
+          "meanScore": 10.15
+        },
+        "partial_all_applied_no_knowledge": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 67,
+          "maxScore": 67,
+          "totalScore": 20100,
+          "passRate": 0,
+          "meanScore": 67
+        },
+        "partial_all_applied_one_knowledge_family": {
+          "attempts": 300,
+          "passes": 203,
+          "minScore": 67,
+          "maxScore": 100,
+          "totalScore": 22432,
+          "passRate": 0.6766666666666666,
+          "meanScore": 74.77333333333333
+        },
+        "partial_all_applied_two_knowledge_families": {
+          "attempts": 300,
+          "passes": 279,
+          "minScore": 67,
+          "maxScore": 100,
+          "totalScore": 25152,
+          "passRate": 0.93,
+          "meanScore": 83.84
+        },
+        "partial_one_skill_missing": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 75,
+          "maxScore": 75,
+          "totalScore": 22500,
+          "passRate": 0,
+          "meanScore": 75
+        },
+        "partial_one_skill_one_correct": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 83,
+          "maxScore": 83,
+          "totalScore": 24900,
+          "passRate": 0,
+          "meanScore": 83
+        },
+        "borderline_3_2_2_2": {
+          "attempts": 300,
+          "passes": 300,
+          "minScore": 75,
+          "maxScore": 75,
+          "totalScore": 22500,
+          "passRate": 1,
+          "meanScore": 75
+        },
+        "borderline_2_2_2_2": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 67,
+          "maxScore": 67,
+          "totalScore": 20100,
+          "passRate": 0,
+          "meanScore": 67
+        }
+      },
+      "memorization": [
+        {
+          "trainingAttempts": 1,
+          "memorizedExactPrompts": 12,
+          "recognized": 231,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 42,
+          "totalScore": 1901,
+          "passRate": 0,
+          "meanScore": 6.336666666666667
+        },
+        {
+          "trainingAttempts": 5,
+          "memorizedExactPrompts": 56,
+          "recognized": 789,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 67,
+          "totalScore": 6613,
+          "passRate": 0,
+          "meanScore": 22.043333333333333
+        },
+        {
+          "trainingAttempts": 20,
+          "memorizedExactPrompts": 179,
+          "recognized": 1241,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 17,
+          "maxScore": 83,
+          "totalScore": 10359,
+          "passRate": 0,
+          "meanScore": 34.53
+        },
+        {
+          "trainingAttempts": 100,
+          "memorizedExactPrompts": 653,
+          "recognized": 2295,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 32,
+          "minScore": 17,
+          "maxScore": 100,
+          "totalScore": 19120,
+          "passRate": 0.10666666666666667,
+          "meanScore": 63.733333333333334
+        },
+        {
+          "trainingAttempts": 500,
+          "memorizedExactPrompts": 1304,
+          "recognized": 3457,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 278,
+          "minScore": 75,
+          "maxScore": 100,
+          "totalScore": 28830,
+          "passRate": 0.9266666666666666,
+          "meanScore": 96.1
+        }
+      ]
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "seedInterval": [
+        303000,
+        303300
+      ],
+      "variantCount": 300,
+      "uniqueConcepts": 24,
+      "totalQuestionOccurrences": 3600,
+      "uniquePublicTexts": 1059,
+      "uniqueTextAnswerPairs": 1059,
+      "duplicateTextOccurrences": 2541,
+      "textAnswerConflicts": 0,
+      "consecutiveConceptOverlap": {
+        "min": 8,
+        "max": 12,
+        "mean": 9.010033444816054,
+        "comparisons": 299
+      },
+      "perConcept": [
+        {
+          "id": "Accessibility-Middle-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 76
+        },
+        {
+          "id": "TypeScript-Middle-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 63
+        },
+        {
+          "id": "React-Middle-applied-1",
+          "distinctTexts": 110,
+          "distinctAnswers": 22,
+          "occurrences": 300
+        },
+        {
+          "id": "TypeScript-Middle-applied-1",
+          "distinctTexts": 107,
+          "distinctAnswers": 2,
+          "occurrences": 300
+        },
+        {
+          "id": "CSS-Middle-applied-1",
+          "distinctTexts": 109,
+          "distinctAnswers": 23,
+          "occurrences": 300
+        },
+        {
+          "id": "Accessibility-Middle-applied-1",
+          "distinctTexts": 112,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "React-Middle-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 87
+        },
+        {
+          "id": "React-Middle-applied-0",
+          "distinctTexts": 110,
+          "distinctAnswers": 22,
+          "occurrences": 300
+        },
+        {
+          "id": "TypeScript-Middle-applied-0",
+          "distinctTexts": 107,
+          "distinctAnswers": 7,
+          "occurrences": 300
+        },
+        {
+          "id": "Accessibility-Middle-applied-0",
+          "distinctTexts": 112,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "CSS-Middle-applied-0",
+          "distinctTexts": 109,
+          "distinctAnswers": 81,
+          "occurrences": 300
+        },
+        {
+          "id": "CSS-Middle-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 97
+        },
+        {
+          "id": "CSS-Middle-knowledge-0",
+          "distinctTexts": 52,
+          "distinctAnswers": 1,
+          "occurrences": 66
+        },
+        {
+          "id": "React-Middle-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 78
+        },
+        {
+          "id": "Accessibility-Middle-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 72
+        },
+        {
+          "id": "TypeScript-Middle-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 68
+        },
+        {
+          "id": "Accessibility-Middle-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 78
+        },
+        {
+          "id": "Accessibility-Middle-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 74
+        },
+        {
+          "id": "TypeScript-Middle-knowledge-2",
+          "distinctTexts": 63,
+          "distinctAnswers": 1,
+          "occurrences": 86
+        },
+        {
+          "id": "React-Middle-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 69
+        },
+        {
+          "id": "CSS-Middle-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 73
+        },
+        {
+          "id": "TypeScript-Middle-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 83
+        },
+        {
+          "id": "React-Middle-knowledge-2",
+          "distinctTexts": 55,
+          "distinctAnswers": 24,
+          "occurrences": 66
+        },
+        {
+          "id": "CSS-Middle-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 64
+        }
+      ],
+      "archetypes": {
+        "strong_reference": {
+          "attempts": 300,
+          "passes": 300,
+          "minScore": 100,
+          "maxScore": 100,
+          "totalScore": 30000,
+          "passRate": 1,
+          "meanScore": 100
+        },
+        "weak_no_answers": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0,
+          "passRate": 0,
+          "meanScore": 0
+        },
+        "blind_first_choice": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 4049,
+          "passRate": 0,
+          "meanScore": 13.496666666666666
+        },
+        "partial_all_applied_no_knowledge": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 67,
+          "maxScore": 67,
+          "totalScore": 20100,
+          "passRate": 0,
+          "meanScore": 67
+        },
+        "partial_all_applied_one_knowledge_family": {
+          "attempts": 300,
+          "passes": 203,
+          "minScore": 67,
+          "maxScore": 100,
+          "totalScore": 22432,
+          "passRate": 0.6766666666666666,
+          "meanScore": 74.77333333333333
+        },
+        "partial_all_applied_two_knowledge_families": {
+          "attempts": 300,
+          "passes": 279,
+          "minScore": 67,
+          "maxScore": 100,
+          "totalScore": 25152,
+          "passRate": 0.93,
+          "meanScore": 83.84
+        },
+        "partial_one_skill_missing": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 75,
+          "maxScore": 75,
+          "totalScore": 22500,
+          "passRate": 0,
+          "meanScore": 75
+        },
+        "partial_one_skill_one_correct": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 83,
+          "maxScore": 83,
+          "totalScore": 24900,
+          "passRate": 0,
+          "meanScore": 83
+        },
+        "borderline_3_2_2_2": {
+          "attempts": 300,
+          "passes": 300,
+          "minScore": 75,
+          "maxScore": 75,
+          "totalScore": 22500,
+          "passRate": 1,
+          "meanScore": 75
+        },
+        "borderline_2_2_2_2": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 67,
+          "maxScore": 67,
+          "totalScore": 20100,
+          "passRate": 0,
+          "meanScore": 67
+        }
+      },
+      "memorization": [
+        {
+          "trainingAttempts": 1,
+          "memorizedExactPrompts": 12,
+          "recognized": 298,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 42,
+          "totalScore": 2462,
+          "passRate": 0,
+          "meanScore": 8.206666666666667
+        },
+        {
+          "trainingAttempts": 5,
+          "memorizedExactPrompts": 53,
+          "recognized": 990,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 67,
+          "totalScore": 8254,
+          "passRate": 0,
+          "meanScore": 27.513333333333332
+        },
+        {
+          "trainingAttempts": 20,
+          "memorizedExactPrompts": 173,
+          "recognized": 1372,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 8,
+          "maxScore": 83,
+          "totalScore": 11429,
+          "passRate": 0,
+          "meanScore": 38.096666666666664
+        },
+        {
+          "trainingAttempts": 100,
+          "memorizedExactPrompts": 627,
+          "recognized": 2396,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 32,
+          "minScore": 25,
+          "maxScore": 100,
+          "totalScore": 19971,
+          "passRate": 0.10666666666666667,
+          "meanScore": 66.57
+        },
+        {
+          "trainingAttempts": 500,
+          "memorizedExactPrompts": 1185,
+          "recognized": 3484,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 278,
+          "minScore": 75,
+          "maxScore": 100,
+          "totalScore": 29044,
+          "passRate": 0.9266666666666666,
+          "meanScore": 96.81333333333333
+        }
+      ]
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "seedInterval": [
+        303000,
+        303300
+      ],
+      "variantCount": 300,
+      "uniqueConcepts": 24,
+      "totalQuestionOccurrences": 3600,
+      "uniquePublicTexts": 797,
+      "uniqueTextAnswerPairs": 797,
+      "duplicateTextOccurrences": 2803,
+      "textAnswerConflicts": 0,
+      "consecutiveConceptOverlap": {
+        "min": 8,
+        "max": 12,
+        "mean": 9.010033444816054,
+        "comparisons": 299
+      },
+      "perConcept": [
+        {
+          "id": "Accessibility-Senior-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 76
+        },
+        {
+          "id": "TypeScript-Senior-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 63
+        },
+        {
+          "id": "React-Senior-applied-1",
+          "distinctTexts": 110,
+          "distinctAnswers": 7,
+          "occurrences": 300
+        },
+        {
+          "id": "TypeScript-Senior-applied-1",
+          "distinctTexts": 107,
+          "distinctAnswers": 7,
+          "occurrences": 300
+        },
+        {
+          "id": "CSS-Senior-applied-1",
+          "distinctTexts": 109,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "Accessibility-Senior-applied-1",
+          "distinctTexts": 112,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "React-Senior-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 87
+        },
+        {
+          "id": "React-Senior-applied-0",
+          "distinctTexts": 110,
+          "distinctAnswers": 7,
+          "occurrences": 300
+        },
+        {
+          "id": "TypeScript-Senior-applied-0",
+          "distinctTexts": 107,
+          "distinctAnswers": 67,
+          "occurrences": 300
+        },
+        {
+          "id": "Accessibility-Senior-applied-0",
+          "distinctTexts": 17,
+          "distinctAnswers": 17,
+          "occurrences": 300
+        },
+        {
+          "id": "CSS-Senior-applied-0",
+          "distinctTexts": 109,
+          "distinctAnswers": 46,
+          "occurrences": 300
+        },
+        {
+          "id": "CSS-Senior-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 97
+        },
+        {
+          "id": "CSS-Senior-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 66
+        },
+        {
+          "id": "React-Senior-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 78
+        },
+        {
+          "id": "Accessibility-Senior-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 72
+        },
+        {
+          "id": "TypeScript-Senior-knowledge-1",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 68
+        },
+        {
+          "id": "Accessibility-Senior-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 78
+        },
+        {
+          "id": "Accessibility-Senior-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 74
+        },
+        {
+          "id": "TypeScript-Senior-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 86
+        },
+        {
+          "id": "React-Senior-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 69
+        },
+        {
+          "id": "CSS-Senior-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 73
+        },
+        {
+          "id": "TypeScript-Senior-knowledge-0",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 83
+        },
+        {
+          "id": "React-Senior-knowledge-2",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 66
+        },
+        {
+          "id": "CSS-Senior-knowledge-3",
+          "distinctTexts": 1,
+          "distinctAnswers": 1,
+          "occurrences": 64
+        }
+      ],
+      "archetypes": {
+        "strong_reference": {
+          "attempts": 300,
+          "passes": 300,
+          "minScore": 100,
+          "maxScore": 100,
+          "totalScore": 30000,
+          "passRate": 1,
+          "meanScore": 100
+        },
+        "weak_no_answers": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 0,
+          "totalScore": 0,
+          "passRate": 0,
+          "meanScore": 0
+        },
+        "blind_first_choice": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 33,
+          "totalScore": 5144,
+          "passRate": 0,
+          "meanScore": 17.14666666666667
+        },
+        "partial_all_applied_no_knowledge": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 67,
+          "maxScore": 67,
+          "totalScore": 20100,
+          "passRate": 0,
+          "meanScore": 67
+        },
+        "partial_all_applied_one_knowledge_family": {
+          "attempts": 300,
+          "passes": 203,
+          "minScore": 67,
+          "maxScore": 100,
+          "totalScore": 22432,
+          "passRate": 0.6766666666666666,
+          "meanScore": 74.77333333333333
+        },
+        "partial_all_applied_two_knowledge_families": {
+          "attempts": 300,
+          "passes": 279,
+          "minScore": 67,
+          "maxScore": 100,
+          "totalScore": 25152,
+          "passRate": 0.93,
+          "meanScore": 83.84
+        },
+        "partial_one_skill_missing": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 75,
+          "maxScore": 75,
+          "totalScore": 22500,
+          "passRate": 0,
+          "meanScore": 75
+        },
+        "partial_one_skill_one_correct": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 83,
+          "maxScore": 83,
+          "totalScore": 24900,
+          "passRate": 0,
+          "meanScore": 83
+        },
+        "borderline_3_2_2_2": {
+          "attempts": 300,
+          "passes": 300,
+          "minScore": 75,
+          "maxScore": 75,
+          "totalScore": 22500,
+          "passRate": 1,
+          "meanScore": 75
+        },
+        "borderline_2_2_2_2": {
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 67,
+          "maxScore": 67,
+          "totalScore": 20100,
+          "passRate": 0,
+          "meanScore": 67
+        }
+      },
+      "memorization": [
+        {
+          "trainingAttempts": 1,
+          "memorizedExactPrompts": 12,
+          "recognized": 319,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 0,
+          "maxScore": 42,
+          "totalScore": 2635,
+          "passRate": 0,
+          "meanScore": 8.783333333333333
+        },
+        {
+          "trainingAttempts": 5,
+          "memorizedExactPrompts": 53,
+          "recognized": 1131,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 17,
+          "maxScore": 67,
+          "totalScore": 9408,
+          "passRate": 0,
+          "meanScore": 31.36
+        },
+        {
+          "trainingAttempts": 20,
+          "memorizedExactPrompts": 157,
+          "recognized": 1746,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 0,
+          "minScore": 33,
+          "maxScore": 83,
+          "totalScore": 14558,
+          "passRate": 0,
+          "meanScore": 48.526666666666664
+        },
+        {
+          "trainingAttempts": 100,
+          "memorizedExactPrompts": 506,
+          "recognized": 2685,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 51,
+          "minScore": 42,
+          "maxScore": 100,
+          "totalScore": 22362,
+          "passRate": 0.17,
+          "meanScore": 74.54
+        },
+        {
+          "trainingAttempts": 500,
+          "memorizedExactPrompts": 852,
+          "recognized": 3562,
+          "items": 3600,
+          "attempts": 300,
+          "passes": 284,
+          "minScore": 83,
+          "maxScore": 100,
+          "totalScore": 29680,
+          "passRate": 0.9466666666666667,
+          "meanScore": 98.93333333333334
+        }
+      ]
+    }
+  ],
+  "thresholds": [
+    {
+      "specialization": "Backend",
+      "grade": "Junior",
+      "patterns": 4096,
+      "passes": 175,
+      "mismatches": 0,
+      "byTotal": {
+        "0": {
+          "patterns": 1,
+          "passes": 0
+        },
+        "1": {
+          "patterns": 12,
+          "passes": 0
+        },
+        "2": {
+          "patterns": 66,
+          "passes": 0
+        },
+        "3": {
+          "patterns": 220,
+          "passes": 0
+        },
+        "4": {
+          "patterns": 495,
+          "passes": 0
+        },
+        "5": {
+          "patterns": 792,
+          "passes": 0
+        },
+        "6": {
+          "patterns": 924,
+          "passes": 0
+        },
+        "7": {
+          "patterns": 792,
+          "passes": 0
+        },
+        "8": {
+          "patterns": 495,
+          "passes": 0
+        },
+        "9": {
+          "patterns": 220,
+          "passes": 108
+        },
+        "10": {
+          "patterns": 66,
+          "passes": 54
+        },
+        "11": {
+          "patterns": 12,
+          "passes": 12
+        },
+        "12": {
+          "patterns": 1,
+          "passes": 1
+        }
+      }
+    },
+    {
+      "specialization": "Backend",
+      "grade": "Middle",
+      "patterns": 4096,
+      "passes": 175,
+      "mismatches": 0,
+      "byTotal": {
+        "0": {
+          "patterns": 1,
+          "passes": 0
+        },
+        "1": {
+          "patterns": 12,
+          "passes": 0
+        },
+        "2": {
+          "patterns": 66,
+          "passes": 0
+        },
+        "3": {
+          "patterns": 220,
+          "passes": 0
+        },
+        "4": {
+          "patterns": 495,
+          "passes": 0
+        },
+        "5": {
+          "patterns": 792,
+          "passes": 0
+        },
+        "6": {
+          "patterns": 924,
+          "passes": 0
+        },
+        "7": {
+          "patterns": 792,
+          "passes": 0
+        },
+        "8": {
+          "patterns": 495,
+          "passes": 0
+        },
+        "9": {
+          "patterns": 220,
+          "passes": 108
+        },
+        "10": {
+          "patterns": 66,
+          "passes": 54
+        },
+        "11": {
+          "patterns": 12,
+          "passes": 12
+        },
+        "12": {
+          "patterns": 1,
+          "passes": 1
+        }
+      }
+    },
+    {
+      "specialization": "Backend",
+      "grade": "Senior",
+      "patterns": 4096,
+      "passes": 175,
+      "mismatches": 0,
+      "byTotal": {
+        "0": {
+          "patterns": 1,
+          "passes": 0
+        },
+        "1": {
+          "patterns": 12,
+          "passes": 0
+        },
+        "2": {
+          "patterns": 66,
+          "passes": 0
+        },
+        "3": {
+          "patterns": 220,
+          "passes": 0
+        },
+        "4": {
+          "patterns": 495,
+          "passes": 0
+        },
+        "5": {
+          "patterns": 792,
+          "passes": 0
+        },
+        "6": {
+          "patterns": 924,
+          "passes": 0
+        },
+        "7": {
+          "patterns": 792,
+          "passes": 0
+        },
+        "8": {
+          "patterns": 495,
+          "passes": 0
+        },
+        "9": {
+          "patterns": 220,
+          "passes": 108
+        },
+        "10": {
+          "patterns": 66,
+          "passes": 54
+        },
+        "11": {
+          "patterns": 12,
+          "passes": 12
+        },
+        "12": {
+          "patterns": 1,
+          "passes": 1
+        }
+      }
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Junior",
+      "patterns": 4096,
+      "passes": 175,
+      "mismatches": 0,
+      "byTotal": {
+        "0": {
+          "patterns": 1,
+          "passes": 0
+        },
+        "1": {
+          "patterns": 12,
+          "passes": 0
+        },
+        "2": {
+          "patterns": 66,
+          "passes": 0
+        },
+        "3": {
+          "patterns": 220,
+          "passes": 0
+        },
+        "4": {
+          "patterns": 495,
+          "passes": 0
+        },
+        "5": {
+          "patterns": 792,
+          "passes": 0
+        },
+        "6": {
+          "patterns": 924,
+          "passes": 0
+        },
+        "7": {
+          "patterns": 792,
+          "passes": 0
+        },
+        "8": {
+          "patterns": 495,
+          "passes": 0
+        },
+        "9": {
+          "patterns": 220,
+          "passes": 108
+        },
+        "10": {
+          "patterns": 66,
+          "passes": 54
+        },
+        "11": {
+          "patterns": 12,
+          "passes": 12
+        },
+        "12": {
+          "patterns": 1,
+          "passes": 1
+        }
+      }
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Middle",
+      "patterns": 4096,
+      "passes": 175,
+      "mismatches": 0,
+      "byTotal": {
+        "0": {
+          "patterns": 1,
+          "passes": 0
+        },
+        "1": {
+          "patterns": 12,
+          "passes": 0
+        },
+        "2": {
+          "patterns": 66,
+          "passes": 0
+        },
+        "3": {
+          "patterns": 220,
+          "passes": 0
+        },
+        "4": {
+          "patterns": 495,
+          "passes": 0
+        },
+        "5": {
+          "patterns": 792,
+          "passes": 0
+        },
+        "6": {
+          "patterns": 924,
+          "passes": 0
+        },
+        "7": {
+          "patterns": 792,
+          "passes": 0
+        },
+        "8": {
+          "patterns": 495,
+          "passes": 0
+        },
+        "9": {
+          "patterns": 220,
+          "passes": 108
+        },
+        "10": {
+          "patterns": 66,
+          "passes": 54
+        },
+        "11": {
+          "patterns": 12,
+          "passes": 12
+        },
+        "12": {
+          "patterns": 1,
+          "passes": 1
+        }
+      }
+    },
+    {
+      "specialization": "Frontend",
+      "grade": "Senior",
+      "patterns": 4096,
+      "passes": 175,
+      "mismatches": 0,
+      "byTotal": {
+        "0": {
+          "patterns": 1,
+          "passes": 0
+        },
+        "1": {
+          "patterns": 12,
+          "passes": 0
+        },
+        "2": {
+          "patterns": 66,
+          "passes": 0
+        },
+        "3": {
+          "patterns": 220,
+          "passes": 0
+        },
+        "4": {
+          "patterns": 495,
+          "passes": 0
+        },
+        "5": {
+          "patterns": 792,
+          "passes": 0
+        },
+        "6": {
+          "patterns": 924,
+          "passes": 0
+        },
+        "7": {
+          "patterns": 792,
+          "passes": 0
+        },
+        "8": {
+          "patterns": 495,
+          "passes": 0
+        },
+        "9": {
+          "patterns": 220,
+          "passes": 108
+        },
+        "10": {
+          "patterns": 66,
+          "passes": 54
+        },
+        "11": {
+          "patterns": 12,
+          "passes": 12
+        },
+        "12": {
+          "patterns": 1,
+          "passes": 1
+        }
+      }
+    }
+  ],
+  "formatting": [
+    {
+      "question": {
+        "answer": "12",
+        "format": "number"
+      },
+      "submitted": "12.00",
+      "semanticLabel": true,
+      "formatLabel": true,
+      "accepted": true,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "12",
+        "format": "number"
+      },
+      "submitted": "12,00",
+      "semanticLabel": true,
+      "formatLabel": true,
+      "accepted": true,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "12",
+        "format": "number"
+      },
+      "submitted": "12 px",
+      "semanticLabel": true,
+      "formatLabel": false,
+      "accepted": false,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "12",
+        "format": "number"
+      },
+      "submitted": "Ответ: 12",
+      "semanticLabel": true,
+      "formatLabel": false,
+      "accepted": false,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "12",
+        "format": "number"
+      },
+      "submitted": "1.2e1",
+      "semanticLabel": true,
+      "formatLabel": false,
+      "accepted": false,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "12",
+        "format": "number"
+      },
+      "submitted": "11.99999999999999999999999",
+      "semanticLabel": false,
+      "formatLabel": true,
+      "accepted": true,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "оплатить 9",
+        "format": "text"
+      },
+      "submitted": "«Оплатить 9»",
+      "semanticLabel": true,
+      "formatLabel": false,
+      "accepted": false,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "stopiteration",
+        "format": "text"
+      },
+      "submitted": "StopIteration",
+      "semanticLabel": true,
+      "formatLabel": true,
+      "accepted": true,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "stopiteration",
+        "format": "text"
+      },
+      "submitted": "StopIteration.",
+      "semanticLabel": true,
+      "formatLabel": false,
+      "accepted": false,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "first-9",
+        "format": "text"
+      },
+      "submitted": "FIRST-9",
+      "semanticLabel": false,
+      "formatLabel": false,
+      "accepted": true,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "first-9",
+        "format": "text"
+      },
+      "submitted": "#first-9",
+      "semanticLabel": true,
+      "formatLabel": false,
+      "accepted": false,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    },
+    {
+      "question": {
+        "answer": "нет",
+        "alternatives": [
+          "no"
+        ],
+        "format": "text"
+      },
+      "submitted": "NO",
+      "semanticLabel": true,
+      "formatLabel": true,
+      "accepted": true,
+      "author": "AI assessment reviewer; semantic vs format labels are separate"
+    }
+  ],
+  "policy": [
+    {
+      "case": "initial_success",
+      "grade": "Middle",
+      "gradeChangedAt": null
+    },
+    {
+      "case": "successful_change_after_confirmation",
+      "grade": "Senior",
+      "gradeChangedAt": 1791300001001
+    },
+    {
+      "case": "failed_same_grade_preserves_grade_and_clock",
+      "grade": "Senior",
+      "gradeChangedAt": 1791300001001
+    },
+    {
+      "case": "different_grade_one_ms_before_90_days",
+      "blocked": true
+    },
+    {
+      "case": "different_grade_at_90_days",
+      "grade": "Middle",
+      "gradeChangedAt": 1799076001002
+    }
+  ]
+}

@@ -1,0 +1,512 @@
+{
+  "version": "0.6",
+  "fixtureSha256": "7c949124d41cfc9361832e4039bb1b56059a19c9562285372060d1721177b2a7",
+  "profiles": 36,
+  "queries": 36,
+  "labeledPairs": 1296,
+  "baselineCommit": "1fd178b32ad72c9cc3d31647465c93e8940326d4",
+  "visible": {
+    "baseline": {
+      "queries": 24,
+      "precisionAt5": 0.8250000000000002,
+      "legacyPrecisionAt5": 0.8833333333333333,
+      "ndcgAt5": 0.9641796520875843,
+      "ndcgDenominator": 23,
+      "zeroIdealQueries": [
+        "d08-unknown-required-stack"
+      ],
+      "meanPrecisionAt5Ceiling": 0.9
+    },
+    "current": {
+      "queries": 24,
+      "precisionAt5": 0.8500000000000001,
+      "legacyPrecisionAt5": 0.9083333333333332,
+      "ndcgAt5": 0.9865610192564398,
+      "ndcgDenominator": 23,
+      "zeroIdealQueries": [
+        "d08-unknown-required-stack"
+      ],
+      "meanPrecisionAt5Ceiling": 0.9
+    }
+  },
+  "heldout": {
+    "baseline": {
+      "queries": 12,
+      "precisionAt5": 0.8666666666666666,
+      "legacyPrecisionAt5": 0.9500000000000001,
+      "ndcgAt5": 0.99662287164746,
+      "ndcgDenominator": 12,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 0.8833333333333333
+    },
+    "current": {
+      "queries": 12,
+      "precisionAt5": 0.8666666666666666,
+      "legacyPrecisionAt5": 0.9500000000000001,
+      "ndcgAt5": 0.99662287164746,
+      "ndcgDenominator": 12,
+      "zeroIdealQueries": [],
+      "meanPrecisionAt5Ceiling": 0.8833333333333333
+    }
+  },
+  "safetyViolations": [
+    {
+      "label": "v0.5",
+      "split": "visible",
+      "count": 0
+    },
+    {
+      "label": "v0.6",
+      "split": "visible",
+      "count": 0
+    },
+    {
+      "label": "v0.5",
+      "split": "heldout",
+      "count": 0
+    },
+    {
+      "label": "v0.6",
+      "split": "heldout",
+      "count": 0
+    }
+  ],
+  "conclusion": "Improvement on development-visible queries only; no aggregate gain on the once-evaluated heldout. Author-labeled synthetic corpus is not independent recruiting validation.",
+  "changedVisibleCases": [
+    {
+      "id": "d03-alternative-backend",
+      "current": {
+        "id": "d03-alternative-backend",
+        "split": "development",
+        "need": "Backend; Python или Go; SQL обязателен",
+        "tags": [
+          "alternative-skill"
+        ],
+        "precisionAt5": 1,
+        "legacyPrecisionAt5": 1,
+        "ndcgAt5": 1,
+        "precisionAt5Ceiling": 1,
+        "returnedCount": 31,
+        "top": [
+          {
+            "id": "bs-go",
+            "score": 100,
+            "label": 3
+          },
+          {
+            "id": "bj-go",
+            "score": 98,
+            "label": 3
+          },
+          {
+            "id": "bs-py-award",
+            "score": 98,
+            "label": 3
+          },
+          {
+            "id": "bs-py-none",
+            "score": 98,
+            "label": 3
+          },
+          {
+            "id": "bm-py-award",
+            "score": 97,
+            "label": 3
+          }
+        ],
+        "safetyViolations": [],
+        "parserWarnings": [
+          "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную.",
+          "Альтернативы стека: Python или Go. Достаточно одного подтверждённого навыка из каждой пары."
+        ],
+        "parserExpectations": {
+          "requiresWarning": true,
+          "reason": "Ограниченный parser может не применять OR; это должно быть раскрыто."
+        }
+      },
+      "baseline": {
+        "id": "d03-alternative-backend",
+        "split": "development",
+        "need": "Backend; Python или Go; SQL обязателен",
+        "tags": [
+          "alternative-skill"
+        ],
+        "precisionAt5": 0.4,
+        "legacyPrecisionAt5": 0.4,
+        "ndcgAt5": 0.4852285551163225,
+        "precisionAt5Ceiling": 1,
+        "returnedCount": 31,
+        "top": [
+          {
+            "id": "bs-go",
+            "score": 100,
+            "label": 3
+          },
+          {
+            "id": "bm-about-only",
+            "score": 99,
+            "label": 0
+          },
+          {
+            "id": "bm-java",
+            "score": 99,
+            "label": 0
+          },
+          {
+            "id": "bj-go",
+            "score": 98,
+            "label": 3
+          },
+          {
+            "id": "bs-java",
+            "score": 98,
+            "label": 0
+          }
+        ],
+        "safetyViolations": [],
+        "parserWarnings": [
+          "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную.",
+          "Альтернативы не объединяются в обязательный стек и не влияют на балл: Python, Go. Уточните фильтры."
+        ],
+        "parserExpectations": {
+          "requiresWarning": true,
+          "reason": "Ограниченный parser может не применять OR; это должно быть раскрыто."
+        }
+      }
+    }
+  ],
+  "weakCurrentCases": [
+    {
+      "id": "t01-junior-backend",
+      "split": "train",
+      "need": "Нужен Junior Backend разработчик: Python SQL",
+      "tags": [
+        "exact-category",
+        "wrong-stack"
+      ],
+      "precisionAt5": 0.8,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 0.9594744597695195,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "bj-py-award",
+          "score": 100,
+          "label": 3
+        },
+        {
+          "id": "bj-py-cross",
+          "score": 96,
+          "label": 3
+        },
+        {
+          "id": "bj-py-none",
+          "score": 96,
+          "label": 3
+        },
+        {
+          "id": "bj-py-unverified",
+          "score": 96,
+          "label": 3
+        },
+        {
+          "id": "bs-py-award",
+          "score": 81,
+          "label": 1
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную."
+      ],
+      "parserExpectations": {}
+    },
+    {
+      "id": "t05-junior-accessible",
+      "split": "train",
+      "need": "Junior Frontend CSS Accessibility",
+      "tags": [
+        "exact-category"
+      ],
+      "precisionAt5": 0.8,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 0.9594744597695195,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "fj-js",
+          "score": 100,
+          "label": 3
+        },
+        {
+          "id": "fj-about-only",
+          "score": 99,
+          "label": 3
+        },
+        {
+          "id": "fj-react-award",
+          "score": 99,
+          "label": 3
+        },
+        {
+          "id": "fj-react-none",
+          "score": 96,
+          "label": 3
+        },
+        {
+          "id": "fs-js",
+          "score": 82,
+          "label": 1
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную."
+      ],
+      "parserExpectations": {}
+    },
+    {
+      "id": "t12-negated-sql",
+      "split": "train",
+      "need": "Junior Backend Python; SQL не требуется",
+      "tags": [
+        "negated-skill"
+      ],
+      "precisionAt5": 0.8,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 0.9594744597695195,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "bj-py-award",
+          "score": 100,
+          "label": 3
+        },
+        {
+          "id": "bj-py-cross",
+          "score": 96,
+          "label": 3
+        },
+        {
+          "id": "bj-py-none",
+          "score": 96,
+          "label": 3
+        },
+        {
+          "id": "bj-py-unverified",
+          "score": 96,
+          "label": 3
+        },
+        {
+          "id": "bs-py-award",
+          "score": 81,
+          "label": 1
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную.",
+        "Отрицание не даёт положительного балла: SQL. Это не фильтр исключения кандидатов; проверьте условие вручную."
+      ],
+      "parserExpectations": {
+        "nonRequiredSkills": [
+          "SQL"
+        ]
+      }
+    },
+    {
+      "id": "d08-unknown-required-stack",
+      "split": "development",
+      "need": "Middle Backend Rust",
+      "tags": [
+        "unknown-stack",
+        "no-relevant-items"
+      ],
+      "precisionAt5": 0,
+      "legacyPrecisionAt5": 0,
+      "ndcgAt5": null,
+      "precisionAt5Ceiling": 0,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "bm-java",
+          "score": 100,
+          "label": 0
+        },
+        {
+          "id": "bm-py-award",
+          "score": 100,
+          "label": 0
+        },
+        {
+          "id": "bm-about-only",
+          "score": 99,
+          "label": 0
+        },
+        {
+          "id": "bm-postgres",
+          "score": 97,
+          "label": 0
+        },
+        {
+          "id": "bm-py-none",
+          "score": 97,
+          "label": 0
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную."
+      ],
+      "parserExpectations": {
+        "manualReviewTerms": [
+          "Rust"
+        ],
+        "reason": "Нельзя считать нераспознанное обязательное слово удовлетворённым."
+      }
+    },
+    {
+      "id": "d11-junior-front-strength",
+      "split": "development",
+      "need": "Frontend Junior React TypeScript; сильный тест и подтверждённые достижения ФСП в категории",
+      "tags": [
+        "same-category-achievement",
+        "cross-grade",
+        "missing-verification"
+      ],
+      "precisionAt5": 0.6,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 0.872712285110806,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "fj-react-award",
+          "score": 99,
+          "label": 3
+        },
+        {
+          "id": "fj-react-cross-grade",
+          "score": 96,
+          "label": 2
+        },
+        {
+          "id": "fj-react-none",
+          "score": 96,
+          "label": 2
+        },
+        {
+          "id": "fs-react-award",
+          "score": 81,
+          "label": 1
+        },
+        {
+          "id": "fs-react-none",
+          "score": 81,
+          "label": 1
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную."
+      ],
+      "parserExpectations": {}
+    },
+    {
+      "id": "d12-junior-back-strength",
+      "split": "development",
+      "need": "Backend Junior Python SQL; приоритет подтверждённых результатов и достижений ФСП этой категории",
+      "tags": [
+        "same-category-achievement",
+        "cross-category",
+        "missing-verification"
+      ],
+      "precisionAt5": 0.8,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 0.9397677784787497,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "bj-py-award",
+          "score": 100,
+          "label": 3
+        },
+        {
+          "id": "bj-py-cross",
+          "score": 96,
+          "label": 2
+        },
+        {
+          "id": "bj-py-none",
+          "score": 96,
+          "label": 2
+        },
+        {
+          "id": "bj-py-unverified",
+          "score": 96,
+          "label": 2
+        },
+        {
+          "id": "bs-py-award",
+          "score": 81,
+          "label": 1
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную."
+      ],
+      "parserExpectations": {}
+    },
+    {
+      "id": "h04-senior-accessible-strength",
+      "split": "heldout",
+      "need": "Senior Frontend CSS Accessibility; сильные тесты и подтверждённые достижения ФСП в этой категории",
+      "tags": [
+        "same-category-achievement",
+        "strong-without-fsp"
+      ],
+      "precisionAt5": 0.8,
+      "legacyPrecisionAt5": 1,
+      "ndcgAt5": 0.9594744597695195,
+      "precisionAt5Ceiling": 1,
+      "returnedCount": 31,
+      "top": [
+        {
+          "id": "fs-css",
+          "score": 100,
+          "label": 3
+        },
+        {
+          "id": "fs-js",
+          "score": 100,
+          "label": 3
+        },
+        {
+          "id": "fs-react-award",
+          "score": 100,
+          "label": 3
+        },
+        {
+          "id": "fs-react-none",
+          "score": 99,
+          "label": 3
+        },
+        {
+          "id": "fj-about-only",
+          "score": 81,
+          "label": 1
+        }
+      ],
+      "safetyViolations": [],
+      "parserWarnings": [
+        "Распознаётся ограниченный словарь и простые формулировки. Прочие условия нужно проверить вручную."
+      ],
+      "parserExpectations": {}
+    }
+  ]
+}

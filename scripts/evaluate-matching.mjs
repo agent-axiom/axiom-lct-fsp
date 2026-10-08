@@ -1,0 +1,11 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { freshState, actor, rankCandidates } from '../lib/domain.mjs';
+const fixture=JSON.parse(readFileSync(new URL('../tests/fixtures/matching-benchmark.json',import.meta.url),'utf8'));
+const state=freshState();state.users=state.users.filter(user=>user.role==='employer').concat(fixture.candidates.map(candidate=>({...candidate,role:'candidate',name:candidate.id,verified:true,published:true,consent:true,categoryConfirmed:true,evidenceSource:'synthetic_seed'})));
+const dcg=values=>values.reduce((sum,value,index)=>sum+(2**value-1)/Math.log2(index+2),0);
+function metrics(rows,query){const labels=rows.slice(0,5).map(row=>query.relevance[row.id]||0);const ideal=Object.values(query.relevance).sort((a,b)=>b-a).slice(0,5);return {precisionAt5:labels.filter(label=>label>0).length/5,ndcgAt5:dcg(labels)/dcg(ideal),top:rows.slice(0,5).map(row=>row.id)};}
+function baseline(query){const tokens=['python','sql','react','typescript','docker'].filter(token=>query.need.toLowerCase().includes(token));return state.users.filter(c=>c.role==='candidate'&&(!query.specialization||c.specialization===query.specialization)&&(!query.grade||c.grade===query.grade)&&tokens.every(token=>c.skills.some(skill=>skill.toLowerCase()===token))).map(c=>({...c,match:Math.round(c.score*.9+(c.fsp?10:0))})).sort((a,b)=>b.match-a.match||a.id.localeCompare(b.id));}
+const cases=fixture.queries.map(query=>({id:query.id,query:query.need,v1:metrics(baseline(query),query),v2:metrics(rankCandidates(state,actor(state,'demo-employer'),query),query)}));
+const mean=key=>({precisionAt5:cases.reduce((sum,row)=>sum+row[key].precisionAt5,0)/cases.length,ndcgAt5:cases.reduce((sum,row)=>sum+row[key].ndcgAt5,0)/cases.length});
+const result={dataset:fixture.name,disclaimer:fixture.disclaimer,queries:cases.length,candidates:fixture.candidates.length,metricDefinitions:{precisionAt5:'Count of items with relevance > 0 divided by 5; unfilled positions count as nonrelevant.',ndcgAt5:'DCG using gain 2^relevance - 1, divided by ideal DCG at 5.'},v1:mean('v1'),v2:mean('v2'),cases};
+console.log(JSON.stringify(result,null,2));if(process.argv.includes('--write'))writeFileSync(new URL('../docs/matching-evaluation.json',import.meta.url),JSON.stringify(result,null,2)+'\n');

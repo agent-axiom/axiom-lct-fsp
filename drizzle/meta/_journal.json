@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1791151266254,
+      "tag": "0000_goofy_triathlon",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1791185013387,
+      "tag": "0001_daffy_darkhawk",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1791310025581,
+      "tag": "0002_stormy_nighthawk",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1791314948446,
+      "tag": "0003_wild_tyrannus",
+      "breakpoints": true
+    }
+  ]
+}

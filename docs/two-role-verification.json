@@ -1,0 +1,32 @@
+{
+  "scenario": "Two-role synthetic HTTP/SQLite scenario with a separate unauthorized employer",
+  "disclaimer": "Email verification is a controlled database fixture. This is not live email delivery, browser login, independent real-account E2E, expert grading validation, or production activation.",
+  "checksPassed": 24,
+  "externalTransportCalls": 0,
+  "checks": [
+    "Production defaults keep real accounts and email off",
+    "Body, cookie and forwarded header do not replace a trusted principal",
+    "Account state is scoped to candidate",
+    "Account state is scoped to employer",
+    "Account state is scoped to other-employer",
+    "Candidate cannot search employers’ candidate directory",
+    "Employer cannot take a candidate test",
+    "Role switching is rejected in role-bound HTTP API",
+    "Public test excludes answer keys and stored outcomes",
+    "Synthetic completed attempt passes server grading",
+    "No consent means no employer result",
+    "Evidence survives normalized persistence",
+    "Unmeasured technology remains missing",
+    "Proof and search do not disclose contact",
+    "Opaque assessment ID gives employer no submission authority",
+    "Sent invitation does not reveal contact",
+    "Viewed invitation does not reveal contact",
+    "Declined invitation never reveals contact",
+    "Employer cannot accept its own invitation",
+    "Acceptance reveals contact only to the invited employer",
+    "Unrelated employer still has no contact",
+    "Consent withdrawal removes fresh search visibility",
+    "Consent withdrawal revokes invitation contact",
+    "No external email or network transport was called"
+  ]
+}

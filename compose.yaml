@@ -1,0 +1,9 @@
+services:
+  demo:
+    build: .
+    ports:
+      - "127.0.0.1:8888:8888"
+    volumes:
+      - demo-data:/app/.wrangler/state
+volumes:
+  demo-data:

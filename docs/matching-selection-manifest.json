@@ -1,0 +1,17 @@
+{
+  "selectedAt": "2026-10-06T18:14:41.190Z",
+  "baselineCommit": "1fd178b32ad72c9cc3d31647465c93e8940326d4",
+  "heldoutViewed": false,
+  "selection": "Bounded scoped DEMO component. One development-informed fix: local two-skill OR groups; no further tuning after heldout.",
+  "hashes": {
+    "lib/matching.mjs": "c7c5ecc91a17442139568f229e01bbb2b6fb815823b3fa8fc64b70d17fd9bc09",
+    "lib/achievements.mjs": "6cf384ba4807d0791065c420118a3e65e6efaa1c50424a07e6175ccf9b6b6f62",
+    "lib/domain.mjs": "c50485d51c6d4de2f9c20479f8d0bd537506f4c37dc6c5b1ec1cde9cf7dceb10"
+  },
+  "postSelectionCorrectnessNote": {
+    "at": "2026-10-06T18:27:51.400Z",
+    "domainSha256": "8e2d9778362969f6b14ffbb60c1f7319fe629c5dcb542ce015ae8edadf8dc4aa",
+    "change": "Only stripTest gained a caseSensitive format hint; removing that exact addition reproduces selected domain hash. Matching and achievement module bytes unchanged. Assessment v4 fixes decimal/id answer correctness. Heldout fixtures are synthetic_seed and the ranking formula/filter paths are unchanged; saved heldout was not retuned.",
+    "matchingHashesUnchanged": true
+  }
+}
