@@ -1,0 +1,1 @@
+ALTER TABLE `real_email_outbox` ADD `payload_hash` text;

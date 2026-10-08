@@ -18,3 +18,12 @@ export interface ActionResult { error?: string; verificationError?: string; cand
 export interface ProfileForm { about: string; experience: string | number; softSkills: string; contact: string; published: boolean; consent: boolean }
 export interface CompanyForm { company: string; description: string; contact: string }
 export interface ModelContext { registerTool(tool: { name: string; description: string; inputSchema: object; annotations: object; execute: (input: unknown) => Promise<unknown> }, options: { signal: AbortSignal }): void | Promise<unknown> }
+
+// Safe email-delivery DTO shared by real-account state and action responses.
+export interface AccountEmailState {
+ emailStatus?: 'verified'|'blocked'|'queued'|'leased'|'retry'|'sent'|'failed'|'cancelled'|'not_configured'|'not_requested';
+ challengeId?: string; expiresAt?: number; emailAttempts?: number;
+ emailRetryAllowed?: boolean; emailRetryAt?: number;
+}
+export type AccountState = Partial<WorkspaceData> & AccountEmailState & {enabled:boolean;enrolled?:boolean;emailEnabled?:boolean;privacyNoticeUrl?:string;privacyNoticeVersion?:string;message?:string};
+export type AccountActionResult = AccountEmailState & {error?:string;verificationError?:string;enrolled?:boolean};
