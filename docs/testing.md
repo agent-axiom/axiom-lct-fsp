@@ -8,6 +8,8 @@
 
 В изолированном изменении request-time email-dispatch полный набор вырос до 229 тестов, включая 34 новых HTTP/migration-проверки с синтетическими данными и mock транспорта. Typecheck, lint и сборка проходят; браузерный UI-прогон этого изменения заблокирован средой. Это не подтверждение реальной доставки. Методика и границы: [email-request-dispatch.md](email-request-dispatch.md).
 
+Новый Google MailApp pilot проверен локально: 292 теста (63 новых), typecheck, lint, production build, additive-миграции и HTTP clean-launch. Тесты исполняют исходник Apps Script с mock Google services и не отправляют настоящих писем. Подтверждение реальной Google-авторизации, развёртывания и доставки остаётся отдельным шагом: [протокол и границы](google-mailapp-pilot.md).
+
 ```sh
 npm run install:ci
 npm test

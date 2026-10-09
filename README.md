@@ -41,6 +41,7 @@ node scripts/local-demo.mjs
 - [Архитектура и основные модули](docs/architecture.md)
 - [Тестирование кандидатов](docs/assessment-quality-v4.md), [история и смена грейда](docs/transition-policy.md)
 - [Методика подбора](docs/matching-quality.md) и [правила DEMO-достижений](docs/achievement-policy.md)
+- [Google MailApp: ограниченный pilot, выключен по умолчанию](docs/google-mailapp-pilot.md)
 - [Гостевой доступ](docs/guest-access-verification.md), [подготовка email](docs/email-readiness.md)
 - [Проверки и воспроизведение](docs/testing.md), [финальный чек-лист](docs/final-submission-checklist.md)
 - [История версий и подробный прежний README](docs/archive/README-before-cleanup-2026-10-08.md)
