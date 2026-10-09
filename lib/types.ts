@@ -21,7 +21,7 @@ export interface ModelContext { registerTool(tool: { name: string; description: 
 
 // Safe email-delivery DTO shared by real-account state and action responses.
 export interface AccountEmailState {
- emailStatus?: 'verified'|'blocked'|'queued'|'leased'|'retry'|'sent'|'failed'|'cancelled'|'not_configured'|'not_requested';
+ emailStatus?: 'verified'|'blocked'|'queued'|'leased'|'retry'|'sent'|'failed'|'unknown'|'cancelled'|'not_configured'|'not_requested';
  challengeId?: string; expiresAt?: number; emailAttempts?: number;
  emailRetryAllowed?: boolean; emailRetryAt?: number;
 }

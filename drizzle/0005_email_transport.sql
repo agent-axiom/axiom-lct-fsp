@@ -1,0 +1,1 @@
+ALTER TABLE `real_email_outbox` ADD `email_transport` text DEFAULT 'resend' NOT NULL;
