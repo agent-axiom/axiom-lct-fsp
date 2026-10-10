@@ -118,3 +118,16 @@ body{font-family:'JetBrains Mono',ui-monospace,monospace;color:#17182b;backgroun
 .proof-tasks{margin-top:8px;border:1px solid #ededed;border-radius:6px}.proof-tasks summary{min-height:44px;font-size:13px;padding:10px 12px}.proof-tasks ul{list-style:none;margin:0;padding:0 12px 10px}.proof-tasks li{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;font-size:13px;line-height:1.6}.proof-tasks li strong{font-weight:600}
 /* Public guest controls may wrap; never overlap the demo notice. */
 .top{height:auto;min-height:80px;padding-top:14px;padding-bottom:14px}.top-right a{font-size:14px;line-height:1.45}
+.demo-examples{margin:0 0 20px;padding:14px;background:#f6f5ff;border-radius:6px}.demo-examples .actions{margin-top:8px;gap:8px}.demo-examples button{white-space:normal;text-align:left;height:auto;min-height:44px;max-width:100%}.score-label{display:block;font-size:10px;font-weight:500;line-height:1.5;letter-spacing:0;color:#646a7d}.demo-scenario[open]>summary{border-bottom:1px solid #ededf5;margin-bottom:12px}
+/* Keep every dialog reachable at browser zoom and in short mobile viewports.
+   The dialog itself scrolls because Radix intentionally locks page scrolling. */
+[data-slot="dialog-content"] {
+  max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scroll-padding-block: 1rem;
+}
+[data-slot="dialog-content"] :is(input, textarea, select, button, a, [tabindex]) {
+  scroll-margin-block: .5rem;
+}

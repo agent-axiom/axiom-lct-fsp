@@ -26,3 +26,8 @@ export const revisions=sqliteTable('real_revisions',{id:text('id').primaryKey(),
 export const guestWorkspaces=sqliteTable('guest_workspaces',{
  tokenHash:text('token_hash').primaryKey(),state:text('state').notNull(),revision:integer('revision').notNull().default(0),createdAt:integer('created_at').notNull(),expiresAt:integer('expires_at').notNull(),windowStartedAt:integer('window_started_at').notNull(),requestCount:integer('request_count').notNull().default(0),
 },table=>[index('guest_workspaces_expiry').on(table.expiresAt),index('guest_workspaces_created').on(table.createdAt),check('guest_session_expiry',sql`${table.expiresAt}>${table.createdAt}`),check('guest_session_requests',sql`${table.requestCount}>=0`)]);
+
+// Durable one-shot operational test. No account, recipient or credential stored.
+export const ownerEmailTests = sqliteTable('owner_email_tests', {
+ id: text('id').primaryKey(), principalHash: text('principal_hash').notNull(), payloadHash: text('payload_hash').notNull(), status: text('status').notNull(), startedAt: integer('started_at').notNull(), finishedAt: integer('finished_at'), providerMessageId: text('provider_message_id'), errorCode: text('error_code'),
+}, table => [check('owner_email_test_status', sql`${table.status} in ('sending','accepted','rejected','unknown')`)]);
