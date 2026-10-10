@@ -3,7 +3,7 @@
   "info": {
     "title": "FSP synthetic hiring MVP",
     "version": "0.6.1",
-    "description": "Public anonymous synthetic guest demo with separate short-lived sessions; optional ChatGPT sign-in keeps existing personal workspaces protected. No real email delivery or real account activation."
+    "description": "Public anonymous synthetic guest demo with separate short-lived sessions; optional ChatGPT sign-in protects personal workspaces. Real-account activation and general email are off by default. Separately authorized owner-only one-message diagnostics do not enable them."
   },
   "servers": [
     {
@@ -4618,6 +4618,878 @@
           }
         ]
       }
+    },
+    "/api/owner/email-test": {
+      "get": {
+        "operationId": "getOwnerEmailTest",
+        "summary": "Read owner diagnostic status without sending",
+        "description": "Owner-only diagnostic from fixed sender onboarding@resend.dev to the existing server-configured owner address. Requires trusted platform identity with matching owner email; body, cookies and caller identity fields cannot authorize it. No query parameters. Immutable event fsp-owner-resend-smoke-2026-10-10-v1; the onboarding and custom-domain receipts are separate and never reset. No real-account or general-mail activation. GET never calls the provider. The enabled flag is not a readiness guarantee.",
+        "x-platform-authentication": {
+          "required": true,
+          "clientSuppliedIdentityAccepted": false
+        },
+        "responses": {
+          "200": {
+            "description": "Status only; no outbound email",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnerEmailDiagnosticStatus"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing trusted platform identity. Client-supplied identity data is not authentication.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Identity is not the configured owner, or the durable receipt belongs to another platform principal.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown diagnostic route or any query parameters.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Storage or status read is unavailable. GET does not require the send flag, API key or site origin to be ready, and never calls the provider.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "sendOwnerEmailTest",
+        "summary": "Claim and send at most one fixed owner diagnostic",
+        "description": "Owner-only diagnostic from fixed sender onboarding@resend.dev to the existing server-configured owner address. Requires trusted platform identity with matching owner email; body, cookies and caller identity fields cannot authorize it. No query parameters. Immutable event fsp-owner-resend-smoke-2026-10-10-v1; the onboarding and custom-domain receipts are separate and never reset. No real-account or general-mail activation. Requires same-origin HTTPS URL and Origin header, application/json and a body no larger than 128 bytes. A durable INSERT claim happens before the single provider call. There is no lease release, retry or reset, even after timeout, rejection, a crash or provider idempotency expiry. 200 reports the stored outcome, not guaranteed delivery.",
+        "x-platform-authentication": {
+          "required": true,
+          "clientSuppliedIdentityAccepted": false
+        },
+        "responses": {
+          "200": {
+            "description": "Sanitized result or permanent replay; accepted does not prove delivery",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnerEmailDiagnosticResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON or unsupported action/fields. Recipient, sender, text, event ID and identity cannot be supplied.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing trusted platform identity. Client-supplied identity data is not authentication.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Identity is not the configured owner, receipt belongs to another platform principal, or POST origin is forbidden.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown diagnostic route or any query parameters.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request body exceeds 128 bytes.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "POST Content-Type must be application/json.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Diagnostic disabled/incomplete, storage unavailable, or outcome persistence uncertain. Read status; never reset or retry a claimed event.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "description": "Must equal the configured HTTPS site origin and the request URL origin.",
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OwnerEmailTestRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/owner/domain-email-test": {
+      "get": {
+        "operationId": "getOwnerDomainEmailTest",
+        "summary": "Read owner diagnostic status without sending",
+        "description": "Owner-only diagnostic from fixed sender noreply@notify.kosarevsky.dev to the existing server-configured owner address. Requires trusted platform identity with matching owner email; body, cookies and caller identity fields cannot authorize it. No query parameters. Immutable event fsp-owner-resend-domain-sender-2026-10-10-v1; the onboarding and custom-domain receipts are separate and never reset. No real-account or general-mail activation. GET never calls the provider. The enabled flag is not a readiness guarantee.",
+        "x-platform-authentication": {
+          "required": true,
+          "clientSuppliedIdentityAccepted": false
+        },
+        "responses": {
+          "200": {
+            "description": "Status only; no outbound email",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnerEmailDiagnosticStatus"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing trusted platform identity. Client-supplied identity data is not authentication.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Identity is not the configured owner, or the durable receipt belongs to another platform principal.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown diagnostic route or any query parameters.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Storage or status read is unavailable. GET does not require the send flag, API key or site origin to be ready, and never calls the provider.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "sendOwnerDomainEmailTest",
+        "summary": "Claim and send at most one fixed owner diagnostic",
+        "description": "Owner-only diagnostic from fixed sender noreply@notify.kosarevsky.dev to the existing server-configured owner address. Requires trusted platform identity with matching owner email; body, cookies and caller identity fields cannot authorize it. No query parameters. Immutable event fsp-owner-resend-domain-sender-2026-10-10-v1; the onboarding and custom-domain receipts are separate and never reset. No real-account or general-mail activation. Requires same-origin HTTPS URL and Origin header, application/json and a body no larger than 128 bytes. A durable INSERT claim happens before the single provider call. There is no lease release, retry or reset, even after timeout, rejection, a crash or provider idempotency expiry. 200 reports the stored outcome, not guaranteed delivery.",
+        "x-platform-authentication": {
+          "required": true,
+          "clientSuppliedIdentityAccepted": false
+        },
+        "responses": {
+          "200": {
+            "description": "Sanitized result or permanent replay; accepted does not prove delivery",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnerEmailDiagnosticResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON or unsupported action/fields. Recipient, sender, text, event ID and identity cannot be supplied.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing trusted platform identity. Client-supplied identity data is not authentication.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Identity is not the configured owner, receipt belongs to another platform principal, or POST origin is forbidden.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown diagnostic route or any query parameters.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request body exceeds 128 bytes.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "POST Content-Type must be application/json.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Diagnostic disabled/incomplete, storage unavailable, or outcome persistence uncertain. Read status; never reset or retry a claimed event.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              },
+              "Referrer-Policy": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-referrer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "description": "Must equal the configured HTTPS site origin and the request URL origin.",
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OwnerDomainEmailTestRequest"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -5942,6 +6814,91 @@
         "properties": {
           "action": {
             "const": "email-retry"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      },
+      "OwnerEmailDiagnosticStatus": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "not_started",
+              "sending",
+              "accepted",
+              "rejected",
+              "unknown"
+            ],
+            "description": "accepted means provider acceptance, not inbox delivery. Every claimed event remains permanently locked, including rejected or unknown results."
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Owner-test enable flag only; does not prove complete configuration or enable general mail."
+          },
+          "code": {
+            "type": "string",
+            "pattern": "^(HTTP_[1-5][0-9]{2}|UNEXPECTED_REDIRECT|INVALID_PROVIDER_RESPONSE|DELIVERY_UNKNOWN)$",
+            "description": "Sanitized outcome code; no raw provider response, address or credential."
+          }
+        },
+        "required": [
+          "status",
+          "enabled"
+        ],
+        "additionalProperties": false
+      },
+      "OwnerEmailDiagnosticResult": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "sending",
+              "accepted",
+              "rejected",
+              "unknown"
+            ],
+            "description": "accepted means provider acceptance, not inbox delivery. Every claimed event remains permanently locked, including rejected or unknown results."
+          },
+          "replay": {
+            "type": "boolean",
+            "const": true,
+            "description": "Existing durable receipt returned without a provider call."
+          },
+          "code": {
+            "type": "string",
+            "pattern": "^(HTTP_[1-5][0-9]{2}|UNEXPECTED_REDIRECT|INVALID_PROVIDER_RESPONSE|DELIVERY_UNKNOWN)$",
+            "description": "Sanitized outcome code; no raw provider response, address or credential."
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "OwnerEmailTestRequest": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "const": "send-owner-test"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      },
+      "OwnerDomainEmailTestRequest": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "const": "send-owner-domain-test"
           }
         },
         "required": [
