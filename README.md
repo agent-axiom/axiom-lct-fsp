@@ -44,7 +44,7 @@ node scripts/local-demo.mjs
 
 - [Исходники для жюри и сопоставление с демо](docs/jury-source.md)
 - [Архитектура и основные модули](docs/architecture.md)
-- [Тестирование кандидатов](docs/assessment-quality-v4.md), [история и смена грейда](docs/transition-policy.md)
+- [Тестирование кандидатов: банк v5 и ограничения](docs/assessment-quality-v5.md), [исторический отчёт v4](docs/assessment-quality-v4.md), [история и смена грейда](docs/transition-policy.md)
 - [Методика подбора](docs/matching-quality.md) и [правила DEMO-достижений](docs/achievement-policy.md)
 - [Google MailApp: ограниченный pilot, выключен по умолчанию](docs/google-mailapp-pilot.md)
 - [Гостевой доступ](docs/guest-access-verification.md), [подготовка email](docs/email-readiness.md)

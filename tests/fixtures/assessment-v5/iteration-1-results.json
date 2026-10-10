@@ -1,0 +1,2209 @@
+{
+  "schemaVersion": 1,
+  "protocol": {
+    "frozenAt": "2026-10-10T21:08:20Z",
+    "baselineCommit": "fd4572022c367645784232f517ae2f91a07e646b",
+    "trainStart": 671000,
+    "trainSizes": [
+      1,
+      5,
+      20,
+      100,
+      500
+    ],
+    "evaluationStart": 972000,
+    "evaluationCount": 300,
+    "metrics": [
+      "exact-public-prompt-memorizer-pass-rate",
+      "recognized-items",
+      "score-range-mean",
+      "unordered-pair-pass-flip-rate",
+      "fresh-prompt-repetition",
+      "fresh-distinct-answers",
+      "concept-overlap"
+    ],
+    "profiles": [
+      "all",
+      "none",
+      "missing-first-skill",
+      "all-applied",
+      "applied-plus-knowledge-0",
+      "applied-plus-knowledge-0-1",
+      "legacy-only",
+      "fresh-plus-knowledge"
+    ],
+    "memorizerKey": "JSON.stringify([text,format,sortedChoices])",
+    "unknownAnswer": "не знаю",
+    "threshold": "unchanged: 9/12 overall and 2/3 in every skill",
+    "interpretation": "Developer-authored synthetic regression; new seed interval is not an independent human or conceptual holdout. No LLM resistance or professional grade validity claim."
+  },
+  "provenance": {
+    "baselineSHA256": "581cc33e387b4621f2941a5bf4259ae96b52181e84bdabf5b3b2cf920f2ec7a8",
+    "currentSHA256": "e2636cd8b790aa137cf022bb3ec7bf472164da09d3d58f31b9a3073cff2da9ff",
+    "freshSourceSHA256": "06afa37016dd594436072cf6fe9b5934903f6c9637fcee1b397e5e851233f35e",
+    "oracleSHA256": "0b6114ffbd9bd9b703e9bbb10892671912b1576920ce063d8119ac8b691ca2a2",
+    "protocolSHA256": "61a9502f97c58db6bc15a63ba00f6a67f9c5961a69fa7abdad4327036c0a9489"
+  },
+  "limitations": [
+    "Developer-authored synthetic regression; no human response data, independent expert review, psychometric calibration, or professional grade validity.",
+    "Fresh reference oracle authored from a frozen contract before reading the new generator. This is implementation independence, not independent conceptual validation.",
+    "New seed interval holds out random parameters, not unseen concepts. No LLM resistance claim; neither an LLM nor an external solver is evaluated.",
+    "Exact-prompt memorizer is given independently calculated training labels, representing an exposed/learned training bank; inference uses only public DTO fields.",
+    "The all-pair flip fraction measures only synthetic profile pass variation across these seeded forms. No test-retest improvement is assumed.",
+    "All forms retain the same four fresh concepts per category. Text diversity is not concept diversity. Short traces do not establish professional competence."
+  ],
+  "before": {
+    "assessmentVersion": 4,
+    "checkedLabels": 57600,
+    "rows": [
+      {
+        "specialization": "Backend",
+        "grade": "Junior",
+        "profiles": {
+          "all": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "none": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 0,
+            "meanScore": 0,
+            "unorderedPairPassFlipRate": 0
+          },
+          "missing-first-skill": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 75,
+            "maxScore": 75,
+            "meanScore": 75,
+            "unorderedPairPassFlipRate": 0
+          },
+          "all-applied": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "applied-plus-knowledge-0": {
+            "attempts": 300,
+            "passes": 193,
+            "passRate": 0.6433333333333333,
+            "minScore": 67,
+            "maxScore": 92,
+            "meanScore": 74.67,
+            "unorderedPairPassFlipRate": 0.4604459308807135
+          },
+          "applied-plus-knowledge-0-1": {
+            "attempts": 300,
+            "passes": 284,
+            "passRate": 0.9466666666666667,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 83.49,
+            "unorderedPairPassFlipRate": 0.1013154960981048
+          },
+          "legacy-only": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "fresh-plus-knowledge": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 33,
+            "maxScore": 33,
+            "meanScore": 33,
+            "unorderedPairPassFlipRate": 0
+          }
+        },
+        "memorization": [
+          {
+            "trainingAttempts": 1,
+            "memorizedExactPrompts": 12,
+            "recognized": 178,
+            "items": 3600,
+            "recognizedFraction": 0.049444444444444444,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 25,
+            "meanScore": 4.84,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 5,
+            "memorizedExactPrompts": 55,
+            "recognized": 477,
+            "items": 3600,
+            "recognizedFraction": 0.1325,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 50,
+            "meanScore": 13.183333333333334,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 20,
+            "memorizedExactPrompts": 206,
+            "recognized": 961,
+            "items": 3600,
+            "recognizedFraction": 0.26694444444444443,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 8,
+            "maxScore": 75,
+            "meanScore": 26.683333333333334,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 100,
+            "memorizedExactPrompts": 763,
+            "recognized": 2160,
+            "items": 3600,
+            "recognizedFraction": 0.6,
+            "attempts": 300,
+            "passes": 34,
+            "passRate": 0.11333333333333333,
+            "minScore": 8,
+            "maxScore": 100,
+            "meanScore": 59.97666666666667,
+            "unorderedPairPassFlipRate": 0.2016499442586399
+          },
+          {
+            "trainingAttempts": 500,
+            "memorizedExactPrompts": 1482,
+            "recognized": 3358,
+            "items": 3600,
+            "recognizedFraction": 0.9327777777777778,
+            "attempts": 300,
+            "passes": 267,
+            "passRate": 0.89,
+            "minScore": 58,
+            "maxScore": 100,
+            "meanScore": 93.36666666666666,
+            "unorderedPairPassFlipRate": 0.19645484949832775
+          }
+        ],
+        "conceptOverlap": {
+          "comparisons": 44850,
+          "min": 8,
+          "max": 12,
+          "mean": 8.996833890746935
+        },
+        "publicTextDiversity": {
+          "occurrences": 3600,
+          "distinct": 1294,
+          "repeatedOccurrences": 2306
+        },
+        "freshFamilies": []
+      },
+      {
+        "specialization": "Backend",
+        "grade": "Middle",
+        "profiles": {
+          "all": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "none": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 0,
+            "meanScore": 0,
+            "unorderedPairPassFlipRate": 0
+          },
+          "missing-first-skill": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 75,
+            "maxScore": 75,
+            "meanScore": 75,
+            "unorderedPairPassFlipRate": 0
+          },
+          "all-applied": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "applied-plus-knowledge-0": {
+            "attempts": 300,
+            "passes": 193,
+            "passRate": 0.6433333333333333,
+            "minScore": 67,
+            "maxScore": 92,
+            "meanScore": 74.67,
+            "unorderedPairPassFlipRate": 0.4604459308807135
+          },
+          "applied-plus-knowledge-0-1": {
+            "attempts": 300,
+            "passes": 284,
+            "passRate": 0.9466666666666667,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 83.49,
+            "unorderedPairPassFlipRate": 0.1013154960981048
+          },
+          "legacy-only": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "fresh-plus-knowledge": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 33,
+            "maxScore": 33,
+            "meanScore": 33,
+            "unorderedPairPassFlipRate": 0
+          }
+        },
+        "memorization": [
+          {
+            "trainingAttempts": 1,
+            "memorizedExactPrompts": 12,
+            "recognized": 336,
+            "items": 3600,
+            "recognizedFraction": 0.09333333333333334,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 33,
+            "meanScore": 9.266666666666667,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 5,
+            "memorizedExactPrompts": 50,
+            "recognized": 728,
+            "items": 3600,
+            "recognizedFraction": 0.20222222222222222,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 58,
+            "meanScore": 20.256666666666668,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 20,
+            "memorizedExactPrompts": 183,
+            "recognized": 1447,
+            "items": 3600,
+            "recognizedFraction": 0.40194444444444444,
+            "attempts": 300,
+            "passes": 3,
+            "passRate": 0.01,
+            "minScore": 8,
+            "maxScore": 83,
+            "meanScore": 40.20333333333333,
+            "unorderedPairPassFlipRate": 0.019866220735785953
+          },
+          {
+            "trainingAttempts": 100,
+            "memorizedExactPrompts": 597,
+            "recognized": 2552,
+            "items": 3600,
+            "recognizedFraction": 0.7088888888888889,
+            "attempts": 300,
+            "passes": 86,
+            "passRate": 0.2866666666666667,
+            "minScore": 33,
+            "maxScore": 100,
+            "meanScore": 70.89666666666666,
+            "unorderedPairPassFlipRate": 0.410345596432553
+          },
+          {
+            "trainingAttempts": 500,
+            "memorizedExactPrompts": 1139,
+            "recognized": 3410,
+            "items": 3600,
+            "recognizedFraction": 0.9472222222222222,
+            "attempts": 300,
+            "passes": 287,
+            "passRate": 0.9566666666666667,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 94.80333333333333,
+            "unorderedPairPassFlipRate": 0.08318840579710145
+          }
+        ],
+        "conceptOverlap": {
+          "comparisons": 44850,
+          "min": 8,
+          "max": 12,
+          "mean": 8.996833890746935
+        },
+        "publicTextDiversity": {
+          "occurrences": 3600,
+          "distinct": 995,
+          "repeatedOccurrences": 2605
+        },
+        "freshFamilies": []
+      },
+      {
+        "specialization": "Backend",
+        "grade": "Senior",
+        "profiles": {
+          "all": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "none": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 0,
+            "meanScore": 0,
+            "unorderedPairPassFlipRate": 0
+          },
+          "missing-first-skill": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 75,
+            "maxScore": 75,
+            "meanScore": 75,
+            "unorderedPairPassFlipRate": 0
+          },
+          "all-applied": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "applied-plus-knowledge-0": {
+            "attempts": 300,
+            "passes": 193,
+            "passRate": 0.6433333333333333,
+            "minScore": 67,
+            "maxScore": 92,
+            "meanScore": 74.67,
+            "unorderedPairPassFlipRate": 0.4604459308807135
+          },
+          "applied-plus-knowledge-0-1": {
+            "attempts": 300,
+            "passes": 284,
+            "passRate": 0.9466666666666667,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 83.49,
+            "unorderedPairPassFlipRate": 0.1013154960981048
+          },
+          "legacy-only": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "fresh-plus-knowledge": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 33,
+            "maxScore": 33,
+            "meanScore": 33,
+            "unorderedPairPassFlipRate": 0
+          }
+        },
+        "memorization": [
+          {
+            "trainingAttempts": 1,
+            "memorizedExactPrompts": 12,
+            "recognized": 333,
+            "items": 3600,
+            "recognizedFraction": 0.0925,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 42,
+            "meanScore": 9.17,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 5,
+            "memorizedExactPrompts": 50,
+            "recognized": 884,
+            "items": 3600,
+            "recognizedFraction": 0.24555555555555555,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 58,
+            "meanScore": 24.586666666666666,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 20,
+            "memorizedExactPrompts": 167,
+            "recognized": 1529,
+            "items": 3600,
+            "recognizedFraction": 0.4247222222222222,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 8,
+            "maxScore": 83,
+            "meanScore": 42.473333333333336,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 100,
+            "memorizedExactPrompts": 567,
+            "recognized": 2590,
+            "items": 3600,
+            "recognizedFraction": 0.7194444444444444,
+            "attempts": 300,
+            "passes": 46,
+            "passRate": 0.15333333333333332,
+            "minScore": 33,
+            "maxScore": 100,
+            "meanScore": 71.92666666666666,
+            "unorderedPairPassFlipRate": 0.2605128205128205
+          },
+          {
+            "trainingAttempts": 500,
+            "memorizedExactPrompts": 948,
+            "recognized": 3500,
+            "items": 3600,
+            "recognizedFraction": 0.9722222222222222,
+            "attempts": 300,
+            "passes": 270,
+            "passRate": 0.9,
+            "minScore": 58,
+            "maxScore": 100,
+            "meanScore": 97.23,
+            "unorderedPairPassFlipRate": 0.1806020066889632
+          }
+        ],
+        "conceptOverlap": {
+          "comparisons": 44850,
+          "min": 8,
+          "max": 12,
+          "mean": 8.996833890746935
+        },
+        "publicTextDiversity": {
+          "occurrences": 3600,
+          "distinct": 895,
+          "repeatedOccurrences": 2705
+        },
+        "freshFamilies": []
+      },
+      {
+        "specialization": "Frontend",
+        "grade": "Junior",
+        "profiles": {
+          "all": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "none": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 0,
+            "meanScore": 0,
+            "unorderedPairPassFlipRate": 0
+          },
+          "missing-first-skill": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 75,
+            "maxScore": 75,
+            "meanScore": 75,
+            "unorderedPairPassFlipRate": 0
+          },
+          "all-applied": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "applied-plus-knowledge-0": {
+            "attempts": 300,
+            "passes": 193,
+            "passRate": 0.6433333333333333,
+            "minScore": 67,
+            "maxScore": 92,
+            "meanScore": 74.67,
+            "unorderedPairPassFlipRate": 0.4604459308807135
+          },
+          "applied-plus-knowledge-0-1": {
+            "attempts": 300,
+            "passes": 284,
+            "passRate": 0.9466666666666667,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 83.49,
+            "unorderedPairPassFlipRate": 0.1013154960981048
+          },
+          "legacy-only": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "fresh-plus-knowledge": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 33,
+            "maxScore": 33,
+            "meanScore": 33,
+            "unorderedPairPassFlipRate": 0
+          }
+        },
+        "memorization": [
+          {
+            "trainingAttempts": 1,
+            "memorizedExactPrompts": 12,
+            "recognized": 171,
+            "items": 3600,
+            "recognizedFraction": 0.0475,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 25,
+            "meanScore": 4.67,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 5,
+            "memorizedExactPrompts": 55,
+            "recognized": 531,
+            "items": 3600,
+            "recognizedFraction": 0.1475,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 50,
+            "meanScore": 14.73,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 20,
+            "memorizedExactPrompts": 195,
+            "recognized": 1219,
+            "items": 3600,
+            "recognizedFraction": 0.3386111111111111,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 17,
+            "maxScore": 75,
+            "meanScore": 33.93,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 100,
+            "memorizedExactPrompts": 693,
+            "recognized": 2309,
+            "items": 3600,
+            "recognizedFraction": 0.6413888888888889,
+            "attempts": 300,
+            "passes": 34,
+            "passRate": 0.11333333333333333,
+            "minScore": 17,
+            "maxScore": 100,
+            "meanScore": 64.1,
+            "unorderedPairPassFlipRate": 0.2016499442586399
+          },
+          {
+            "trainingAttempts": 500,
+            "memorizedExactPrompts": 1321,
+            "recognized": 3420,
+            "items": 3600,
+            "recognizedFraction": 0.95,
+            "attempts": 300,
+            "passes": 267,
+            "passRate": 0.89,
+            "minScore": 58,
+            "maxScore": 100,
+            "meanScore": 95.06666666666666,
+            "unorderedPairPassFlipRate": 0.19645484949832775
+          }
+        ],
+        "conceptOverlap": {
+          "comparisons": 44850,
+          "min": 8,
+          "max": 12,
+          "mean": 8.996833890746935
+        },
+        "publicTextDiversity": {
+          "occurrences": 3600,
+          "distinct": 1154,
+          "repeatedOccurrences": 2446
+        },
+        "freshFamilies": []
+      },
+      {
+        "specialization": "Frontend",
+        "grade": "Middle",
+        "profiles": {
+          "all": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "none": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 0,
+            "meanScore": 0,
+            "unorderedPairPassFlipRate": 0
+          },
+          "missing-first-skill": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 75,
+            "maxScore": 75,
+            "meanScore": 75,
+            "unorderedPairPassFlipRate": 0
+          },
+          "all-applied": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "applied-plus-knowledge-0": {
+            "attempts": 300,
+            "passes": 193,
+            "passRate": 0.6433333333333333,
+            "minScore": 67,
+            "maxScore": 92,
+            "meanScore": 74.67,
+            "unorderedPairPassFlipRate": 0.4604459308807135
+          },
+          "applied-plus-knowledge-0-1": {
+            "attempts": 300,
+            "passes": 284,
+            "passRate": 0.9466666666666667,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 83.49,
+            "unorderedPairPassFlipRate": 0.1013154960981048
+          },
+          "legacy-only": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "fresh-plus-knowledge": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 33,
+            "maxScore": 33,
+            "meanScore": 33,
+            "unorderedPairPassFlipRate": 0
+          }
+        },
+        "memorization": [
+          {
+            "trainingAttempts": 1,
+            "memorizedExactPrompts": 12,
+            "recognized": 243,
+            "items": 3600,
+            "recognizedFraction": 0.0675,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 33,
+            "meanScore": 6.666666666666667,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 5,
+            "memorizedExactPrompts": 51,
+            "recognized": 667,
+            "items": 3600,
+            "recognizedFraction": 0.1852777777777778,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 58,
+            "meanScore": 18.523333333333333,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 20,
+            "memorizedExactPrompts": 179,
+            "recognized": 1364,
+            "items": 3600,
+            "recognizedFraction": 0.3788888888888889,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 8,
+            "maxScore": 83,
+            "meanScore": 37.86666666666667,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 100,
+            "memorizedExactPrompts": 650,
+            "recognized": 2428,
+            "items": 3600,
+            "recognizedFraction": 0.6744444444444444,
+            "attempts": 300,
+            "passes": 34,
+            "passRate": 0.11333333333333333,
+            "minScore": 17,
+            "maxScore": 100,
+            "meanScore": 67.45666666666666,
+            "unorderedPairPassFlipRate": 0.2016499442586399
+          },
+          {
+            "trainingAttempts": 500,
+            "memorizedExactPrompts": 1172,
+            "recognized": 3448,
+            "items": 3600,
+            "recognizedFraction": 0.9577777777777777,
+            "attempts": 300,
+            "passes": 267,
+            "passRate": 0.89,
+            "minScore": 58,
+            "maxScore": 100,
+            "meanScore": 95.82,
+            "unorderedPairPassFlipRate": 0.19645484949832775
+          }
+        ],
+        "conceptOverlap": {
+          "comparisons": 44850,
+          "min": 8,
+          "max": 12,
+          "mean": 8.996833890746935
+        },
+        "publicTextDiversity": {
+          "occurrences": 3600,
+          "distinct": 1063,
+          "repeatedOccurrences": 2537
+        },
+        "freshFamilies": []
+      },
+      {
+        "specialization": "Frontend",
+        "grade": "Senior",
+        "profiles": {
+          "all": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "none": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 0,
+            "meanScore": 0,
+            "unorderedPairPassFlipRate": 0
+          },
+          "missing-first-skill": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 75,
+            "maxScore": 75,
+            "meanScore": 75,
+            "unorderedPairPassFlipRate": 0
+          },
+          "all-applied": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "applied-plus-knowledge-0": {
+            "attempts": 300,
+            "passes": 193,
+            "passRate": 0.6433333333333333,
+            "minScore": 67,
+            "maxScore": 92,
+            "meanScore": 74.67,
+            "unorderedPairPassFlipRate": 0.4604459308807135
+          },
+          "applied-plus-knowledge-0-1": {
+            "attempts": 300,
+            "passes": 284,
+            "passRate": 0.9466666666666667,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 83.49,
+            "unorderedPairPassFlipRate": 0.1013154960981048
+          },
+          "legacy-only": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "fresh-plus-knowledge": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 33,
+            "maxScore": 33,
+            "meanScore": 33,
+            "unorderedPairPassFlipRate": 0
+          }
+        },
+        "memorization": [
+          {
+            "trainingAttempts": 1,
+            "memorizedExactPrompts": 12,
+            "recognized": 333,
+            "items": 3600,
+            "recognizedFraction": 0.0925,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 42,
+            "meanScore": 9.17,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 5,
+            "memorizedExactPrompts": 50,
+            "recognized": 884,
+            "items": 3600,
+            "recognizedFraction": 0.24555555555555555,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 58,
+            "meanScore": 24.586666666666666,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 20,
+            "memorizedExactPrompts": 162,
+            "recognized": 1735,
+            "items": 3600,
+            "recognizedFraction": 0.48194444444444445,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 33,
+            "maxScore": 83,
+            "meanScore": 48.20666666666666,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 100,
+            "memorizedExactPrompts": 531,
+            "recognized": 2704,
+            "items": 3600,
+            "recognizedFraction": 0.7511111111111111,
+            "attempts": 300,
+            "passes": 50,
+            "passRate": 0.16666666666666666,
+            "minScore": 42,
+            "maxScore": 100,
+            "meanScore": 75.09333333333333,
+            "unorderedPairPassFlipRate": 0.2787068004459309
+          },
+          {
+            "trainingAttempts": 500,
+            "memorizedExactPrompts": 851,
+            "recognized": 3535,
+            "items": 3600,
+            "recognizedFraction": 0.9819444444444444,
+            "attempts": 300,
+            "passes": 270,
+            "passRate": 0.9,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 98.16666666666667,
+            "unorderedPairPassFlipRate": 0.1806020066889632
+          }
+        ],
+        "conceptOverlap": {
+          "comparisons": 44850,
+          "min": 8,
+          "max": 12,
+          "mean": 8.996833890746935
+        },
+        "publicTextDiversity": {
+          "occurrences": 3600,
+          "distinct": 807,
+          "repeatedOccurrences": 2793
+        },
+        "freshFamilies": []
+      }
+    ]
+  },
+  "after": {
+    "assessmentVersion": 5,
+    "checkedLabels": 57600,
+    "rows": [
+      {
+        "specialization": "Backend",
+        "grade": "Junior",
+        "profiles": {
+          "all": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "none": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 0,
+            "meanScore": 0,
+            "unorderedPairPassFlipRate": 0
+          },
+          "missing-first-skill": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 75,
+            "maxScore": 75,
+            "meanScore": 75,
+            "unorderedPairPassFlipRate": 0
+          },
+          "all-applied": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "applied-plus-knowledge-0": {
+            "attempts": 300,
+            "passes": 212,
+            "passRate": 0.7066666666666667,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 75.12333333333333,
+            "unorderedPairPassFlipRate": 0.41596432552954293
+          },
+          "applied-plus-knowledge-0-1": {
+            "attempts": 300,
+            "passes": 287,
+            "passRate": 0.9566666666666667,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 83.37666666666667,
+            "unorderedPairPassFlipRate": 0.08318840579710145
+          },
+          "legacy-only": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "fresh-plus-knowledge": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          }
+        },
+        "memorization": [
+          {
+            "trainingAttempts": 1,
+            "memorizedExactPrompts": 12,
+            "recognized": 219,
+            "items": 3600,
+            "recognizedFraction": 0.060833333333333336,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 25,
+            "meanScore": 5.976666666666667,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 5,
+            "memorizedExactPrompts": 54,
+            "recognized": 485,
+            "items": 3600,
+            "recognizedFraction": 0.13472222222222222,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 33,
+            "meanScore": 13.473333333333333,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 20,
+            "memorizedExactPrompts": 206,
+            "recognized": 674,
+            "items": 3600,
+            "recognizedFraction": 0.18722222222222223,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 8,
+            "maxScore": 50,
+            "meanScore": 18.756666666666668,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 100,
+            "memorizedExactPrompts": 910,
+            "recognized": 1182,
+            "items": 3600,
+            "recognizedFraction": 0.3283333333333333,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 8,
+            "maxScore": 58,
+            "meanScore": 32.87,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 500,
+            "memorizedExactPrompts": 3385,
+            "recognized": 2111,
+            "items": 3600,
+            "recognizedFraction": 0.5863888888888888,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 33,
+            "maxScore": 67,
+            "meanScore": 58.666666666666664,
+            "unorderedPairPassFlipRate": 0
+          }
+        ],
+        "conceptOverlap": {
+          "comparisons": 44850,
+          "min": 4,
+          "max": 12,
+          "mean": 7.0089186176142695
+        },
+        "publicTextDiversity": {
+          "occurrences": 3600,
+          "distinct": 2272,
+          "repeatedOccurrences": 1328
+        },
+        "freshFamilies": [
+          {
+            "conceptId": "Python-Junior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 80
+          },
+          {
+            "conceptId": "HTTP-Junior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 32
+          },
+          {
+            "conceptId": "Algorithms-Junior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 8
+          },
+          {
+            "conceptId": "SQL-Junior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 51
+          }
+        ]
+      },
+      {
+        "specialization": "Backend",
+        "grade": "Middle",
+        "profiles": {
+          "all": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "none": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 0,
+            "meanScore": 0,
+            "unorderedPairPassFlipRate": 0
+          },
+          "missing-first-skill": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 75,
+            "maxScore": 75,
+            "meanScore": 75,
+            "unorderedPairPassFlipRate": 0
+          },
+          "all-applied": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "applied-plus-knowledge-0": {
+            "attempts": 300,
+            "passes": 214,
+            "passRate": 0.7133333333333334,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 75.29666666666667,
+            "unorderedPairPassFlipRate": 0.410345596432553
+          },
+          "applied-plus-knowledge-0-1": {
+            "attempts": 300,
+            "passes": 285,
+            "passRate": 0.95,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 83.50333333333333,
+            "unorderedPairPassFlipRate": 0.09531772575250837
+          },
+          "legacy-only": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "fresh-plus-knowledge": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          }
+        },
+        "memorization": [
+          {
+            "trainingAttempts": 1,
+            "memorizedExactPrompts": 12,
+            "recognized": 231,
+            "items": 3600,
+            "recognizedFraction": 0.06416666666666666,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 25,
+            "meanScore": 6.316666666666666,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 5,
+            "memorizedExactPrompts": 55,
+            "recognized": 674,
+            "items": 3600,
+            "recognizedFraction": 0.18722222222222223,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 42,
+            "meanScore": 18.756666666666668,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 20,
+            "memorizedExactPrompts": 197,
+            "recognized": 962,
+            "items": 3600,
+            "recognizedFraction": 0.26722222222222225,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 8,
+            "maxScore": 50,
+            "meanScore": 26.716666666666665,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 100,
+            "memorizedExactPrompts": 813,
+            "recognized": 1496,
+            "items": 3600,
+            "recognizedFraction": 0.41555555555555557,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 17,
+            "maxScore": 67,
+            "meanScore": 41.57,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 500,
+            "memorizedExactPrompts": 3059,
+            "recognized": 2209,
+            "items": 3600,
+            "recognizedFraction": 0.6136111111111111,
+            "attempts": 300,
+            "passes": 4,
+            "passRate": 0.013333333333333334,
+            "minScore": 42,
+            "maxScore": 75,
+            "meanScore": 61.406666666666666,
+            "unorderedPairPassFlipRate": 0.026399108138238574
+          }
+        ],
+        "conceptOverlap": {
+          "comparisons": 44850,
+          "min": 4,
+          "max": 12,
+          "mean": 7.004214046822742
+        },
+        "publicTextDiversity": {
+          "occurrences": 3600,
+          "distinct": 2017,
+          "repeatedOccurrences": 1583
+        },
+        "freshFamilies": [
+          {
+            "conceptId": "Algorithms-Middle-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 6
+          },
+          {
+            "conceptId": "SQL-Middle-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 4
+          },
+          {
+            "conceptId": "HTTP-Middle-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 296,
+            "repeatedOccurrences": 4,
+            "repetitionFraction": 0.013333333333333334,
+            "distinctAnswers": 7
+          },
+          {
+            "conceptId": "Python-Middle-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 68
+          }
+        ]
+      },
+      {
+        "specialization": "Backend",
+        "grade": "Senior",
+        "profiles": {
+          "all": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "none": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 0,
+            "meanScore": 0,
+            "unorderedPairPassFlipRate": 0
+          },
+          "missing-first-skill": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 75,
+            "maxScore": 75,
+            "meanScore": 75,
+            "unorderedPairPassFlipRate": 0
+          },
+          "all-applied": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "applied-plus-knowledge-0": {
+            "attempts": 300,
+            "passes": 206,
+            "passRate": 0.6866666666666666,
+            "minScore": 67,
+            "maxScore": 92,
+            "meanScore": 75.29,
+            "unorderedPairPassFlipRate": 0.43175027870680044
+          },
+          "applied-plus-knowledge-0-1": {
+            "attempts": 300,
+            "passes": 289,
+            "passRate": 0.9633333333333334,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 83.64333333333333,
+            "unorderedPairPassFlipRate": 0.07088071348940914
+          },
+          "legacy-only": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "fresh-plus-knowledge": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          }
+        },
+        "memorization": [
+          {
+            "trainingAttempts": 1,
+            "memorizedExactPrompts": 12,
+            "recognized": 289,
+            "items": 3600,
+            "recognizedFraction": 0.08027777777777778,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 25,
+            "meanScore": 7.95,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 5,
+            "memorizedExactPrompts": 52,
+            "recognized": 796,
+            "items": 3600,
+            "recognizedFraction": 0.22111111111111112,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 42,
+            "meanScore": 22.11,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 20,
+            "memorizedExactPrompts": 180,
+            "recognized": 1140,
+            "items": 3600,
+            "recognizedFraction": 0.31666666666666665,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 8,
+            "maxScore": 50,
+            "meanScore": 31.626666666666665,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 100,
+            "memorizedExactPrompts": 762,
+            "recognized": 1578,
+            "items": 3600,
+            "recognizedFraction": 0.43833333333333335,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 17,
+            "maxScore": 67,
+            "meanScore": 43.85666666666667,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 500,
+            "memorizedExactPrompts": 2886,
+            "recognized": 2257,
+            "items": 3600,
+            "recognizedFraction": 0.6269444444444444,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 42,
+            "maxScore": 67,
+            "meanScore": 62.78666666666667,
+            "unorderedPairPassFlipRate": 0
+          }
+        ],
+        "conceptOverlap": {
+          "comparisons": 44850,
+          "min": 4,
+          "max": 12,
+          "mean": 7.017212931995541
+        },
+        "publicTextDiversity": {
+          "occurrences": 3600,
+          "distinct": 1922,
+          "repeatedOccurrences": 1678
+        },
+        "freshFamilies": [
+          {
+            "conceptId": "SQL-Senior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 135
+          },
+          {
+            "conceptId": "HTTP-Senior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 15
+          },
+          {
+            "conceptId": "Algorithms-Senior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 6
+          },
+          {
+            "conceptId": "Python-Senior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 80
+          }
+        ]
+      },
+      {
+        "specialization": "Frontend",
+        "grade": "Junior",
+        "profiles": {
+          "all": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "none": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 0,
+            "meanScore": 0,
+            "unorderedPairPassFlipRate": 0
+          },
+          "missing-first-skill": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 75,
+            "maxScore": 75,
+            "meanScore": 75,
+            "unorderedPairPassFlipRate": 0
+          },
+          "all-applied": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "applied-plus-knowledge-0": {
+            "attempts": 300,
+            "passes": 203,
+            "passRate": 0.6766666666666666,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 74.71666666666667,
+            "unorderedPairPassFlipRate": 0.439041248606466
+          },
+          "applied-plus-knowledge-0-1": {
+            "attempts": 300,
+            "passes": 279,
+            "passRate": 0.93,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 83.07333333333334,
+            "unorderedPairPassFlipRate": 0.1306354515050167
+          },
+          "legacy-only": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "fresh-plus-knowledge": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          }
+        },
+        "memorization": [
+          {
+            "trainingAttempts": 1,
+            "memorizedExactPrompts": 12,
+            "recognized": 220,
+            "items": 3600,
+            "recognizedFraction": 0.06111111111111111,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 25,
+            "meanScore": 6.023333333333333,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 5,
+            "memorizedExactPrompts": 56,
+            "recognized": 686,
+            "items": 3600,
+            "recognizedFraction": 0.19055555555555556,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 8,
+            "maxScore": 42,
+            "meanScore": 19.136666666666667,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 20,
+            "memorizedExactPrompts": 190,
+            "recognized": 957,
+            "items": 3600,
+            "recognizedFraction": 0.2658333333333333,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 17,
+            "maxScore": 58,
+            "meanScore": 26.60333333333333,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 100,
+            "memorizedExactPrompts": 821,
+            "recognized": 1375,
+            "items": 3600,
+            "recognizedFraction": 0.3819444444444444,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 17,
+            "maxScore": 67,
+            "meanScore": 38.166666666666664,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 500,
+            "memorizedExactPrompts": 3039,
+            "recognized": 2299,
+            "items": 3600,
+            "recognizedFraction": 0.6386111111111111,
+            "attempts": 300,
+            "passes": 58,
+            "passRate": 0.19333333333333333,
+            "minScore": 42,
+            "maxScore": 75,
+            "meanScore": 63.91,
+            "unorderedPairPassFlipRate": 0.31295429208472686
+          }
+        ],
+        "conceptOverlap": {
+          "comparisons": 44850,
+          "min": 4,
+          "max": 12,
+          "mean": 6.999933110367893
+        },
+        "publicTextDiversity": {
+          "occurrences": 3600,
+          "distinct": 2080,
+          "repeatedOccurrences": 1520
+        },
+        "freshFamilies": [
+          {
+            "conceptId": "React-Junior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 44
+          },
+          {
+            "conceptId": "Accessibility-Junior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 224,
+            "repeatedOccurrences": 76,
+            "repetitionFraction": 0.25333333333333335,
+            "distinctAnswers": 7
+          },
+          {
+            "conceptId": "CSS-Junior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 148
+          },
+          {
+            "conceptId": "TypeScript-Junior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 80
+          }
+        ]
+      },
+      {
+        "specialization": "Frontend",
+        "grade": "Middle",
+        "profiles": {
+          "all": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "none": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 0,
+            "meanScore": 0,
+            "unorderedPairPassFlipRate": 0
+          },
+          "missing-first-skill": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 75,
+            "maxScore": 75,
+            "meanScore": 75,
+            "unorderedPairPassFlipRate": 0
+          },
+          "all-applied": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "applied-plus-knowledge-0": {
+            "attempts": 300,
+            "passes": 206,
+            "passRate": 0.6866666666666666,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 75.38333333333334,
+            "unorderedPairPassFlipRate": 0.43175027870680044
+          },
+          "applied-plus-knowledge-0-1": {
+            "attempts": 300,
+            "passes": 283,
+            "passRate": 0.9433333333333334,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 83.36333333333333,
+            "unorderedPairPassFlipRate": 0.10726867335562988
+          },
+          "legacy-only": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "fresh-plus-knowledge": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          }
+        },
+        "memorization": [
+          {
+            "trainingAttempts": 1,
+            "memorizedExactPrompts": 12,
+            "recognized": 218,
+            "items": 3600,
+            "recognizedFraction": 0.06055555555555556,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 25,
+            "meanScore": 5.963333333333333,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 5,
+            "memorizedExactPrompts": 55,
+            "recognized": 679,
+            "items": 3600,
+            "recognizedFraction": 0.18861111111111112,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 42,
+            "meanScore": 18.913333333333334,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 20,
+            "memorizedExactPrompts": 187,
+            "recognized": 1056,
+            "items": 3600,
+            "recognizedFraction": 0.29333333333333333,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 8,
+            "maxScore": 50,
+            "meanScore": 29.26,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 100,
+            "memorizedExactPrompts": 803,
+            "recognized": 1414,
+            "items": 3600,
+            "recognizedFraction": 0.3927777777777778,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 8,
+            "maxScore": 67,
+            "meanScore": 39.276666666666664,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 500,
+            "memorizedExactPrompts": 3067,
+            "recognized": 2157,
+            "items": 3600,
+            "recognizedFraction": 0.5991666666666666,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 33,
+            "maxScore": 67,
+            "meanScore": 59.946666666666665,
+            "unorderedPairPassFlipRate": 0
+          }
+        ],
+        "conceptOverlap": {
+          "comparisons": 44850,
+          "min": 4,
+          "max": 12,
+          "mean": 7.0200445930880715
+        },
+        "publicTextDiversity": {
+          "occurrences": 3600,
+          "distinct": 2054,
+          "repeatedOccurrences": 1546
+        },
+        "freshFamilies": [
+          {
+            "conceptId": "React-Middle-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 59
+          },
+          {
+            "conceptId": "CSS-Middle-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 164
+          },
+          {
+            "conceptId": "Accessibility-Middle-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 7
+          },
+          {
+            "conceptId": "TypeScript-Middle-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 54
+          }
+        ]
+      },
+      {
+        "specialization": "Frontend",
+        "grade": "Senior",
+        "profiles": {
+          "all": {
+            "attempts": 300,
+            "passes": 300,
+            "passRate": 1,
+            "minScore": 100,
+            "maxScore": 100,
+            "meanScore": 100,
+            "unorderedPairPassFlipRate": 0
+          },
+          "none": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 0,
+            "meanScore": 0,
+            "unorderedPairPassFlipRate": 0
+          },
+          "missing-first-skill": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 75,
+            "maxScore": 75,
+            "meanScore": 75,
+            "unorderedPairPassFlipRate": 0
+          },
+          "all-applied": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "applied-plus-knowledge-0": {
+            "attempts": 300,
+            "passes": 199,
+            "passRate": 0.6633333333333333,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 74.56,
+            "unorderedPairPassFlipRate": 0.4481382385730212
+          },
+          "applied-plus-knowledge-0-1": {
+            "attempts": 300,
+            "passes": 280,
+            "passRate": 0.9333333333333333,
+            "minScore": 67,
+            "maxScore": 100,
+            "meanScore": 83.22333333333333,
+            "unorderedPairPassFlipRate": 0.12486064659977704
+          },
+          "legacy-only": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          },
+          "fresh-plus-knowledge": {
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 67,
+            "maxScore": 67,
+            "meanScore": 67,
+            "unorderedPairPassFlipRate": 0
+          }
+        },
+        "memorization": [
+          {
+            "trainingAttempts": 1,
+            "memorizedExactPrompts": 12,
+            "recognized": 308,
+            "items": 3600,
+            "recognizedFraction": 0.08555555555555555,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 0,
+            "maxScore": 33,
+            "meanScore": 8.506666666666666,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 5,
+            "memorizedExactPrompts": 52,
+            "recognized": 1081,
+            "items": 3600,
+            "recognizedFraction": 0.30027777777777775,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 17,
+            "maxScore": 50,
+            "meanScore": 29.903333333333332,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 20,
+            "memorizedExactPrompts": 165,
+            "recognized": 1341,
+            "items": 3600,
+            "recognizedFraction": 0.3725,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 33,
+            "maxScore": 58,
+            "meanScore": 37.166666666666664,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 100,
+            "memorizedExactPrompts": 714,
+            "recognized": 1711,
+            "items": 3600,
+            "recognizedFraction": 0.4752777777777778,
+            "attempts": 300,
+            "passes": 0,
+            "passRate": 0,
+            "minScore": 33,
+            "maxScore": 67,
+            "meanScore": 47.54333333333334,
+            "unorderedPairPassFlipRate": 0
+          },
+          {
+            "trainingAttempts": 500,
+            "memorizedExactPrompts": 2759,
+            "recognized": 2291,
+            "items": 3600,
+            "recognizedFraction": 0.6363888888888889,
+            "attempts": 300,
+            "passes": 3,
+            "passRate": 0.01,
+            "minScore": 42,
+            "maxScore": 75,
+            "meanScore": 63.776666666666664,
+            "unorderedPairPassFlipRate": 0.019866220735785953
+          }
+        ],
+        "conceptOverlap": {
+          "comparisons": 44850,
+          "min": 4,
+          "max": 12,
+          "mean": 7.007625418060201
+        },
+        "publicTextDiversity": {
+          "occurrences": 3600,
+          "distinct": 1838,
+          "repeatedOccurrences": 1762
+        },
+        "freshFamilies": [
+          {
+            "conceptId": "Accessibility-Senior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 299,
+            "repeatedOccurrences": 1,
+            "repetitionFraction": 0.0033333333333333335,
+            "distinctAnswers": 6
+          },
+          {
+            "conceptId": "CSS-Senior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 79
+          },
+          {
+            "conceptId": "TypeScript-Senior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 114
+          },
+          {
+            "conceptId": "React-Senior-fresh-0",
+            "occurrences": 300,
+            "distinctTexts": 300,
+            "repeatedOccurrences": 0,
+            "repetitionFraction": 0,
+            "distinctAnswers": 41
+          }
+        ]
+      }
+    ]
+  }
+}
