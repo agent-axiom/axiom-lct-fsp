@@ -35,6 +35,8 @@ jobs:
       - run: npm test
       - run: npm run typecheck
       - run: npm run lint
+      - name: Verify reproducible Sites v12 staging
+        run: node scripts/prepare-sites-v12.mjs --output "$RUNNER_TEMP/fsp-sites-v12-stage"
       - name: Reproduce authored regression evidence
         run: |
           npm run evaluate
