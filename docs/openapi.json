@@ -5717,10 +5717,27 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/FspAchievement"
-            }
+            },
+            "description": "Validated synthetic historical achievement records. They remain visible after category changes; bonus eligibility is evaluated separately for the current matching category."
           },
           "achievement": {
             "$ref": "#/components/schemas/FspBonus"
+          },
+          "unverifiedRequirements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Explicit mandatory clauses outside the bounded parser vocabulary. These conditions require manual review, prevent a confirmed complete match, and exclude the achievement bonus. They are not evidence that a candidate lacks the skill."
+          },
+          "matchStatus": {
+            "type": "string",
+            "enum": [
+              "unverified",
+              "partial",
+              "recognized_match"
+            ],
+            "description": "unverified: at least one unsupported mandatory clause; partial: recognized conditions are missing; recognized_match: recognized conditions match, not a guarantee of full natural-language understanding or job suitability."
           }
         },
         "required": [
@@ -5788,6 +5805,13 @@
               }
             },
             "description": "Recognized simple two-skill OR groups. Any one confirmed skill satisfies the group."
+          },
+          "unverifiedRequirements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Explicit mandatory clauses outside the bounded parser vocabulary. These conditions require manual review, prevent a confirmed complete match, and exclude the achievement bonus. They are not evidence that a candidate lacks the skill."
           }
         },
         "required": [

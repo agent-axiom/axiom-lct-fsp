@@ -1,0 +1,14 @@
+{
+  "frozenAt": "2026-10-10T21:08:20Z",
+  "baselineCommit": "fd4572022c367645784232f517ae2f91a07e646b",
+  "trainStart": 671000,
+  "trainSizes": [1,5,20,100,500],
+  "evaluationStart": 972000,
+  "evaluationCount": 300,
+  "metrics": ["exact-public-prompt-memorizer-pass-rate", "recognized-items", "score-range-mean", "unordered-pair-pass-flip-rate", "fresh-prompt-repetition", "fresh-distinct-answers", "concept-overlap"],
+  "profiles": ["all", "none", "missing-first-skill", "all-applied", "applied-plus-knowledge-0", "applied-plus-knowledge-0-1", "legacy-only", "fresh-plus-knowledge"],
+  "memorizerKey": "JSON.stringify([text,format,sortedChoices])",
+  "unknownAnswer": "не знаю",
+  "threshold": "unchanged: 9/12 overall and 2/3 in every skill",
+  "interpretation": "Developer-authored synthetic regression; new seed interval is not an independent human or conceptual holdout. No LLM resistance or professional grade validity claim."
+}

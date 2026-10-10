@@ -90,7 +90,7 @@ test('Normalized repository masks old evidence and preserves historical rows thr
   }finally{db.close();}
 });
 test('UI consumes public structured choices and documents stale evidence',()=>{
-  const ui=readFileSync(new URL('../app/workspace.tsx',import.meta.url),'utf8');assert.ok(ui.includes('q.choices.map'));assert.ok(ui.includes('Выберите ответ'));assert.ok(ui.includes('legacy_retest_required'));assert.ok(ui.includes('144 проектных шаблона'));assert.ok(!ui.includes('Предыдущий тест оценивал навыки общим баллом'));
+  const ui=readFileSync(new URL('../app/workspace.tsx',import.meta.url),'utf8');assert.ok(ui.includes('q.choices.map'));assert.ok(ui.includes('Выберите ответ'));assert.ok(ui.includes('legacy_retest_required'));assert.ok(ui.includes('168 учебных семейств'));assert.ok(!ui.includes('Предыдущий тест оценивал навыки общим баллом'));
 });
 
 
@@ -123,9 +123,11 @@ test('v4 compares decimal answers exactly without IEEE-754 rounding false accept
   assert.equal(answerMatches({answer:'0',format:'number'},'-000.000'),true);assert.equal(answerMatches({answer:'-2.5',format:'number'},'-002,5000'),true);
 });
 test('HTML identifiers preserve case while ordinary knowledge answers remain case-insensitive',()=>{
+  let checked=0;
   for(const grade of ['Junior','Senior'])for(let seed=0;seed<20;seed++){
-   const questions=makeQuestions('Frontend',grade,seed),ids=questions.filter(q=>q.caseSensitive);assert.ok(ids.length>=1);
+   const questions=makeQuestions('Frontend',grade,seed),ids=questions.filter(q=>q.caseSensitive);checked+=ids.length;
    for(const q of ids){assert.equal(answerMatches(q,q.answer),true);assert.equal(answerMatches(q,q.answer.toUpperCase()),false);const dto=stripTest({questions:[q]}).questions[0];assert.equal(dto.caseSensitive,true);assert.equal(dto.answer,undefined);}
   }
+  assert.ok(checked>=20, 'Sampled legacy HTML identifier tasks remain covered');
   assert.equal(answerMatches({answer:'stopiteration',format:'text'},'StopIteration'),true);
 });

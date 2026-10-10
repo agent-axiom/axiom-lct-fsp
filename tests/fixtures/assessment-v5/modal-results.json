@@ -1,0 +1,44 @@
+[
+  {
+    "spec": "Backend",
+    "grade": "Junior",
+    "exact": 0,
+    "fallback": 107,
+    "total": 300
+  },
+  {
+    "spec": "Backend",
+    "grade": "Middle",
+    "exact": 4,
+    "fallback": 148,
+    "total": 300
+  },
+  {
+    "spec": "Backend",
+    "grade": "Senior",
+    "exact": 0,
+    "fallback": 68,
+    "total": 300
+  },
+  {
+    "spec": "Frontend",
+    "grade": "Junior",
+    "exact": 0,
+    "fallback": 37,
+    "total": 300
+  },
+  {
+    "spec": "Frontend",
+    "grade": "Middle",
+    "exact": 0,
+    "fallback": 65,
+    "total": 300
+  },
+  {
+    "spec": "Frontend",
+    "grade": "Senior",
+    "exact": 3,
+    "fallback": 88,
+    "total": 300
+  }
+]

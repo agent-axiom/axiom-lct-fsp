@@ -41,7 +41,7 @@ Assessment-evaluator обновляет timestamp в сохранённом ло
 
 ## Качество алгоритмов
 
-Программные тесты не доказывают профессиональную валидность грейда или качество реального найма. В репозитории сохранены авторские синтетические процедуры: [assessment v4](assessment-quality-v4.md), [matching](matching-quality.md), [методика matching](matching-quality-methodology.md).
+Программные тесты не доказывают профессиональную валидность грейда или качество реального найма. В репозитории сохранены авторские синтетические процедуры: [assessment v5 и ограничения](assessment-quality-v5.md), [исторический assessment v4](assessment-quality-v4.md), [matching](matching-quality.md), [методика matching](matching-quality-methodology.md).
 
 Старый benchmark 10 профилей × 12 запросов является regression-набором. В наборе 36 × 36 отложенная часть v0.6 не показала улучшения относительно v0.5. Повторная настройка на просмотренных heldout-результатах не создаёт независимую проверку.
 
