@@ -20,7 +20,9 @@ test('Malformed, oversized or unavailable storage never blocks demo; account mod
  for(const value of ['not json','x'.repeat(1001),JSON.stringify({binding:'/api/guest:'+'a'.repeat(64),roles:{candidate:'https://bad.test',employer:'demo-employer'}})]){
  const storage=memory();storage.setItem(DEMO_NAVIGATION_KEY,value);assert.equal(createDemoNavigation(()=>storage).reconcile('/api/guest',data()).candidate,'demo-candidate');}
  const nav=createDemoNavigation(()=>{throw Error('blocked');});nav.reconcile('/api/guest',data());assert.equal(nav.select('candidate','candidate-2').candidate,'candidate-2');nav.clear();
- const storage=memory();createDemoNavigation(()=>storage).reconcile('/api/account',data());assert.equal(storage.getItem(DEMO_NAVIGATION_KEY),null);
+ for(const api of ['/api/account','/api/public-account']){
+  const storage=memory(),nav=createDemoNavigation(()=>storage);nav.reconcile(api,data('private-account'));nav.select('candidate','other-private-account');assert.equal(storage.getItem(DEMO_NAVIGATION_KEY),null);
+ }
 });
 test('Stored shortcuts include only partition and role IDs, never account/contact/test fields',()=>{
  const storage=memory();createDemoNavigation(()=>storage).reconcile('/api/guest',{...data(),email:'secret@example.test',test:{answers:'secret'}});

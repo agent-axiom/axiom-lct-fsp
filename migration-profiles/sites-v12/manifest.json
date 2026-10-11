@@ -3,7 +3,7 @@
   "projectId": "appgprj_6ac2cb9594088191838995d4c7142768",
   "deployedSourceCommit": "95abaf6ec8e0eb49b62a7efa03f0050abfdb8550",
   "applicationBaseCommit": "cc5549085f3cfb2ea58533fbd56a2e9be73d6724",
-  "schemaSHA256": "2b65481b4c446b3cd0cec444b119b1e4974a7ab3f8d674753d5b8bc83d1b4245",
+  "schemaSHA256": "68e795b500978315179f09d995618f79a8c9b09932b30f3b919b575eafc7d7f5",
   "files": [
     {
       "source": "drizzle/0000_goofy_triathlon.sql",
@@ -68,7 +68,17 @@
     {
       "source": "migration-profiles/sites-v12/meta/_journal.json",
       "destination": "drizzle/meta/_journal.json",
-      "sha256": "926b809c1e02b4574a0bdb2a4dbcfeb995cdd0ce87d9c69adbdb8018baf127d3"
+      "sha256": "fa0f3b8625c78a8fcaf7365a1bc298527c6100f02566ac0b20d91ce29f18cde8"
+    },
+    {
+      "source": "migration-profiles/sites-v12/0006_public_email_auth.sql",
+      "destination": "drizzle/0006_public_email_auth.sql",
+      "sha256": "aad629251dc412797a40c1f5fe986ad8d984607e44f103371e0acddebc573c05"
+    },
+    {
+      "source": "migration-profiles/sites-v12/meta/0006_snapshot.json",
+      "destination": "drizzle/meta/0006_snapshot.json",
+      "sha256": "26102a9f934b0befd581a70a713c32c39f9339c2eec3b2f2a0c335f08bca73a8"
     }
   ]
 }

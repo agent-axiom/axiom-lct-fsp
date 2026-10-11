@@ -3,7 +3,7 @@
   "info": {
     "title": "FSP synthetic hiring MVP",
     "version": "0.6.1",
-    "description": "Public anonymous synthetic guest demo with separate short-lived sessions; optional ChatGPT sign-in protects personal workspaces. Real-account activation and general email are off by default. Separately authorized owner-only one-message diagnostics do not enable them."
+    "description": "Public anonymous synthetic guest demo with separate short-lived sessions. A separate email-only account API supports ordinary mailboxes without ChatGPT after operator-approved activation; it is disabled by default. Legacy Sites-principal accounts and owner-only diagnostics remain separate. Source publication and provider acceptance do not establish activation or inbox delivery."
   },
   "servers": [
     {
@@ -5490,6 +5490,538 @@
           }
         }
       }
+    },
+    "/api/public-account/state": {
+      "get": {
+        "summary": "Email-only anonymous status or own role workspace; no ChatGPT required",
+        "description": "Disabled by default. Missing/expired session returns HTTP 200 with enrolled=false and user=null. Flags/policy/pilot are checked server-side. GET never dispatches email. Vary: Cookie and Cache-Control: no-store. An auth token/session/principal/owner/account query parameter is rejected.",
+        "security": [
+          {},
+          {
+            "PublicAccountSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicAccountState"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON/input, invalid or unavailable link, or forbidden authentication query parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Wrong role, non-pilot email, absent/foreign Origin or cross-site Fetch Metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Flags off, policy/provider not configured, PDF/storage unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/public-account/action": {
+      "post": {
+        "summary": "Run an action for the role bound to the server email session",
+        "description": "POST requires an Origin exactly equal to the request URL origin, application/json and a body no larger than 16000 bytes. cross-site Sec-Fetch-Site is rejected. All responses use Cache-Control: no-store; raw credentials are not returned in JSON. GET on authentication/action endpoints returns 404 and never sends email or consumes/revokes a session. The verified account email is the contact. Invitation contact is exposed only to the inviting employer after acceptance while consent remains valid.",
+        "security": [
+          {
+            "PublicAccountSession": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublicAccountAction"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicAccountActionResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON/input, invalid or unavailable link, or forbidden authentication query parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, revoked or expired server email session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Wrong role, non-pilot email, absent/foreign Origin or cross-site Fetch Metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown route/entity or unsupported method",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Atomic consume/write conflict; retry or request a fresh link",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "JSON body exceeds 16000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "POST requires application/json",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Authentication request rate limit or test start limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Flags off, policy/provider not configured, PDF/storage unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/public-account/profile.pdf": {
+      "get": {
+        "summary": "Download the session owner's verified candidate profile",
+        "description": "Requires a current server session and candidate role. Employer is denied. Uses no-store and never dispatches email.",
+        "security": [
+          {
+            "PublicAccountSession": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Own verified candidate PDF; candidateId or other hints cannot select another profile",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON/input, invalid or unavailable link, or forbidden authentication query parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, revoked or expired server email session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Wrong role, non-pilot email, absent/foreign Origin or cross-site Fetch Metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Flags off, policy/provider not configured, PDF/storage unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/public-account/auth/request": {
+      "post": {
+        "summary": "Request a login or registration link at an ordinary email address",
+        "description": "POST requires an Origin exactly equal to the request URL origin, application/json and a body no larger than 16000 bytes. cross-site Sec-Fetch-Site is rejected. All responses use Cache-Control: no-store; raw credentials are not returned in JSON. GET on authentication/action endpoints returns 404 and never sends email or consumes/revokes a session. Requires accountsEnabled/emailAuthEnabled, approved policy and live Resend configuration. Sends at most one email for this request; no scheduler/drain/retry is attached. Link is https://fsp.kosarevsky.dev/account/verify#challenge=...&token=... when canonical origin is configured. Same-browser consumption, 15-minute expiry. Limits: one request/minute and five/hour per email, 30 globally/minute, fewer than 128 outstanding unconsumed challenges. A configured pilot allowlist restricts all new requests.",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublicEmailAuthRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Generic acknowledgement; no account exists until a valid proof is consumed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicEmailRequestResult"
+                }
+              }
+            },
+            "headers": {
+              "Set-Cookie": {
+                "description": "Sets/refreshes __Host-fsp_auth browser binding with Max-Age=900, Secure, HttpOnly, SameSite=Lax and Path=/. No login session is created.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON/input, invalid or unavailable link, or forbidden authentication query parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Wrong role, non-pilot email, absent/foreign Origin or cross-site Fetch Metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "JSON body exceeds 16000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "POST requires application/json",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Authentication request rate limit or test start limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Flags off, policy/provider not configured, PDF/storage unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/public-account/auth/consume": {
+      "post": {
+        "summary": "Exchange a same-browser single-use email proof for a server session",
+        "description": "POST requires an Origin exactly equal to the request URL origin, application/json and a body no larger than 16000 bytes. cross-site Sec-Fetch-Site is rejected. All responses use Cache-Control: no-store; raw credentials are not returned in JSON. GET on authentication/action endpoints returns 404 and never sends email or consumes/revokes a session. No automatic GET consumption. Expired, consumed, wrong-browser or five-failure-locked links are denied. Login for an unknown email does not register it. Legacy Sites identities sharing an email are not merged. First registration writes account, role profile and session in one atomic batch; concurrent consumption has one winner.",
+        "security": [
+          {
+            "PublicAuthBrowserCookie": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublicEmailLinkConsume"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Valid same-browser proof consumed atomically; account created only on first registration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicEmailConsumeResult"
+                }
+              }
+            },
+            "headers": {
+              "Set-Cookie": {
+                "description": "Sets __Host-fsp_account (Max-Age=86400, Secure, HttpOnly, SameSite=Lax, Path=/) and clears __Host-fsp_auth. Headers may contain multiple Set-Cookie entries.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON/input, invalid or unavailable link, or forbidden authentication query parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Wrong role, non-pilot email, absent/foreign Origin or cross-site Fetch Metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Atomic consume/write conflict; retry or request a fresh link",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "JSON body exceeds 16000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "POST requires application/json",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Flags off, policy/provider not configured, PDF/storage unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/public-account/auth/logout": {
+      "post": {
+        "summary": "Revoke the current email session and clear local auth cookies",
+        "description": "POST requires an Origin exactly equal to the request URL origin, application/json and a body no larger than 16000 bytes. cross-site Sec-Fetch-Site is rejected. All responses use Cache-Control: no-store; raw credentials are not returned in JSON. GET on authentication/action endpoints returns 404 and never sends email or consumes/revokes a session. Works even when the feature flags are disabled. Without a cookie it returns ok=true. Does not revoke other independently issued sessions.",
+        "security": [
+          {},
+          {
+            "PublicAccountSession": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Empty JSON object; no account/principal/email selector is used."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicEmailLogoutResult"
+                }
+              }
+            },
+            "headers": {
+              "Set-Cookie": {
+                "description": "Clears account and browser-binding cookies; an existing account session is revoked in storage. No account data is deleted and no email is sent.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON/input, invalid or unavailable link, or forbidden authentication query parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Wrong role, non-pilot email, absent/foreign Origin or cross-site Fetch Metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "JSON body exceeds 16000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "POST requires application/json",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Flags off, policy/provider not configured, PDF/storage unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -6929,6 +7461,509 @@
           "action"
         ],
         "additionalProperties": false
+      },
+      "PublicEmailAuthRequest": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "mode",
+              "email"
+            ],
+            "properties": {
+              "mode": {
+                "const": "login"
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "maxLength": 254
+              }
+            },
+            "description": "Email is trimmed and normalized to lowercase. Does not create an unknown account."
+          },
+          {
+            "type": "object",
+            "required": [
+              "mode",
+              "email",
+              "role",
+              "name",
+              "dataConsent",
+              "privacyNoticeVersion"
+            ],
+            "properties": {
+              "mode": {
+                "const": "register"
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "maxLength": 254
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "candidate",
+                  "employer"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 80
+              },
+              "dataConsent": {
+                "const": true
+              },
+              "privacyNoticeVersion": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "description": "Consent version must match the currently configured policy. The first successful registration fixes the role; later registration cannot replace role, name or identity."
+          }
+        ]
+      },
+      "PublicEmailLinkConsume": {
+        "type": "object",
+        "required": [
+          "challengeId",
+          "token"
+        ],
+        "properties": {
+          "challengeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "token": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "writeOnly": true
+          }
+        },
+        "description": "Supply the secret from the email fragment in this JSON POST, with the original same-browser authentication cookie. Never put token/session/principal/owner/account in an API query string."
+      },
+      "PublicEmailRequestResult": {
+        "type": "object",
+        "required": [
+          "requested",
+          "message"
+        ],
+        "properties": {
+          "requested": {
+            "const": true
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A generic request acknowledgement, including ambiguous/rejected provider outcomes; it is not proof of provider acceptance, delivery or enrollment. A received valid link proves mailbox possession."
+      },
+      "PublicEmailConsumeResult": {
+        "type": "object",
+        "required": [
+          "ok",
+          "enrolled",
+          "authMode"
+        ],
+        "properties": {
+          "ok": {
+            "const": true
+          },
+          "enrolled": {
+            "const": true
+          },
+          "authMode": {
+            "const": "email"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PublicEmailLogoutResult": {
+        "type": "object",
+        "required": [
+          "ok"
+        ],
+        "properties": {
+          "ok": {
+            "const": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PublicAccountState": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "enrolled": {
+            "type": "boolean"
+          },
+          "emailEnabled": {
+            "type": "boolean"
+          },
+          "emailStatus": {
+            "type": "string",
+            "enum": [
+              "verified",
+              "blocked",
+              "queued",
+              "leased",
+              "retry",
+              "sent",
+              "failed",
+              "cancelled",
+              "not_configured",
+              "not_requested"
+            ],
+            "description": "Provider acceptance is not inbox delivery. No automatic background retries are configured."
+          },
+          "message": {
+            "type": "string"
+          },
+          "privacyNoticeUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "privacyNoticeVersion": {
+            "type": "string"
+          },
+          "user": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OwnUser"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "invitations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Invitation"
+            }
+          },
+          "accounts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "outbox": {
+            "type": "array",
+            "maxItems": 0
+          },
+          "demo": {
+            "const": false
+          },
+          "test": {
+            "$ref": "#/components/schemas/Assessment"
+          },
+          "searches": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "draftIdentity": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Opaque, non-authorizing partition for a tab-local assessment draft. Derived from the trusted principal or resolved guest session; never accepted as authentication."
+          },
+          "emailAttempts": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "emailRetryAllowed": {
+            "type": "boolean",
+            "description": "This existing attempt can be explicitly retried, no earlier than emailRetryAt. Server rechecks eligibility."
+          },
+          "emailRetryAt": {
+            "type": "integer",
+            "description": "Unix milliseconds when lease/backoff permits another explicit attempt; not a scheduled delivery."
+          },
+          "challengeId": {
+            "type": "string",
+            "description": "Own server-selected challenge identifier; never a mail-dispatch input."
+          },
+          "expiresAt": {
+            "type": "integer",
+            "description": "Challenge expiry in Unix milliseconds."
+          },
+          "authMode": {
+            "const": "email"
+          }
+        },
+        "required": [
+          "enabled",
+          "enrolled",
+          "emailEnabled",
+          "authMode"
+        ],
+        "description": "Anonymous/disabled status or one server-session-bound role workspace. Anonymous user is null. An enrolled account has one accounts entry, empty outbox and authMode=email. No switcher, token hashes, provider payloads or another user's private contact are exposed."
+      },
+      "PublicAccountAction": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "action",
+              "consent",
+              "published"
+            ],
+            "properties": {
+              "action": {
+                "const": "profile"
+              },
+              "about": {
+                "type": "string"
+              },
+              "experience": {
+                "type": "number"
+              },
+              "softSkills": {
+                "type": "string"
+              },
+              "consent": {
+                "type": "boolean"
+              },
+              "published": {
+                "type": "boolean"
+              }
+            },
+            "description": "Candidate only. Self-reported profile fields never grant a score/category. Contact is the confirmed account email. published requires consent."
+          },
+          {
+            "type": "object",
+            "required": [
+              "action",
+              "company"
+            ],
+            "properties": {
+              "action": {
+                "const": "company"
+              },
+              "company": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "description": "Employer only. Contact is the confirmed account email; no contact field is required or accepted as an identity selector."
+          },
+          {
+            "type": "object",
+            "required": [
+              "action",
+              "specialization",
+              "grade"
+            ],
+            "properties": {
+              "action": {
+                "const": "test-start"
+              },
+              "specialization": {
+                "type": "string",
+                "enum": [
+                  "Backend",
+                  "Frontend"
+                ]
+              },
+              "grade": {
+                "type": "string",
+                "enum": [
+                  "Junior",
+                  "Middle",
+                  "Senior"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "action",
+              "testId",
+              "answers"
+            ],
+            "properties": {
+              "action": {
+                "const": "test-submit"
+              },
+              "testId": {
+                "type": "string"
+              },
+              "answers": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "action"
+            ],
+            "properties": {
+              "action": {
+                "const": "search"
+              },
+              "specialization": {
+                "type": "string",
+                "enum": [
+                  "Backend",
+                  "Frontend"
+                ]
+              },
+              "grade": {
+                "type": "string",
+                "enum": [
+                  "Junior",
+                  "Middle",
+                  "Senior"
+                ]
+              },
+              "need": {
+                "type": "string"
+              },
+              "skills": {
+                "type": "string"
+              },
+              "fsp": {
+                "type": "boolean"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "action",
+              "candidateId",
+              "salaryFrom",
+              "salaryTo",
+              "description"
+            ],
+            "properties": {
+              "action": {
+                "const": "invite"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 15
+              },
+              "candidateId": {
+                "type": "string"
+              },
+              "salaryFrom": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 10000000
+              },
+              "salaryTo": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 10000000
+              },
+              "salaryBasis": {
+                "type": "string",
+                "enum": [
+                  "gross",
+                  "net"
+                ],
+                "description": "Gross before taxes or net take-home per month. New commands accept gross (default) or net; legacy records can be unspecified."
+              }
+            },
+            "description": "Employer only. salaryTo >= salaryFrom, RUB per month. Defaults to gross. Candidate must be confirmed, published and consenting."
+          },
+          {
+            "type": "object",
+            "required": [
+              "action",
+              "id",
+              "status"
+            ],
+            "properties": {
+              "action": {
+                "const": "invitation-status"
+              },
+              "id": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "viewed",
+                  "accepted",
+                  "declined"
+                ]
+              }
+            }
+          }
+        ],
+        "description": "Only the seven documented role actions are allowed. Client actor/principal/role/email/contact do not choose an account or change its confirmed identity. register/switch/fsp and legacy email-request/email-retry/email-verify are forbidden here."
+      },
+      "PublicAccountActionResult": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "test": {
+            "$ref": "#/components/schemas/Assessment"
+          },
+          "score": {
+            "type": "integer"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "competencyResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Competency"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CandidateResult"
+            }
+          },
+          "filters": {
+            "type": "object",
+            "properties": {}
+          },
+          "requirements": {
+            "$ref": "#/components/schemas/Requirements"
+          },
+          "invitation": {
+            "$ref": "#/components/schemas/Invitation"
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -6937,6 +7972,18 @@
         "in": "cookie",
         "name": "__Host-fsp_guest",
         "description": "Ephemeral authorization for one isolated synthetic guest space only; never personal account authentication."
+      },
+      "PublicAccountSession": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "__Host-fsp_account",
+        "description": "Server-issued 256-bit opaque session; only its SHA-256 hash is stored. Secure, HttpOnly, SameSite=Lax, Path=/, no Domain; 24-hour expiry, revoked by logout. Not a ChatGPT identity."
+      },
+      "PublicAuthBrowserCookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "__Host-fsp_auth",
+        "description": "Non-account browser binding for one-time email links. Secure, HttpOnly, SameSite=Lax, Path=/, no Domain; 15-minute cookie lifetime. consume also requires the email proof in its JSON body."
       }
     }
   }
