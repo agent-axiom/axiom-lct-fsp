@@ -5,7 +5,7 @@ import { actor, command, view, rankCandidates, DomainError } from '@/lib/domain.
 import { readJsonBody } from '@/lib/http-body.mjs';
 export const dynamic='force-dynamic';
 const safeHeaders={'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
-async function identity(request:Request){const user=await getChatGPTUser();if(!user)throw new DomainError('Нужно войти в ChatGPT.',401);const cookie=request.headers.get('cookie')||'';const active=cookie.split(';').map(x=>x.trim()).find(x=>x.startsWith('fsp_actor='))?.slice(10)||'demo-candidate';return {owner:user.userId,active};}
+async function identity(request:Request){const user=await getChatGPTUser();if(!user)throw new DomainError('Войдите, чтобы продолжить.',401);const cookie=request.headers.get('cookie')||'';const active=cookie.split(';').map(x=>x.trim()).find(x=>x.startsWith('fsp_actor='))?.slice(10)||'demo-candidate';return {owner:user.userId,active};}
 function failure(e:unknown){if(e instanceof DomainError)return Response.json({error:e.message},{status:e.status,headers:safeHeaders});console.error('FSP API failed',e);return Response.json({error:'Хранилище временно недоступно. Введённые данные сохранены в форме; повторите действие.'},{status:503,headers:safeHeaders});}
 export async function GET(request:Request){try{const {owner,active}=await identity(request);const {state}=await load(owner);const u=actor(state,active);const path=new URL(request.url).pathname;
  if(path==='/api/state')return Response.json({...view(state,u),draftIdentity:await assessmentDraftIdentity('demo',owner)},{headers:safeHeaders});
