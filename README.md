@@ -18,6 +18,12 @@ MVP обратного найма: кандидат проходит учебн�
 
 В демо также есть готовые синтетические профили. PDF-профиль, история тестов, сохранённые подборки и статусы приглашений доступны в кабинетах.
 
+## Вход по email
+
+В исходниках подготовлен отдельный кабинет для обычного email без пароля и ChatGPT. Регистрация подтверждается одноразовой ссылкой в том же браузере; один адрес закрепляет одну роль. Канонический адрес — `https://fsp.kosarevsky.dev/account` после проверки домена и включения runtime-флагов.
+
+Активация, реальная доставка и проверка двух независимых участников пока не подтверждены: нужны оператор данных, утверждённая политика/хранение и два контролируемых inbox. [Порядок включения и проверки](docs/public-email-account-runbook.md) · [Обязательная приёмка и остаточные улучшения](docs/release-acceptance-checklist.md). Демо остаётся доступно без регистрации.
+
 ## Запустить локально
 
 Нужны доступ к репозиторию, Node.js 24.19.0 и npm. После клонирования:
@@ -48,5 +54,6 @@ node scripts/local-demo.mjs
 - [Методика подбора](docs/matching-quality.md) и [правила DEMO-достижений](docs/achievement-policy.md)
 - [Google MailApp: ограниченный pilot, выключен по умолчанию](docs/google-mailapp-pilot.md)
 - [Гостевой доступ](docs/guest-access-verification.md), [подготовка email](docs/email-readiness.md)
+- [Кабинет по email без ChatGPT](docs/public-email-account-runbook.md), [приёмка перед сдачей](docs/release-acceptance-checklist.md)
 - [Проверки и воспроизведение](docs/testing.md), [финальный чек-лист](docs/final-submission-checklist.md)
 - [История версий и подробный прежний README](docs/archive/README-before-cleanup-2026-10-08.md)

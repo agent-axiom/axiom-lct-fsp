@@ -16,11 +16,12 @@ for(const entry of manifest.files){
  for(const directory of [profile,v12]){const dest=path.join(directory,relative);mkdirSync(path.dirname(dest),{recursive:true});cpSync(input,dest);}
 }
 const baseline=JSON.parse(readFileSync(v12+'meta/_journal.json','utf8'));baseline.entries=baseline.entries.slice(0,5);writeFileSync(v12+'meta/_journal.json',JSON.stringify(baseline));
-rmSync(v12+'0005_align_mainline_email_columns.sql');rmSync(v12+'meta/0005_snapshot.json');
+for(const entry of manifest.files){const relative=entry.destination.replace(/^drizzle\//,'');if(/^000[56]_.*\.sql$|^meta\/000[56]_snapshot\.json$/.test(relative))rmSync(v12+relative);}
 const json=p=>JSON.parse(readFileSync(p,'utf8'));
 const originalJournal=json(v12+'meta/_journal.json'),profileJournal=json(profile+'meta/_journal.json');
 assert.deepEqual(profileJournal.entries.slice(0,5),originalJournal.entries);
 assert.ok(profileJournal.entries[5].when>originalJournal.entries[4].when);
+assert.ok(profileJournal.entries[6].when>profileJournal.entries[5].when);
 for(const path of [...readdirSync(v12).filter(f=>f.endsWith('.sql')), ...readdirSync(v12+'meta').filter(f=>f!=='_journal.json').map(f=>'meta/'+f)]) assert.deepEqual(readFileSync(profile+path),readFileSync(v12+path));
 function fixture(){
  const db=new DatabaseSync(':memory:'); db.exec('PRAGMA foreign_keys=ON');
@@ -37,14 +38,15 @@ INSERT INTO real_accounts VALUES('synthetic-account','synthetic-issuer','synthet
 INSERT INTO real_email_challenges VALUES('synthetic-challenge','synthetic-account','synthetic@example.test','synthetic-token-hash',1,9999999999999,NULL,0,'pending');
 INSERT INTO real_email_outbox VALUES('synthetic-job','synthetic-challenge','queued',0,1,NULL,NULL,NULL,NULL,1,NULL);`);
 const before=snapshot(f.db);await migrate(f.orm,{migrationsFolder:profile});const after=snapshot(f.db);
+for(const table of ['public_email_auth_requests','public_email_auth_limits','public_account_sessions']){assert.deepEqual(after[table],[]);delete after[table];}
 for(const row of after.real_email_outbox){assert.equal(row.email_transport,'resend');assert.equal(row.payload_hash,null);delete row.email_transport;delete row.payload_hash;}
 assert.deepEqual(after,before);
-const ledger=f.db.prepare('SELECT * FROM __drizzle_migrations ORDER BY created_at').all();assert.equal(ledger.length,6);
+const ledger=f.db.prepare('SELECT * FROM __drizzle_migrations ORDER BY created_at').all();assert.equal(ledger.length,7);
 await migrate(f.orm,{migrationsFolder:profile});assert.deepEqual(f.db.prepare('SELECT * FROM __drizzle_migrations ORDER BY created_at').all(),ledger);
 const clean=fixture();await migrate(clean.orm,{migrationsFolder:profile});const canonical=fixture();await migrate(canonical.orm,{migrationsFolder:main});
 const shape=db=>Object.fromEntries(tables(db).map(t=>[t,{columns:db.prepare(`PRAGMA table_info(${t})`).all().map(row=>{const copy={...row};delete copy.cid;return copy;}).sort((a,b)=>a.name.localeCompare(b.name)),indexes:db.prepare(`PRAGMA index_list(${t})`).all().map(row=>{const copy={...row};delete copy.seq;return copy;}).sort((a,b)=>a.name.localeCompare(b.name))}]));
 assert.deepEqual(shape(clean.db),shape(canonical.db));
-console.log(JSON.stringify({passed:true,originalMigrationsImmutable:true,actualD1MigratorUsed:true,populatedV12Upgrade:'passed',allExistingRowsPreserved:true,ownerReceiptPreserved:true,outboxLegacyDefaults:{email_transport:'resend',payload_hash:null},repeatMigrationNoop:true,freshProfileMatchesMainSchema:true,profileMigration:profileJournal.entries[5],newSQLSHA256:createHash('sha256').update(readFileSync(profile+'0005_align_mainline_email_columns.sql')).digest('hex'),productionAccess:false},null,2));
+console.log(JSON.stringify({passed:true,originalMigrationsImmutable:true,actualD1MigratorUsed:true,populatedV12Upgrade:'passed',allExistingRowsPreserved:true,ownerReceiptPreserved:true,outboxLegacyDefaults:{email_transport:'resend',payload_hash:null},emailAuthTablesCreatedEmpty:true,repeatMigrationNoop:true,freshProfileMatchesMainSchema:true,profileMigrations:profileJournal.entries.slice(5),newSQLSHA256:createHash('sha256').update(readFileSync(profile+'0006_public_email_auth.sql')).digest('hex'),productionAccess:false},null,2));
 for(const x of [f,clean,canonical])x.db.close();
 
 rmSync(scratch,{recursive:true});

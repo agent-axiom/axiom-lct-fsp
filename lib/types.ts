@@ -25,5 +25,5 @@ export interface AccountEmailState {
  challengeId?: string; expiresAt?: number; emailAttempts?: number;
  emailRetryAllowed?: boolean; emailRetryAt?: number;
 }
-export type AccountState = Partial<WorkspaceData> & AccountEmailState & {enabled:boolean;enrolled?:boolean;emailEnabled?:boolean;privacyNoticeUrl?:string;privacyNoticeVersion?:string;message?:string};
-export type AccountActionResult = AccountEmailState & {error?:string;verificationError?:string;enrolled?:boolean};
+export type AccountState = Omit<Partial<WorkspaceData>, 'user'> & AccountEmailState & {user?:User|null;enabled:boolean;enrolled?:boolean;emailEnabled?:boolean;authMode?:'email';privacyNoticeUrl?:string;privacyNoticeVersion?:string;message?:string};
+export type AccountActionResult = AccountEmailState & {error?:string;verificationError?:string;enrolled?:boolean;requested?:boolean;ok?:boolean;message?:string};

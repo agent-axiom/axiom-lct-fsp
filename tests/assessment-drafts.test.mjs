@@ -22,6 +22,19 @@ test('exact owner, session, actor, API mode, attempt and question contract must 
  }
  const {target,state}=prepare();assert.deepEqual(createAssessmentDraftStore(()=>target).reconcile('/api/account',state,now).answers,{});
 });
+test('email account drafts remain active and restore only within their exact API scope',()=>{
+ const scopes=['/api','/api/guest','/api/account','/api/public-account'];
+ for(const source of scopes)for(const destination of scopes){
+  // The same owner and attempt cannot make a draft portable between auth channels.
+  const target=storage(),state=data(),store=createAssessmentDraftStore(()=>target);
+  assert.equal(store.reconcile(source,state,now).active,true);
+  assert.deepEqual(store.update('number','17',now).answers,{number:'17'});
+  const restored=createAssessmentDraftStore(()=>target).reconcile(destination,state,now+1000);
+  assert.equal(restored.active,true);
+  assert.deepEqual(restored.answers,source===destination?{number:'17'}:{});
+  if(source!==destination)assert.deepEqual(createAssessmentDraftStore(()=>target).reconcile(source,state,now+2000).answers,{});
+ }
+});
 test('submission, role change, missing identity, logout, reset, test expiry and guest expiry purge the slot',()=>{
  for(const mutate of [d=>delete d.test,d=>d.user.role='employer',d=>d.user.verified=false,d=>delete d.draftIdentity,d=>d.test.expiresAt=now,d=>d.guest={expiresAt:now}]){
   const {target,store,state}=prepare();mutate(state);const result=store.reconcile('/api/guest',state,now);assert.deepEqual(result.answers,{});assert.equal(result.active,false);assert.equal(target.getItem(ASSESSMENT_DRAFT_KEY),null);

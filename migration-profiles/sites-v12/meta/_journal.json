@@ -43,6 +43,13 @@
       "when": 1791660557251,
       "tag": "0005_align_mainline_email_columns",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1791718200000,
+      "tag": "0006_public_email_auth",
+      "breakpoints": true
     }
   ]
 }
