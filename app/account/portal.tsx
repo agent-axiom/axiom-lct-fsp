@@ -100,7 +100,7 @@ export default function AccountPortal({verification=false,canonicalOrigin=''}:{v
   </>:<section className="panel form-grid"><form className="form-grid" onSubmit={requestEmail}>
    <div className="actions"><Button type="button" variant={mode==='register'?'default':'outline'} disabled={busy} aria-pressed={mode==='register'} onClick={()=>{setMode('register');setError('');setNotice('');resetChallenge();}}>Зарегистрироваться</Button><Button type="button" variant={mode==='login'?'default':'outline'} disabled={busy} aria-pressed={mode==='login'} onClick={()=>{setMode('login');setError('');setNotice('');resetChallenge();}}>Войти</Button></div>
    <p>Первый вход — создайте кабинет. Если кабинет уже есть, выберите «Войти».</p>
-   <p>Вход по одноразовому коду из письма. Пароль и аккаунт ChatGPT не нужны.</p>
+   <p>Вход по одноразовому коду из письма.</p>
    {mode==='register'&&<>
     <label className="field"><span>Роль аккаунта</span><select value={role} disabled={busy} onChange={event=>{setRole(event.target.value);resetChallenge();}}><option value="candidate">Кандидат</option><option value="employer">Работодатель</option></select></label>
     <p className="micro">Роль закрепится за вашим email. Один адрес соответствует одному личному кабинету.</p>
