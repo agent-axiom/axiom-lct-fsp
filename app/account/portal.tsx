@@ -13,7 +13,7 @@ const api='/api/public-account';
 
 export default function AccountPortal({verification=false,canonicalOrigin=''}:{verification?:boolean;canonicalOrigin?:string}){
  const [state,setState]=useState<AccountState|null>(null),[error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false);
- const [mode,setMode]=useState<'login'|'register'>('login'),[name,setName]=useState(''),[email,setEmail]=useState(''),[role,setRole]=useState('candidate'),[consent,setConsent]=useState(false);
+ const [mode,setMode]=useState<'login'|'register'>('register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[role,setRole]=useState('candidate'),[consent,setConsent]=useState(false);
  const [link,setLink]=useState<EmailLink|null>(null),[linkRead,setLinkRead]=useState(!verification),[requested,setRequested]=useState(false),[retryAt,setRetryAt]=useState(0),[displayNow,setDisplayNow]=useState(()=>Date.now());
  const [challengeId,setChallengeId]=useState(''),[code,setCode]=useState('');
  const lock=useRef(false),fragmentRead=useRef(false);
@@ -98,7 +98,8 @@ export default function AccountPortal({verification=false,canonicalOrigin=''}:{v
    <p>Отправка кодов входа пока не включена. Реальная регистрация недоступна.</p>
    <Link className="account-link" href="/">Открыть демонстрацию →</Link>
   </>:<section className="panel form-grid"><form className="form-grid" onSubmit={requestEmail}>
-   <div className="actions"><Button type="button" variant={mode==='login'?'default':'outline'} disabled={busy} aria-pressed={mode==='login'} onClick={()=>{setMode('login');setError('');setNotice('');resetChallenge();}}>Войти</Button><Button type="button" variant={mode==='register'?'default':'outline'} disabled={busy} aria-pressed={mode==='register'} onClick={()=>{setMode('register');setError('');setNotice('');resetChallenge();}}>Зарегистрироваться</Button></div>
+   <div className="actions"><Button type="button" variant={mode==='register'?'default':'outline'} disabled={busy} aria-pressed={mode==='register'} onClick={()=>{setMode('register');setError('');setNotice('');resetChallenge();}}>Зарегистрироваться</Button><Button type="button" variant={mode==='login'?'default':'outline'} disabled={busy} aria-pressed={mode==='login'} onClick={()=>{setMode('login');setError('');setNotice('');resetChallenge();}}>Войти</Button></div>
+   <p>Первый вход — создайте кабинет. Если кабинет уже есть, выберите «Войти».</p>
    <p>Вход по одноразовому коду из письма. Пароль и аккаунт ChatGPT не нужны.</p>
    {mode==='register'&&<>
     <label className="field"><span>Роль аккаунта</span><select value={role} disabled={busy} onChange={event=>{setRole(event.target.value);resetChallenge();}}><option value="candidate">Кандидат</option><option value="employer">Работодатель</option></select></label>
