@@ -30,8 +30,10 @@ export default function AccountPortal({verification=false,canonicalOrigin=''}:{v
   const params=new URLSearchParams(window.location.hash.slice(1)),challengeId=params.get('challenge'),token=params.get('token');
   // The secret stays only in this page's memory, never in storage or API query strings.
   if(window.location.hash)window.history.replaceState(null,'',window.location.pathname+window.location.search);
-  if(challengeId&&token&&challengeId.length<=100&&/^[a-f0-9]{64}$/.test(token))setLink({challengeId,token});
-  setLinkRead(true);
+  queueMicrotask(()=>{
+   if(challengeId&&token&&challengeId.length<=100&&/^[a-f0-9]{64}$/.test(token))setLink({challengeId,token});
+   setLinkRead(true);
+  });
  },[verification,canonicalOrigin]);
  useEffect(()=>{
   if(retryAt<=Date.now())return;
