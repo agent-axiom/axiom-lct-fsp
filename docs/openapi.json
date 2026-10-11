@@ -5734,8 +5734,8 @@
     },
     "/api/public-account/auth/request": {
       "post": {
-        "summary": "Request a login or registration link at an ordinary email address",
-        "description": "POST requires an Origin exactly equal to the request URL origin, application/json and a body no larger than 16000 bytes. cross-site Sec-Fetch-Site is rejected. All responses use Cache-Control: no-store; raw credentials are not returned in JSON. GET on authentication/action endpoints returns 404 and never sends email or consumes/revokes a session. Requires accountsEnabled/emailAuthEnabled, approved policy and live Resend configuration. Sends at most one email for this request; no scheduler/drain/retry is attached. Link is https://fsp.kosarevsky.dev/account/verify#challenge=...&token=... when canonical origin is configured. Same-browser consumption, 15-minute expiry. Limits: one request/minute and five/hour per email, 30 globally/minute, fewer than 128 outstanding unconsumed challenges. A configured pilot allowlist restricts all new requests.",
+        "summary": "Request a login or registration code at an ordinary email address",
+        "description": "POST requires an Origin exactly equal to the request URL origin, application/json and a body no larger than 16000 bytes. cross-site Sec-Fetch-Site is rejected. All responses use Cache-Control: no-store; raw credentials are not returned in JSON. GET on authentication/action endpoints returns 404 and never sends email or consumes/revokes a session. Requires accountsEnabled/emailAuthEnabled, approved policy and live Resend configuration. Sends at most one email for this request; no scheduler/drain/retry is attached. The email contains a uniformly generated eight-digit code and no URL. The response exposes only its non-secret challengeId, never the code. Enter the code in the requesting browser at /account; 15-minute expiry. Only a SHA-256 proof hash is persisted. Limits: one request/minute and five/hour per email, 30 globally/minute, fewer than 128 outstanding unconsumed challenges. A configured pilot allowlist restricts all new requests.",
         "security": [],
         "requestBody": {
           "required": true,
@@ -5767,7 +5767,7 @@
             }
           },
           "400": {
-            "description": "Invalid JSON/input, invalid or unavailable link, or forbidden authentication query parameters",
+            "description": "Invalid JSON/input or forbidden authentication query parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -5832,7 +5832,7 @@
     "/api/public-account/auth/consume": {
       "post": {
         "summary": "Exchange a same-browser single-use email proof for a server session",
-        "description": "POST requires an Origin exactly equal to the request URL origin, application/json and a body no larger than 16000 bytes. cross-site Sec-Fetch-Site is rejected. All responses use Cache-Control: no-store; raw credentials are not returned in JSON. GET on authentication/action endpoints returns 404 and never sends email or consumes/revokes a session. No automatic GET consumption. Expired, consumed, wrong-browser or five-failure-locked links are denied. Login for an unknown email does not register it. Legacy Sites identities sharing an email are not merged. First registration writes account, role profile and session in one atomic batch; concurrent consumption has one winner.",
+        "description": "POST requires an Origin exactly equal to the request URL origin, application/json and a body no larger than 16000 bytes. cross-site Sec-Fetch-Site is rejected. All responses use Cache-Control: no-store; raw credentials are not returned in JSON. GET on authentication/action endpoints returns 404 and never sends email or consumes/revokes a session. No automatic GET consumption. Accepts exactly one proof field: code (eight ASCII digits) or a legacy token (64 lowercase hexadecimal characters) from a previously sent link. Supplying both fields is rejected, even when one is empty. Expired, consumed, wrong-browser or five-failure-locked proofs are denied. Login for an unknown email does not register it. Legacy Sites identities sharing an email are not merged. First registration writes account, role profile and session in one atomic batch; concurrent consumption has one winner.",
         "security": [
           {
             "PublicAuthBrowserCookie": []
@@ -5868,7 +5868,7 @@
             }
           },
           "400": {
-            "description": "Invalid JSON/input, invalid or unavailable link, or forbidden authentication query parameters",
+            "description": "Invalid JSON/input, invalid or unavailable code/legacy link, ambiguous proof fields, or forbidden authentication query parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -5888,7 +5888,7 @@
             }
           },
           "409": {
-            "description": "Atomic consume/write conflict; retry or request a fresh link",
+            "description": "Atomic consume/write conflict; retry or request a fresh code",
             "content": {
               "application/json": {
                 "schema": {
@@ -7528,8 +7528,7 @@
       "PublicEmailLinkConsume": {
         "type": "object",
         "required": [
-          "challengeId",
-          "token"
+          "challengeId"
         ],
         "properties": {
           "challengeId": {
@@ -7541,14 +7540,44 @@
             "type": "string",
             "pattern": "^[a-f0-9]{64}$",
             "writeOnly": true
+          },
+          "code": {
+            "type": "string",
+            "pattern": "^[0-9]{8}$",
+            "minLength": 8,
+            "maxLength": 8,
+            "writeOnly": true
           }
         },
-        "description": "Supply the secret from the email fragment in this JSON POST, with the original same-browser authentication cookie. Never put token/session/principal/owner/account in an API query string."
+        "description": "Supply the code from the new email in this JSON POST, with the original same-browser authentication cookie. Previously sent legacy links may instead supply token from their email fragment. Exactly one of code/token is allowed, regardless of either field value. Other client fields do not choose an account or alter its fixed role. Never put code/token/session/principal/owner/account in an API query string.",
+        "oneOf": [
+          {
+            "required": [
+              "code"
+            ],
+            "not": {
+              "required": [
+                "token"
+              ]
+            }
+          },
+          {
+            "required": [
+              "token"
+            ],
+            "not": {
+              "required": [
+                "code"
+              ]
+            }
+          }
+        ]
       },
       "PublicEmailRequestResult": {
         "type": "object",
         "required": [
           "requested",
+          "challengeId",
           "message"
         ],
         "properties": {
@@ -7557,10 +7586,15 @@
           },
           "message": {
             "type": "string"
+          },
+          "challengeId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Non-secret identifier for the pending same-browser request; it cannot authenticate without the emailed code and browser cookie."
           }
         },
         "additionalProperties": false,
-        "description": "A generic request acknowledgement, including ambiguous/rejected provider outcomes; it is not proof of provider acceptance, delivery or enrollment. A received valid link proves mailbox possession."
+        "description": "A generic request acknowledgement, including ambiguous/rejected provider outcomes; it is not proof of provider acceptance, delivery or enrollment. No emailed code is returned. A received valid code proves mailbox possession only when consumed with its original browser binding."
       },
       "PublicEmailConsumeResult": {
         "type": "object",
