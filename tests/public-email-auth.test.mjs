@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {publicEmailAuthConfiguration} from '../lib/public-email-auth.mjs';
+import {tokenHash} from '../lib/email-outbox.mjs';
 import {handlePublicAccountRequest} from '../lib/public-account-http.mjs';
 import {handleAccountRequest} from '../lib/real-account-http.mjs';
 import {sqliteD1} from './helpers/sqlite-d1.mjs';
@@ -43,21 +44,22 @@ function fixture(config={...base},{delivery}={}){
   const raw=await response.text();let parsed;try{parsed=JSON.parse(raw);}catch{parsed=raw;}
   return {status:response.status,body:parsed,headers:response.headers,raw};
  };
- const link=email=>{
-  const sent=mail.findLast(item=>item.to[0]===email);assert.ok(sent,'A challenge must come from the captured provider payload');
-  const url=new URL(sent.text.match(/https:\/\/\S+/)[0]);assert.equal(url.origin,origin);assert.equal(url.pathname,'/account/verify');assert.equal(url.search,'');
-  const params=new URLSearchParams(url.hash.slice(1));
-  assert.ok(params.get('challenge'));assert.ok(params.get('token'));
-  return {challengeId:params.get('challenge'),token:params.get('token')};
+ const proof=email=>{
+  const sent=mail.findLast(item=>item.to[0]===email);assert.ok(sent,'A code must come from the captured provider payload');
+  assert.equal(sent.subject,'Код подтверждения ФСП');assert.equal(/https?:\/\/|www\.|\/account/i.test(sent.text),false,'New auth mail must contain no URLs');
+  const code=sent.text.match(/\b([0-9]{8})\b/)?.[1];assert.ok(code,'The actual email must contain an eight-digit code');
+  const request=db.sqlite.prepare('SELECT id FROM public_email_auth_requests WHERE email=? ORDER BY created_at DESC,rowid DESC LIMIT 1').get(email);
+  assert.ok(request,'The challenge ID comes from the request record, never from a guessed code');
+  return {challengeId:request.id,code};
  };
  const state=client=>call(client,'state');
  const action=async(client,input)=>{const result=await call(client,'action',input);success(result);return result.body;};
  const enroll=async(client,input=register())=>{
-  success(await call(client,'auth/request',input));const challenge=link(input.email.toLowerCase());
+  success(await call(client,'auth/request',input));const challenge=proof(input.email.toLowerCase());
   success(await call(client,'auth/consume',challenge));const result=await state(client);success(result);return result.body;
  };
  const rows=table=>db.sqlite.prepare(`SELECT * FROM "${table}"`).all();
- return {db,config,mail,browser,cookieHeader,call,link,state,action,enroll,rows,advance:ms=>{now+=ms;},now:()=>now};
+ return {db,config,mail,browser,cookieHeader,call,proof,state,action,enroll,rows,advance:ms=>{now+=ms;},now:()=>now};
 }
 
 test('public email flags default off and parse independently of the legacy Sites pilot',()=>{
@@ -78,7 +80,7 @@ for(const privacyNoticeUrl of ['https://','https://[invalid]','http://email-auth
  assert.equal(writes,0);assert.equal(mail,0);
 });
 
-test('email registration creates no account until a same-browser link is consumed, then keeps secrets server-side',async()=>{
+test('email registration creates no account until a same-browser code is consumed, then keeps secrets server-side',async()=>{
  const f=fixture(),candidate=f.browser();try{
   const initial=await f.state(candidate);success(initial);assert.equal(initial.body.enrolled,false);assert.equal(initial.body.user,null);assert.equal(initial.body.authMode,'email');
   const requested=await f.call(candidate,'auth/request',register());success(requested);assert.equal(requested.body.requested,true);
@@ -86,8 +88,8 @@ test('email registration creates no account until a same-browser link is consume
   assert.ok(candidate.cookies.has('__Host-fsp_auth'));assert.equal(candidate.cookies.has('__Host-fsp_account'),false);
   const pending=requested.headers.getSetCookie().find(cookie=>cookie.startsWith('__Host-fsp_auth='));
   for(const attribute of ['Secure','HttpOnly','SameSite=Lax','Path=/'])assert.ok(pending.includes(attribute));assert.ok(!/\bDomain=/i.test(pending));
-  const challenge=f.link('candidate@example.test');assert.equal(JSON.stringify(requested.body).includes(challenge.token),false);
-  assert.equal(JSON.stringify(f.rows('public_email_auth_requests')).includes(challenge.token),false,'Only a token hash may be stored');
+  const challenge=f.proof('candidate@example.test');assert.equal(requested.body.challengeId,challenge.challengeId);assert.equal(JSON.stringify(requested.body).includes(challenge.code),false);
+  assert.equal(JSON.stringify(f.rows('public_email_auth_requests')).includes(challenge.code),false,'Only a code hash may be stored');
   const consumed=await f.call(candidate,'auth/consume',challenge);success(consumed);assert.equal(consumed.body.authMode,'email');
   assert.equal(candidate.cookies.has('__Host-fsp_auth'),false);assert.ok(candidate.cookies.has('__Host-fsp_account'));
   const session=consumed.headers.getSetCookie().find(cookie=>cookie.startsWith('__Host-fsp_account='));
@@ -95,41 +97,70 @@ test('email registration creates no account until a same-browser link is consume
   assert.equal(JSON.stringify(f.rows('public_account_sessions')).includes(candidate.cookies.get('__Host-fsp_account')),false,'Store no raw session credential');
   const state=await f.state(candidate);success(state);assert.equal(state.body.enrolled,true);assert.equal(state.body.user.role,'candidate');assert.equal(state.body.user.email,'candidate@example.test');assert.equal(state.body.user.verified,true);
   assert.equal(state.body.accounts.length,1);assert.deepEqual(state.body.outbox,[]);
-  for(const secret of [challenge.token,candidate.cookies.get('__Host-fsp_account'),base.tokenSecret,base.resendApiKey])assert.equal(state.raw.includes(secret),false);
+  for(const secret of [challenge.code,candidate.cookies.get('__Host-fsp_account'),base.tokenSecret,base.resendApiKey])assert.equal(state.raw.includes(secret),false);
   assert.equal(f.rows('real_accounts').length,1);assert.equal(f.mail.length,1);
  }finally{f.db.close();}
 });
 
-test('wrong token, wrong browser, expiry and replay never create extra accounts or sessions',async()=>{
+test('wrong code, wrong browser, expiry and replay never create extra accounts or sessions',async()=>{
  const f=fixture(),candidate=f.browser(),other=f.browser();try{
-  success(await f.call(candidate,'auth/request',register()));const challenge=f.link('candidate@example.test');
+  success(await f.call(candidate,'auth/request',register()));const challenge=f.proof('candidate@example.test');
   assert.equal((await f.call(other,'auth/consume',challenge)).status,400);
-  assert.equal((await f.call(candidate,'auth/consume',{...challenge,token:'not-the-secret'})).status,400);
+  assert.equal((await f.call(candidate,'auth/consume',{...challenge,code:'not-the-secret'})).status,400);
   assert.equal(f.rows('real_accounts').length,0);assert.equal(f.rows('public_account_sessions').length,0);
   const pending=candidate.cookies.get('__Host-fsp_auth');
   success(await f.call(candidate,'auth/consume',challenge));
   other.cookies.set('__Host-fsp_auth',pending);
-  assert.equal((await f.call(other,'auth/consume',challenge)).status,400,'Consumed links cannot be replayed even with their original browser cookie');
+  assert.equal((await f.call(other,'auth/consume',challenge)).status,400,'Consumed codes cannot be replayed even with their original browser cookie');
   assert.equal(f.rows('real_accounts').length,1);assert.equal(f.rows('public_account_sessions').length,1);
-  const expired=f.browser();success(await f.call(expired,'auth/request',register('expired@example.test')));const stale=f.link('expired@example.test');
+  const expired=f.browser();success(await f.call(expired,'auth/request',register('expired@example.test')));const stale=f.proof('expired@example.test');
   f.advance(15*60*1000+1);assert.equal((await f.call(expired,'auth/consume',stale)).status,400);
   assert.equal(f.rows('real_accounts').length,1);assert.equal(f.rows('public_account_sessions').length,1);
  }finally{f.db.close();}
 });
 
-test('five valid-shaped incorrect token guesses lock the challenge before account creation',async()=>{
+test('five valid-shaped incorrect code guesses lock the challenge before account creation',async()=>{
  const f=fixture(),candidate=f.browser();try{
-  success(await f.call(candidate,'auth/request',register()));const challenge=f.link('candidate@example.test');
-  const wrong=(challenge.token[0]==='a'?'b':'a')+challenge.token.slice(1);
-  for(let attempt=0;attempt<5;attempt++)assert.equal((await f.call(candidate,'auth/consume',{...challenge,token:wrong})).status,400);
+  success(await f.call(candidate,'auth/request',register()));const challenge=f.proof('candidate@example.test');
+  const wrong=(challenge.code[0]==='0'?'1':'0')+challenge.code.slice(1);
+  for(let attempt=0;attempt<5;attempt++)assert.equal((await f.call(candidate,'auth/consume',{...challenge,code:wrong})).status,400);
   assert.equal((await f.call(candidate,'auth/consume',challenge)).status,400);
   assert.equal(f.rows('real_accounts').length,0);assert.equal(f.rows('public_account_sessions').length,0);assert.equal(f.mail.length,1);
  }finally{f.db.close();}
 });
 
+test('malformed codes and ambiguous proof fields cannot consume a challenge or use a guessing attempt',async()=>{
+ const f=fixture(),candidate=f.browser();try{
+  success(await f.call(candidate,'auth/request',register()));const challenge=f.proof('candidate@example.test');
+  for(const code of ['',null,12345678,'1234567','123456789','12ab5678',' 12345678','12345678 ','１２３４５６７８']){
+   assert.equal((await f.call(candidate,'auth/consume',{...challenge,code})).status,400);
+  }
+  for(const token of [null,'','a'.repeat(64)])assert.equal((await f.call(candidate,'auth/consume',{...challenge,token})).status,400,'Code plus token must be rejected, even when one field is empty');
+  assert.equal((await f.call(candidate,'auth/consume',{challengeId:challenge.challengeId})).status,400);
+  assert.equal(f.rows('public_email_auth_requests')[0].failed_attempts,0);
+  assert.equal(f.rows('real_accounts').length,0);assert.equal(f.rows('public_account_sessions').length,0);
+  success(await f.call(candidate,'auth/consume',challenge));assert.equal((await f.state(candidate)).body.enrolled,true);
+ }finally{f.db.close();}
+});
+
+test('a legacy 64-hex link proof still consumes its existing hash-only request once in the original browser',async()=>{
+ const f=fixture(),candidate=f.browser(),other=f.browser();try{
+  success(await f.call(candidate,'auth/request',register()));const challenge=f.proof('candidate@example.test');
+  // This represents a request created by the prior link-based deployment.
+  const token='ab'.repeat(32),legacy={challengeId:challenge.challengeId,token};
+  f.db.sqlite.prepare('UPDATE public_email_auth_requests SET token_hash=? WHERE id=?').run(await tokenHash(token),challenge.challengeId);
+  assert.equal(JSON.stringify(f.rows('public_email_auth_requests')).includes(token),false);
+  assert.equal((await f.call(other,'auth/consume',legacy)).status,400);
+  const pending=candidate.cookies.get('__Host-fsp_auth');success(await f.call(candidate,'auth/consume',legacy));
+  other.cookies.set('__Host-fsp_auth',pending);assert.equal((await f.call(other,'auth/consume',legacy)).status,400);
+  assert.equal(f.rows('real_accounts').length,1);assert.equal(f.rows('public_account_sessions').length,1);
+  assert.equal((await f.state(candidate)).body.user.verified,true);
+ }finally{f.db.close();}
+});
+
 test('registration proof cannot enroll after the required privacy notice changes',async()=>{
  const config={...base},f=fixture(config),candidate=f.browser();try{
-  success(await f.call(candidate,'auth/request',register()));const challenge=f.link('candidate@example.test');
+  success(await f.call(candidate,'auth/request',register()));const challenge=f.proof('candidate@example.test');
   config.privacyNoticeVersion='synthetic-v2';assert.equal((await f.call(candidate,'auth/consume',challenge)).status,400);
   assert.equal(f.rows('real_accounts').length,0);assert.equal(f.rows('public_account_sessions').length,0);assert.equal(f.mail.length,1);
  }finally{f.db.close();}
@@ -137,7 +168,7 @@ test('registration proof cannot enroll after the required privacy notice changes
 
 test('concurrent consumption has exactly one successful winner and one session',async()=>{
  const f=fixture(),candidate=f.browser();try{
-  success(await f.call(candidate,'auth/request',register()));const challenge=f.link('candidate@example.test');
+  success(await f.call(candidate,'auth/request',register()));const challenge=f.proof('candidate@example.test');
   const parallel=f.browser();parallel.cookies=new Map(candidate.cookies);
   const results=await Promise.all([f.call(candidate,'auth/consume',challenge),f.call(parallel,'auth/consume',challenge)]);
   assert.equal(results.filter(result=>result.status===200).length,1,JSON.stringify(results.map(result=>({status:result.status,body:result.body}))));
@@ -146,15 +177,15 @@ test('concurrent consumption has exactly one successful winner and one session',
  }finally{f.db.close();}
 });
 
-test('a failed session transaction rolls back account creation and link consumption so the same proof can be retried',async()=>{
+test('a failed session transaction rolls back account creation and proof consumption so the same proof can be retried',async()=>{
  const f=fixture(),candidate=f.browser();try{
-  success(await f.call(candidate,'auth/request',register()));const challenge=f.link('candidate@example.test');
+  success(await f.call(candidate,'auth/request',register()));const challenge=f.proof('candidate@example.test');
   const before=JSON.stringify(f.rows('public_email_auth_requests'));
   f.db.failOnceWhen=/INSERT(?:\s+OR\s+\w+)?\s+INTO\s+[`"]?public_account_sessions/i;
   assert.ok([409,503].includes((await f.call(candidate,'auth/consume',challenge)).status));
   assert.equal(f.db.failOnceWhen,null,'The session write must be in the transactional batch');
   assert.equal(f.rows('real_accounts').length,0);assert.equal(f.rows('real_candidate_profiles').length,0);assert.equal(f.rows('public_account_sessions').length,0);
-  assert.equal(JSON.stringify(f.rows('public_email_auth_requests')),before,'A storage failure must not burn the login link');
+  assert.equal(JSON.stringify(f.rows('public_email_auth_requests')),before,'A storage failure must not burn the login code');
   success(await f.call(candidate,'auth/consume',challenge));assert.equal((await f.state(candidate)).body.enrolled,true);assert.equal(f.mail.length,1);
  }finally{f.db.close();}
 });
@@ -163,13 +194,13 @@ test('email login preserves canonical account identity and role despite forged r
  const f=fixture(),candidate=f.browser();try{
   const before=await f.enroll(candidate);success(await f.call(candidate,'auth/logout',{}));f.advance(61*1000);
   success(await f.call(candidate,'auth/request',{...login('CANDIDATE@EXAMPLE.TEST'),role:'employer',name:'Forged employer',principal:{issuer:'sites-chatgpt',subject:'owner'},actor:'demo-employer'}));
-  success(await f.call(candidate,'auth/consume',f.link('candidate@example.test')));
+  success(await f.call(candidate,'auth/consume',f.proof('candidate@example.test')));
   const after=(await f.state(candidate)).body;assert.equal(after.user.id,before.user.id);assert.equal(after.user.role,'candidate');assert.equal(after.user.name,before.user.name);
   assert.equal(f.rows('real_accounts').length,1);assert.equal(f.rows('real_employer_profiles').length,0);
   assert.equal((await f.call(candidate,'action',{action:'search',role:'employer',actor:'demo-employer'})).status,403);
   success(await f.call(candidate,'auth/logout',{}));f.advance(61*1000);
   success(await f.call(candidate,'auth/request',{...register('candidate@example.test','employer'),name:'Re-registration must not replace identity'}));
-  success(await f.call(candidate,'auth/consume',f.link('candidate@example.test')));
+  success(await f.call(candidate,'auth/consume',f.proof('candidate@example.test')));
   const reregistered=(await f.state(candidate)).body;
   assert.equal(reregistered.user.id,before.user.id);assert.equal(reregistered.user.role,'candidate');assert.equal(reregistered.user.name,before.user.name);
   assert.equal(f.rows('real_accounts').length,1);assert.equal(f.rows('real_employer_profiles').length,0);
@@ -182,7 +213,7 @@ test('logout revokes the server session and expiry denies stale cookies without 
   const loggedOut=await f.call(candidate,'auth/logout',{});success(loggedOut);assert.equal(candidate.cookies.has('__Host-fsp_account'),false);
   assert.equal((await f.state(replay)).body.enrolled,false);assert.equal((await f.call(replay,'action',{action:'profile',consent:true,published:true})).status,401);
   assert.equal((await f.call(replay,'profile.pdf')).status,401);
-  f.advance(61*1000);success(await f.call(candidate,'auth/request',login('candidate@example.test')));success(await f.call(candidate,'auth/consume',f.link('candidate@example.test')));
+  f.advance(61*1000);success(await f.call(candidate,'auth/request',login('candidate@example.test')));success(await f.call(candidate,'auth/consume',f.proof('candidate@example.test')));
   f.advance(24*60*60*1000+1);assert.equal((await f.state(candidate)).body.enrolled,false);
   assert.equal((await f.call(candidate,'action',{action:'profile'})).status,401);assert.equal(f.mail.length,2);
  }finally{f.db.close();}
@@ -190,7 +221,7 @@ test('logout revokes the server session and expiry denies stale cookies without 
 
 test('request, consume, logout and role writes reject absent or foreign Origin before changing data',async()=>{
  const f=fixture(),candidate=f.browser();try{
-  success(await f.call(candidate,'auth/request',register()));const challenge=f.link('candidate@example.test');
+  success(await f.call(candidate,'auth/request',register()));const challenge=f.proof('candidate@example.test');
   const tables=['real_accounts','public_email_auth_requests','public_account_sessions'];
   const snapshot=()=>JSON.stringify(tables.map(table=>f.rows(table)));
   const before=snapshot();
@@ -205,7 +236,7 @@ test('request, consume, logout and role writes reject absent or foreign Origin b
 
 test('GET requests never dispatch email, consume links or revoke sessions',async()=>{
  const f=fixture(),candidate=f.browser();try{
-  success(await f.call(candidate,'auth/request',register()));const challenge=f.link('candidate@example.test');
+  success(await f.call(candidate,'auth/request',register()));const challenge=f.proof('candidate@example.test');
   for(const path of ['auth/request','auth/consume','auth/logout','action'])denied(await f.call(candidate,path));
   assert.equal(f.rows('real_accounts').length,0);assert.equal(f.rows('public_account_sessions').length,0);assert.equal(f.mail.length,1);
   success(await f.call(candidate,'auth/consume',challenge));denied(await f.call(candidate,'auth/logout'));assert.equal((await f.state(candidate)).body.enrolled,true);
@@ -280,7 +311,7 @@ test('received login proof remains valid when provider acceptance is ambiguous',
  const f=fixture({...base},{delivery:async()=>{throw new Error('Synthetic connection ended after provider accepted the message');}}),candidate=f.browser();try{
   const requested=await f.call(candidate,'auth/request',register());assert.ok([200,503].includes(requested.status));assert.equal(f.mail.length,1);
   assert.equal(f.rows('real_accounts').length,0);
-  success(await f.call(candidate,'auth/consume',f.link('candidate@example.test')));
+  success(await f.call(candidate,'auth/consume',f.proof('candidate@example.test')));
   assert.equal((await f.state(candidate)).body.user.verified,true);assert.equal(f.mail.length,1);
  }finally{f.db.close();}
 });
@@ -290,7 +321,7 @@ test('login alone never creates an account for an unknown email',async()=>{
   const requested=await f.call(unknown,'auth/request',login('unknown@example.test'));success(requested);assert.equal(requested.body.requested,true);
   assert.equal(f.rows('real_accounts').length,0);assert.equal(f.rows('public_account_sessions').length,0);
   assert.equal((await f.state(unknown)).body.enrolled,false);assert.equal(f.mail.length,1);
-  assert.equal((await f.call(unknown,'auth/consume',f.link('unknown@example.test'))).status,400);
+  assert.equal((await f.call(unknown,'auth/consume',f.proof('unknown@example.test'))).status,400);
   assert.equal(f.rows('real_accounts').length,0);assert.equal(f.rows('public_account_sessions').length,0);
  }finally{f.db.close();}
 });
@@ -303,9 +334,9 @@ test('email authentication cannot silently link a legacy Sites identity with the
   const before=JSON.stringify(f.rows('real_accounts'));
   success(await f.call(candidate,'auth/request',login('candidate@example.test')));
   assert.equal(f.mail.length,1);assert.equal((await f.state(candidate)).body.enrolled,false);
-  assert.equal((await f.call(candidate,'auth/consume',f.link('candidate@example.test'))).status,400);
+  assert.equal((await f.call(candidate,'auth/consume',f.proof('candidate@example.test'))).status,400);
   f.advance(61*1000);success(await f.call(candidate,'auth/request',register()));
-  assert.equal((await f.call(candidate,'auth/consume',f.link('candidate@example.test'))).status,400);
+  assert.equal((await f.call(candidate,'auth/consume',f.proof('candidate@example.test'))).status,400);
   assert.equal(f.mail.length,2);assert.equal(f.rows('public_account_sessions').length,0);assert.equal(JSON.stringify(f.rows('real_accounts')),before);
  }finally{f.db.close();}
 });
